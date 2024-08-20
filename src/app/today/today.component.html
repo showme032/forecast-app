@@ -1,34 +1,67 @@
 <div class="today-group">
+  <!--  sunrise/sunset -->
   <div class="today-card">
-    sun
+    <h5 class="card-title">DAY/NIGHT</h5>
+    SUNRISE: {{ this.today.sunrise | date: 'HH:mm' }}
+    SUNSET: {{ this.today.sunset | date: 'HH:mm' }}
   </div>
 
+  <!-- uv index -->
   <div class="today-card">
-    uv
+    <h5 class="uv-index">
+      UV INDEX:
+    </h5>
+    <div class="uv-graph">
+      {{ this.today.uv }}
+      <div class="uv-bar-container">
+        <div class="uv-bar-fill" [style.width.%]="uvGraphical(this.today.uv)"></div>
+      </div>
+      <div class="uv-bar-labels">
+        <span>0</span>
+        <span>10</span>
+      </div>
+    </div>
   </div>
 
+  <!-- pressure  -->
   <div class="today-card">
-    pressure
+    <h5 class="card-title">
+      AIR PRESSURE
+    </h5>
+    {{ this.today.pressure }}hPa
   </div>
 
+  <!--  wind  -->
   <div class="today-card">
-    wind
+    <h5 class="card-title">WIND</h5>
+    SPEED: {{ this.today.windSpeed }}km/h
+    DIRECTION: {{ this.today.windDirection }}°
   </div>
 
+  <!--  humidity  -->
   <div class="today-card">
-    humidity
+    <h5 class="card-title">HUMIDITY</h5>
+    {{ this.today.humidity }}%
   </div>
 
+  <!--  subj feel  -->
   <div class="today-card">
-    subjective temp
+    <h5 class="card-title">
+      FEELS LIKE
+    </h5>
+    {{ this.today.subjectiveTemp }}°C
   </div>
 
+  <!--  visibility   -->
   <div class="today-card">
-    visibility
+    <h5 class="card-title">VISIBILITY</h5>
+    {{this.today.visibility}}km
   </div>
 
+  <!--  air-quality index  -->
   <div class="today-card">
-    air index
+    <h5 class="card-title">AIR QUALITY INDEX</h5>
+    {{this.today.airQuality }}
   </div>
 
 </div>

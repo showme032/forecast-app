@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CardComponent } from '../shared/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
+import { Hourly } from '../app.model';
 
 @Component({
   selector: 'app-hourly',
@@ -14,6 +15,6 @@ import { DatePipe, DecimalPipe } from '@angular/common';
   styleUrl: './hourly.component.css'
 })
 export class HourlyComponent {
-  @Input() hourly!: any;
+  @Input() hourly!: Hourly[];
 
 }
