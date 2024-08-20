@@ -1,0 +1,37 @@
+main {
+  width: 80%;
+  margin: 5rem auto;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto 1fr 1fr;
+  grid-template-areas:
+    "search search search"
+    ". conditions ."
+    "hourly hourly hourly"
+    "today today today"
+    "today today today";
+  justify-items: center;
+}
+
+div {
+  width: fit-content;
+}
+div.searchbar-wrapper {
+  grid-area: search;
+  width: 100%;
+}
+div.current-wrapper {
+  width: 100%;
+  grid-area: conditions;
+}
+div.hourly-wrapper {
+  width: 100%;
+  grid-area: hourly;
+}
+div.today-wrapper {
+  width: 100%;
+  grid-area: today;
+}

@@ -1,0 +1,9 @@
+div {
+  border-radius: 0.5rem;
+  border: 1px solid hsl(240 6% 90%);
+  color: hsl(240 6% 10%);
+
+  &:hover {
+    /*background-color: hsl(240, 5%, 96%);*/
+  }
+}

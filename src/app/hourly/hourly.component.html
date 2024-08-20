@@ -1,0 +1,14 @@
+<today-card>
+  <div class="scrollable-container">
+    @for (el of hourly; track el.time) {
+      <div class="hourly-card">
+        <p>
+          {{ el.temperature | number:'1.0-0' }}°C
+        </p>
+        <p>
+          {{ el.time | date: 'H aa'}}
+        </p>
+      </div>
+    }
+  </div>
+</today-card>

@@ -1,0 +1,66 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  line-height: calc(1em + 0.5rem); /* Or 1.5 on body */
+  word-break: break-word; /* Keep text in boxes */
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  /*line-height: 1.5;*/
+  /* Disable subpixel antialiasing on chrome/safari on macos*/
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/*  For 'reacty' frameworks:
+    Creates a stacking context, without z-index. All portal content (modals and tooltips) will float above the app */
+#root, #__next {
+  isolation: isolate;
+}
+
+/* ---------------------------------
+            DESKTOP FIRST
+--------------------------------- */
+/* Default: Desktop monitors, 1501px and up */
+@media (max-width: 1500px) {
+  /* Laptop */
+}
+
+@media (max-width: 1100px) {
+  /* Tablets */
+}
+
+@media (max-width: 550px) {
+  /* Phones */
+}
+
+/* ---------------------------------
+            MOBILE FIRST
+--------------------------------- */
+/* Default: Phones from 0px to 549px */
+@media (min-width: 550px) {
+  /* Tablets */
+}
+
+@media (min-width: 1100px) {
+  /* Laptop */
+}
+
+@media (min-width: 1500px) {
+  /* Desktop */
+}

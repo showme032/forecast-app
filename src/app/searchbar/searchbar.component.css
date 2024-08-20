@@ -1,0 +1,20 @@
+form {
+  margin: auto;
+  width: 60%;
+}
+
+input[type='text'] {
+  appearance: none;
+  border-radius: 0.5rem;
+  /*border: 1px solid hsl(215 30% 91%);*/
+  border: 1px solid hsl(240 6% 90%);
+  color: hsl(222 47% 11%);
+  width: 100%;
+  padding: 0.125rem 0.5rem;
+  text-align: center;
+
+  &:focus {
+    /*outline: solid hsl(240 6% 30%);*/
+    outline: solid hsl(215 20% 65%);
+  }
+}
