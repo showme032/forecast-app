@@ -1,15 +1,17 @@
 main {
+  margin: 2rem auto;
   width: 80%;
-  margin: 5rem auto;
-  padding: 1rem;
-  border: 1px solid lightgrey;
+  border: var(--border);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-small);
+  padding: 2rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto 1fr auto 1fr 1fr;
   grid-template-areas:
     "search search search"
-    ". conditions ."
+    ". current ."
     "hourly hourly hourly"
     "today today today"
     "today today today";
@@ -25,7 +27,7 @@ div.searchbar-wrapper {
 }
 div.current-wrapper {
   width: 100%;
-  grid-area: conditions;
+  grid-area: current;
 }
 div.hourly-wrapper {
   width: 100%;

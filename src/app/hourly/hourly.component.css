@@ -1,21 +1,21 @@
 div.scrollable-container {
   width: 100%;
-  padding: 0.5rem;
+  padding: var(--spacing-small);
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-small);
   overflow: auto;
   white-space: nowrap;
 }
 /*TODO: make all cards the same, fixed width*/
 div.hourly-card {
-  flex: 1 1 1;
-  width: 5rem;
-  border: 1px solid hsl(240 6% 90%);
-  border-radius: 0.25rem;
-  padding: 0.5rem;
+  flex: 0 0 4rem;
+  border: var(--border);
+  border-radius: var(--radius-small);
+  padding: var(--spacing-small);
+  background-color: var(--color-background-emphasize);
   text-align: center;
 
   &:hover {
-  background-color: hsl(240, 5%, 96%);
+  background-color: var(--color-background-highlight);
 }
 }

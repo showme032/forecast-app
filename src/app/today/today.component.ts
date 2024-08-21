@@ -19,6 +19,4 @@ export class TodayComponent {
   uvGraphical(uvIndex: number): number {
     return (uvIndex / 10) * 100;
   }
-
-
 }

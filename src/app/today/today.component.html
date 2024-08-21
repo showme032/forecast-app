@@ -1,20 +1,24 @@
+<!-- TODO: ADD SOME GRAPHICAL PRESENTATIONS-->
+
 <div class="today-group">
-  <!--  sunrise/sunset -->
+  <!--  sunrise/sunset  -->
   <div class="today-card">
     <h5 class="card-title">DAY/NIGHT</h5>
-    SUNRISE: {{ this.today.sunrise | date: 'HH:mm' }}
-    SUNSET: {{ this.today.sunset | date: 'HH:mm' }}
+    SUNRISE: {{ today.sunrise | date: 'HH:mm' }}<br>
+    SUNSET: {{ today.sunset | date: 'HH:mm' }}
   </div>
 
-  <!-- uv index -->
+  <!--  uv index  -->
   <div class="today-card">
     <h5 class="uv-index">
-      UV INDEX:
+      UV INDEX
     </h5>
     <div class="uv-graph">
-      {{ this.today.uv }}
+      <span>
+        {{ today.uv }}
+      </span>
       <div class="uv-bar-container">
-        <div class="uv-bar-fill" [style.width.%]="uvGraphical(this.today.uv)"></div>
+        <div class="uv-bar-fill" [style.width.%]="uvGraphical(today.uv)"></div>
       </div>
       <div class="uv-bar-labels">
         <span>0</span>
@@ -23,25 +27,25 @@
     </div>
   </div>
 
-  <!-- pressure  -->
+  <!--  pressure  -->
   <div class="today-card">
     <h5 class="card-title">
       AIR PRESSURE
     </h5>
-    {{ this.today.pressure }}hPa
+    {{ this.today.pressure }} hPa
   </div>
 
   <!--  wind  -->
   <div class="today-card">
     <h5 class="card-title">WIND</h5>
-    SPEED: {{ this.today.windSpeed }}km/h
-    DIRECTION: {{ this.today.windDirection }}°
+    SPEED: {{ today.windSpeed }} km/h <br>
+    DIRECTION: {{ this.today.windDirection }} °
   </div>
 
   <!--  humidity  -->
   <div class="today-card">
     <h5 class="card-title">HUMIDITY</h5>
-    {{ this.today.humidity }}%
+    {{ this.today.humidity }} %
   </div>
 
   <!--  subj feel  -->
@@ -49,13 +53,13 @@
     <h5 class="card-title">
       FEELS LIKE
     </h5>
-    {{ this.today.subjectiveTemp }}°C
+    {{ this.today.subjectiveTemp }} °C
   </div>
 
-  <!--  visibility   -->
+  <!--  visibility  -->
   <div class="today-card">
     <h5 class="card-title">VISIBILITY</h5>
-    {{this.today.visibility}}km
+    {{this.today.visibility}} km
   </div>
 
   <!--  air-quality index  -->
