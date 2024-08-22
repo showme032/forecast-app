@@ -5,7 +5,7 @@
   --color-background: hsl(0 0% 100%);
   --color-background-emphasize: hsl(240 40% 99%);
   --color-background-highlight: hsl(240 40% 96%);
-  --color-background-muted: hsl(240 15% 46%);
+  --color-background-muted: hsl(240 6% 90%);
   --test: hsl(210 40% 96.1%);
 
   --border: 1px solid hsl(240 30% 90%);
@@ -26,4 +26,9 @@ body {
   height: 100%;
   font-family: 'Inter', sans-serif;
   color: var(--color-foreground);
+}
+
+h5.card-title {
+  font-size: 0.6rem;
+  margin-left: 9px;
 }

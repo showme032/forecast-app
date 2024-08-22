@@ -1,6 +1,6 @@
 form {
   margin: auto;
-  width: 60%;
+  width: 100%;
 }
 
 input[type='text'] {
@@ -10,7 +10,7 @@ input[type='text'] {
   color: var(--color-foreground);
   width: 100%;
   padding: 0.125rem 0.5rem;
-  text-align: center;
+  /*text-align: center;*/
   box-shadow: var(--shadow-small);
 
   &:focus {

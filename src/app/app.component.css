@@ -7,33 +7,35 @@ main {
   padding: 2rem;
   display: grid;
   gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 1fr auto 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto 1fr 1fr auto;
   grid-template-areas:
-    "search search search"
-    ". current ."
-    "hourly hourly hourly"
-    "today today today"
-    "today today today";
+    ". search search ."
+    ". current current ."
+    "hourly hourly hourly hourly"
+    "today today today today"
+    "today today today today"
+    "extended extended . .";
   justify-items: center;
 }
 
-div {
-  width: fit-content;
-}
-div.searchbar-wrapper {
+.searchbar-wrapper {
   grid-area: search;
   width: 100%;
 }
-div.current-wrapper {
+.current-wrapper {
   width: 100%;
   grid-area: current;
 }
-div.hourly-wrapper {
+.hourly-wrapper {
   width: 100%;
   grid-area: hourly;
 }
-div.today-wrapper {
+.today-wrapper {
   width: 100%;
   grid-area: today;
+}
+.extended-wrapper {
+  width: 100%;
+  grid-area: extended;
 }

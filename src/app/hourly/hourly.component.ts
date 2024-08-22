@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CardComponent } from '../shared/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Hourly } from '../app.model';
+import { WeatherServices } from '../app.services';
 
 @Component({
   selector: 'app-hourly',
@@ -15,6 +16,9 @@ import { Hourly } from '../app.model';
   styleUrl: './hourly.component.css'
 })
 export class HourlyComponent {
-  @Input() hourly!: Hourly[];
+  // Inject the service
+  private weatherService = inject(WeatherServices);
+
+  hourly: Hourly[] = this.weatherService.getHourly()
 
 }
