@@ -1,8 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
-import { DecimalPipe, TitleCasePipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { DatePipe, DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CardComponent } from '../shared/card/card.component';
 import { Current } from '../app.model';
-import { WeatherServices } from '../app.services';
 
 @Component({
   selector: 'app-current',
@@ -11,14 +10,15 @@ import { WeatherServices } from '../app.services';
     TitleCasePipe,
     CardComponent,
     DecimalPipe,
+    DatePipe,
   ],
   templateUrl: './current.component.html',
   styleUrl: './current.component.css'
 })
 export class CurrentComponent {
-  // Inject the service
-  private weatherService = inject(WeatherServices);
+  @Input() current!: Current;
+  @Input() location!: string | undefined;
 
-  current: Current = this.weatherService.getCurrent();
+  currentDate = new Date();
 
 }

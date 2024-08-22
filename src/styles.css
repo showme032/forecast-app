@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'reset.css';
 :root {
+  --color-primary: hsl(61, 85%, 63%);
   --color-foreground: hsl(222 47% 10%);
   --color-background: hsl(0 0% 100%);
   --color-background-emphasize: hsl(240 40% 99%);
@@ -9,7 +10,7 @@
   --test: hsl(210 40% 96.1%);
 
   --border: 1px solid hsl(240 30% 90%);
-  --outline-emphasize: solid hsl(240 20% 65%);
+  --border-emphasize: solid hsl(240 20% 65%);
 
   --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.1);
   --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -30,5 +31,5 @@ body {
 
 h5.card-title {
   font-size: 0.6rem;
-  margin-left: 9px;
+  /*margin-left: 9px;*/
 }

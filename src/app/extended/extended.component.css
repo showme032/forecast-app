@@ -3,8 +3,8 @@ div.extended-group {
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-small);
   padding: var(--spacing-small);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   gap: var(--spacing-small);
 
   font-size: 0.75rem
@@ -16,10 +16,21 @@ div.extended-card {
   border-radius: var(--radius-small);
   padding: var(--spacing-small);
   background: var(--color-background-emphasize);
-
+  
+  display: flex;
+  gap: var(--spacing-small);
+  width: 100%;
+  
+  &:hover {
+    background-color: var(--color-background-highlight);
+  }
 }
 
 span.day {
   font-weight: 600;
   margin-right: 1px;
+}
+
+.card-title {
+
 }

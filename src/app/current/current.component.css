@@ -1,8 +1,8 @@
 div {
   height: 100%;
-  border: var(--border);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-small);
+  /*border: var(--border);*/
+  /*border-radius: var(--radius-medium);*/
+  /*box-shadow: var(--shadow-small);*/
   color: var(--color-foreground);
 
   display: flex;
@@ -10,4 +10,8 @@ div {
   align-items: center;
   justify-content: center;
 
+}
+
+.emphasized {
+  font-weight: 500;
 }

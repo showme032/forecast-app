@@ -1,6 +1,5 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Extended } from '../app.model';
-import { WeatherServices } from '../app.services';
 import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
 
 
@@ -16,12 +15,5 @@ import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
   styleUrl: './extended.component.css'
 })
 export class ExtendedComponent {
-  // Inject the service
-  private weatherService = inject(WeatherServices);
-
-  extended: Extended[] = this.weatherService.getExtended();
-
-  constructor( ) {
-    console.log(this.weatherService.getExtended())
-  }
+  @Input() extended!: Extended[];
 }

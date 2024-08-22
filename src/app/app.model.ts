@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface Today {
   isDay: boolean,
   sunrise: string,
@@ -9,11 +11,9 @@ export interface Today {
   windDirection: number,
   humidity: number,
   subjectiveTemp: number,
-  airQuality: number
 }
 
 export interface Current {
-  location: string
   temperature: number,
   condition: string | undefined,
   min: number,

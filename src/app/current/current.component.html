@@ -1,6 +1,7 @@
 <div>
-  <p>{{ this.current.location }}</p>
-  <p>{{ this.current.temperature | number:'1.0-0' }}°C</p>
-  <p>{{ this.current.condition | titlecase }}</p>
-  <p>{{ this.current.min | number:'1.0-0' }}/{{ this.current.max | number:'1.0-0' }}</p>
+  <p class="emphasized">{{ location }}, {{ currentDate | date: 'MMM d' }}</p>
+  <p>{{ current.temperature | number:'1.0-0' }}°</p>
+  <p>{{ current.condition | titlecase }}</p>
+  <p><span class="emphasized">Lo:</span> {{ current.min | number:'1.0-0' }}°
+    <span class="emphasized">Hi:</span> {{ this.current.max | number:'1.0-0' }}°</p>
 </div>

@@ -1,22 +1,26 @@
 <main>
 <!--  Location search-->
   <div class="searchbar-wrapper">
-    <app-searchbar />
+    <app-searchbar (search)="onLocationSearch($event)"/>
   </div>
-<!--  Current weather conditions  -->
-  <div class="current-wrapper">
-    <app-current />
-  </div>
-<!--  Hourly weather  -->
-  <div class="hourly-wrapper">
-    <app-hourly/>
-  </div>
-<!--  Today's conditions  -->
-  <div class="today-wrapper">
-    <app-today />
-  </div>
-<!--  7-day Forecast  -->
-  <div class="extended-wrapper">
-    <app-extended/>
-  </div>
+  @if (weatherData && airQualityIndex) {
+    <div class="content-wrapper">    <!--  Current weather conditions  -->
+      <div class="current-wrapper">
+        <app-current [current]="getCurrentData()" [location]="location"/>
+      </div>
+      <!--  Hourly weather  -->
+      <div class="hourly-wrapper">
+        <app-hourly [hourly]="getHourlyData()" />
+      </div>
+      <!--  Today's conditions  -->
+      <div class="today-wrapper">
+        <app-today [today]="getTodayData()" [airQualityIndex]="airQualityIndex"/>
+      </div>
+      <!--  7-day Forecast  -->
+      <div class="extended-wrapper">
+        <app-extended [extended]="getExtendedData()" />
+      </div>
+    </div>
+  }
+
 </main>
