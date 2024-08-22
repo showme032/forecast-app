@@ -14,7 +14,7 @@ export class WeatherServices {
     const current: Current = {
       location: 'Čačak', //TODO: make dynamic - geocoding API
       temperature: this.weatherData.current.temperature_2m,
-      condition: this.getConditions(this.weatherData.current.weather_code),
+      condition: this.weatherData.current.weather_code,
       min: this.weatherData.daily.temperature_2m_min[0],
       max: this.weatherData.daily.temperature_2m_max[0],
     }
@@ -73,6 +73,7 @@ export class WeatherServices {
     return extended;
   }
 
+  // Get weather conditions via supplemented WMO code
   getConditions(code: number): string | undefined {
     let codes: { [key: number]: string} = {
       0: 'Clear sky',
