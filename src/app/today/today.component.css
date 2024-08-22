@@ -13,7 +13,7 @@ div.today-card {
   border: var(--border);
   box-shadow: var(--shadow-small);
   padding: var(--spacing-small) 8px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 
   display: flex;
   flex-direction: column;

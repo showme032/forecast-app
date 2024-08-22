@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'reset.css';
 :root {
-  --color-primary: hsl(61, 85%, 63%);
+  --color-primary: hsl(61, 85%, 75%);
   --color-foreground: hsl(222 47% 10%);
   --color-background: hsl(0 0% 100%);
   --color-background-emphasize: hsl(240 40% 99%);
