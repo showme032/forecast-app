@@ -22,23 +22,34 @@ import { WeatherServices } from './services/weather.services';
 export class AppComponent {
   // Inject the service
   private weatherService = inject(WeatherServices);
-  weatherData = undefined;
-  location = undefined;
-  airQualityIndex = undefined;
+  weatherData: undefined | {};
+  errorMessage: undefined | string;
+  location: undefined | string;
+  airQualityIndex: undefined | number;
 
+  // Set variables on search, call weather
   onLocationSearch(location: string) {
     this.weatherService.getCoordinates(location).subscribe(
       res => {
-        const lat = res.results[0].latitude;
-        const lng = res.results[0].longitude;
+        if (res.results) {
+          console.log(res);
+          const lat = res.results[0].latitude;
+          const lng = res.results[0].longitude;
 
-        this.location = res.results[0].name;
-        this.getWeatherData(lat, lng);
+          this.location = res.results[0].name;
+          this.errorMessage = undefined;
+          this.getAllData(lat, lng);
+        } else {
+          console.log(`No location for '${location}' query found`);
+          this.errorMessage = 'No location found';
+          this.weatherData = undefined;
+        }
       },
     );
   }
 
-  getWeatherData(lat: number, lng: number) {
+  // Get Weather & Air Quality data
+  getAllData(lat: number, lng: number) {
     this.weatherService.getWeatherData(lat, lng).subscribe(
       res => {
         this.weatherData = res;
@@ -52,6 +63,7 @@ export class AppComponent {
     )
   }
 
+  // Get component-specific data
   getCurrentData() {
     return this.weatherService.getCurrent(this.weatherData)
   }

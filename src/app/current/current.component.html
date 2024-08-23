@@ -1,7 +1,22 @@
-<div>
-  <p class="emphasized">{{ location }}, {{ currentDate | date: 'MMM d' }}</p>
-  <p>{{ current.temperature | number:'1.0-0' }}°</p>
-  <p>{{ current.condition | titlecase }}</p>
-  <p><span class="emphasized">Lo:</span> {{ current.min | number:'1.0-0' }}°
-    <span class="emphasized">Hi:</span> {{ this.current.max | number:'1.0-0' }}°</p>
+<div class="current-wrapper">
+  <div class="current-icon">
+    <img src="/assets/weather-conditions/sunny.svg" alt="Current conditions">
+  </div>
+  <div class="current-data">
+    <p class="emphasized">
+      {{ location }}
+<!--      {{ currentDate | date: 'MMM d' }}-->
+    </p>
+    <p>
+      {{ current.temperature | number:'1.0-0' }}°
+    </p>
+    <p>
+      {{ current.condition | titlecase }}
+    </p>
+    <p>
+      <span class="emphasized">Lo:</span> {{ current.min | number:'1.0-0' }}°
+      <span class="emphasized">Hi:</span> {{ this.current.max | number:'1.0-0' }}°
+    </p>
+  </div>
+
 </div>

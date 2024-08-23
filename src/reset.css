@@ -1,15 +1,13 @@
 *, *::before, *::after {
   box-sizing: border-box;
-  line-height: calc(1em + 0.5rem); /* Or 1.5 on body */
-  word-break: break-word; /* Keep text in boxes */
+  line-height: calc(1em + 0.5rem);
+  word-break: break-word;
 }
-
 * {
   margin: 0;
 }
 
 body {
-  /*line-height: 1.5;*/
   /* Disable subpixel antialiasing on chrome/safari on macos*/
   -webkit-font-smoothing: antialiased;
 }
@@ -27,8 +25,6 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-/*  For 'reacty' frameworks:
-    Creates a stacking context, without z-index. All portal content (modals and tooltips) will float above the app */
 #root, #__next {
   isolation: isolate;
 }

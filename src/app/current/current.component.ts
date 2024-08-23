@@ -19,6 +19,5 @@ export class CurrentComponent {
   @Input() current!: Current;
   @Input() location!: string | undefined;
 
-  currentDate = new Date();
-
+  // currentDate = new Date();
 }

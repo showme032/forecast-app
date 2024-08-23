@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Current, Extended, Hourly, type Today } from '../app.model';
-import * as air from '../../assets/air.json';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -10,9 +9,8 @@ export class WeatherServices {
   }
 
   private hour = new Date().getHours();
-  private airData = undefined;
 
-  // Geocoding API to get coordinates for queried location
+  // Get coordinates for queried location via geocoding API
   getCoordinates(location: string): Observable<any> {
     const baseUrl = 'https://geocoding-api.open-meteo.com/v1/search';
     const params = {
@@ -40,7 +38,7 @@ export class WeatherServices {
     return this.http.get<any>(baseUrl, { params });
   }
 
-  // Get air quality index
+  // Get air quality index for given coordinates
   getAirQuality(lat: number, lng: number): Observable<any> {
     const baseUrl = 'https://air-quality-api.open-meteo.com/v1/air-quality?';
     const params = {
@@ -54,7 +52,7 @@ export class WeatherServices {
     return this.http.get<any>(baseUrl, { params });
   }
 
-  // Get current weather conditions
+  // Get current weather data
   getCurrent(data: any) {
     const current: Current = {
       temperature: data.current.temperature_2m,
@@ -66,7 +64,7 @@ export class WeatherServices {
     return current;
   };
 
-  // Get hourly data
+  // Get hourly weather data
   getHourly(data: any): Hourly[] {
     return data.hourly.time
       .slice(this.hour, this.hour + 24)
@@ -78,7 +76,7 @@ export class WeatherServices {
       });
   }
 
-  // Get today's conditions
+  // Get today's weather data
   getToday(data: any) {
     const today: Today = {
       isDay: data.current.is_day === 1,
@@ -96,7 +94,7 @@ export class WeatherServices {
     return today;
   }
 
-  // Get data for 7 days
+  // Get weather data for 7 days
   getExtended(data: any) {
     const extended = [];
     for (let i = 0; i < 7; i += 1) {
@@ -115,7 +113,7 @@ export class WeatherServices {
     return extended;
   }
 
-  // Get weather conditions via supplemented WMO code
+  // Get weather conditions via given WMO code
   getConditions(code: number): string | undefined {
     const codes: { [key: number]: string } = {
       0: 'Clear sky',

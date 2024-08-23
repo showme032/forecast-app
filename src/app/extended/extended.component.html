@@ -1,17 +1,26 @@
 <div class="extended-group">
-  <h5 class="card-title">7-DAY FORECAST</h5>
+  <h5 class="card-title extended-title">7-DAY FORECAST</h5>
   <!--  use *ngFor instead of @for to keep track of iterations-->
   <ng-container *ngFor="let day of extended; let i = index">
     <div class="extended-card">
-      <!--  TODO: Orderly layout  -->
-      <span class="day">{{ i === 0 ? 'Today' : (day.date | date: 'EE') }}:</span>
-      <div class="day-forecast">
-        <span>
-          <!-- TODO: Replace with icon -->
-          {{ day.conditions }},
+      <span class="forecast-day">
+        {{ i === 0 ? 'Now' : (day.date | date: 'EE') }}
+      </span>
+      <div class="forecast">
+        <span class="forecast-icon">
+          <img src="/assets/weather-conditions/mostly-cloudy-plain.svg"
+               alt="Current conditions">
         </span>
         <span>
-          {{ day.minTemperature | number: '1.0-0' }}° - {{ day.maxTemperature }}°
+          <span class="emphasized">Lo:</span> {{ day.minTemperature | number: '1.0-0' }}° <span
+          class="emphasized">Hi:</span> {{ day.maxTemperature |
+          number: '1.0-0' }}°
+        </span>
+        <span>
+          <span class="emphasized">Rainfall:</span> {{ day.precipitation }}%
+        </span>
+        <span>
+          <span class="emphasized">UV:</span> {{ day.uvMax | number: '1.0-0'}}
         </span>
       </div>
     </div>
