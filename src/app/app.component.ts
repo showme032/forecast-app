@@ -22,21 +22,20 @@ import { WeatherServices } from './services/weather.services';
 export class AppComponent {
   // Inject the service
   private weatherService = inject(WeatherServices);
-  weatherData: undefined | {};
-  errorMessage: undefined | string;
   location: undefined | string;
+  weatherData: undefined | {};
   airQualityIndex: undefined | number;
+  errorMessage: undefined | string;
 
   // Set variables on search, call weather
   onLocationSearch(location: string) {
     this.weatherService.getCoordinates(location).subscribe(
       res => {
         if (res.results) {
-          console.log(res);
           const lat = res.results[0].latitude;
           const lng = res.results[0].longitude;
 
-          this.location = res.results[0].name;
+          this.location = `${res.results[0].name}, ${res.results[0].country_code}`;
           this.errorMessage = undefined;
           this.getAllData(lat, lng);
         } else {
@@ -53,6 +52,7 @@ export class AppComponent {
     this.weatherService.getWeatherData(lat, lng).subscribe(
       res => {
         this.weatherData = res;
+        console.log(res);
       },
     );
 

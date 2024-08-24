@@ -4,8 +4,8 @@
   <!--  sunrise/sunset  -->
   <div class="today-card">
     <h5 class="card-title">SUN</h5>
-    SUNRISE: {{ today.sunrise | date: 'HH:mm' }}<br>
-    SUNSET: {{ today.sunset | date: 'HH:mm' }}
+        RISE: {{ today.sunrise | date: 'HH:mm' }}<br>
+        SET: {{ today.sunset | date: 'HH:mm' }}
   </div>
 
   <!--  uv index  -->
@@ -13,14 +13,14 @@
     <h5 class="card-title">
       UV INDEX
     </h5>
-    <div class="uv-graph">
+    <div class="linear-graph">
       <span>
         {{ today.uv }}
       </span>
-      <div class="uv-bar-container">
-        <div class="uv-bar-fill" [style.width.%]="uvGraphical(today.uv)"></div>
+      <div class="bar-container">
+        <div class="bar-fill" [style.width.%]="linearGraphic(today.uv, 10)"></div>
       </div>
-      <div class="uv-bar-labels">
+      <div class="bar-labels">
         <span>0</span>
         <span>10</span>
       </div>
@@ -59,7 +59,7 @@
   <!--  visibility  -->
   <div class="today-card">
     <h5 class="card-title">VISIBILITY</h5>
-    {{this.today.visibility}} km
+    {{ this.today.visibility }} km
   </div>
 
   <!--  air-quality index  -->

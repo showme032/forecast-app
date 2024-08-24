@@ -53,10 +53,10 @@ export class WeatherServices {
   }
 
   // Get current weather data
-  getCurrent(data: any) {
+  getCurrent(data: any): Current {
     const current: Current = {
       temperature: data.current.temperature_2m,
-      condition: this.getConditions(data.current.weather_code),
+      weatherCode: data.current.weather_code,
       min: data.daily.temperature_2m_min[0],
       max: data.daily.temperature_2m_max[0],
     };
@@ -77,7 +77,7 @@ export class WeatherServices {
   }
 
   // Get today's weather data
-  getToday(data: any) {
+  getToday(data: any): Today {
     const today: Today = {
       isDay: data.current.is_day === 1,
       sunrise: data.daily.sunrise[0],
@@ -95,12 +95,12 @@ export class WeatherServices {
   }
 
   // Get weather data for 7 days
-  getExtended(data: any) {
+  getExtended(data: any): Extended[] {
     const extended = [];
     for (let i = 0; i < 7; i += 1) {
       let day: Extended = {
         date: data.daily.time[i],
-        conditions: this.getConditions(data.daily.weather_code[i]),
+        weatherCode: data.daily.weather_code[i],
         minTemperature: data.daily.temperature_2m_min[i],
         maxTemperature: data.daily.temperature_2m_max[i],
         uvMax: data.daily.uv_index_max[i],
@@ -114,7 +114,7 @@ export class WeatherServices {
   }
 
   // Get weather conditions via given WMO code
-  getConditions(code: number): string | undefined {
+  getConditions(code: number): string {
     const codes: { [key: number]: string } = {
       0: 'Clear sky',
       1: 'Mostly clear',

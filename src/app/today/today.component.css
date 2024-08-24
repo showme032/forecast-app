@@ -7,7 +7,6 @@
 }
 
 /* Card*/
-/* TODO: Dynamic inner card layout*/
 .today-card {
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-medium);
@@ -32,12 +31,8 @@
   }
 }
 
-/* UV */
-
-.uv-graph {
-
-}
-.uv-bar-container {
+/* Linear graph*/
+.bar-container {
   margin: 0.25rem 0;
   width: 100%;
   height: 0.5rem;
@@ -45,18 +40,16 @@
   background-color: var(--color-background-muted);
   overflow: hidden;
 }
-.uv-bar-fill {
+.bar-fill {
   height: 100%;
   background-color: var(--color-foreground);
   transition: width 0.3s;
 }
-.uv-bar-labels {
+.bar-labels {
   font-size: 0.75rem;
   display: flex;
   justify-content: space-between;
 }
-
-/* PRESSURE*/
 
 /* Responsiveness */
 @media (max-width: 1100px) {

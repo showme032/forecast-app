@@ -16,4 +16,9 @@ import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
 })
 export class ExtendedComponent {
   @Input() extended!: Extended[];
+
+  imagePath(code: number) {
+    return `/assets/weather-icons/${code}.svg`;
+  }
+
 }

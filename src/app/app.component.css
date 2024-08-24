@@ -74,29 +74,18 @@ main {
 
 
 /* Responsiveness */
-@media (min-width: 1500px) {
-    .content-wrapper {
-        grid-template-areas:
-            ". search search ."
-            "current current current current"
-            "hourly hourly hourly hourly"
-            "today today today today"
-            "today today today today"
-            "extended extended . .";
-        
-    }
-}
 @media (max-width: 1100px) {
     .content-wrapper {
         width: 80%;
         padding: 0.5rem 1rem;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-areas:
-            ". search search ."
-            "current current current current"
-            "hourly hourly hourly hourly"
-            "today today today today"
-            "today today today today"
-            "extended extended extended extended";
+            ". search ."
+            "current current current"
+            "hourly hourly hourly"
+            "today today today"
+            "today today today"
+            "extended extended .";
         
     }
     
@@ -109,6 +98,13 @@ main {
     .content-wrapper {
         width: 90%;
         padding: 0;
+        grid-template-areas:
+            ". search ."
+            "current current current"
+            "hourly hourly hourly"
+            "today today today"
+            "today today today"
+            "extended extended extended";
     }
     
     .searchbar-wrapper {
@@ -120,5 +116,18 @@ main {
         width: 100%;
         grid-area: current;
         margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 1500px) {
+    .content-wrapper {
+        grid-template-areas:
+            ". search search ."
+            "current current current current"
+            "hourly hourly hourly hourly"
+            "today today today today"
+            "today today today today"
+            "extended extended . .";
+        
     }
 }

@@ -15,7 +15,7 @@ export interface Today {
 
 export interface Current {
   temperature: number,
-  condition: string | undefined,
+  weatherCode: number,
   min: number,
   max: number,
 }
@@ -27,7 +27,7 @@ export interface Hourly {
 
 export interface Extended {
   date: string,
-  conditions: string | undefined,
+  weatherCode: number,
   minTemperature: number,
   maxTemperature: number,
   uvMax: number,

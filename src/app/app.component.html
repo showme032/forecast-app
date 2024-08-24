@@ -1,7 +1,7 @@
 <main>
-<!--  Location search-->
+  <!--  Location search-->
   <div class="searchbar-wrapper">
-    <app-searchbar (search)="onLocationSearch($event)"/>
+    <app-searchbar (search)="onLocationSearch($event)" />
   </div>
   @if (errorMessage) {
     <div class="no-location">
@@ -11,7 +11,7 @@
   @if (weatherData && airQualityIndex) {
     <div class="content-wrapper">    <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
-        <app-current [current]="getCurrentData()" [location]="location"/>
+        <app-current [current]="getCurrentData()" [location]="location" />
       </div>
       <!--  Hourly weather  -->
       <div class="hourly-wrapper">
@@ -19,12 +19,13 @@
       </div>
       <!--  Today's conditions  -->
       <div class="wrapper today-wrapper">
-        <app-today [today]="getTodayData()" [airQualityIndex]="airQualityIndex"/>
+        <app-today [today]="getTodayData()" [airQualityIndex]="airQualityIndex" />
       </div>
       <!--  7-day Forecast  -->
       <div class="extended-wrapper">
         <app-extended [extended]="getExtendedData()" />
       </div>
+      <!--   TODO: Add location picture or map view component   -->
     </div>
   }
 

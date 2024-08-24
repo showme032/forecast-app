@@ -33,3 +33,6 @@ body {
 h5.card-title {
   font-size: 0.75rem;
 }
+span.emphasized {
+  font-weight: 500
+}

@@ -1,8 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { CardComponent } from '../shared/card/card.component';
-import { Current, type Today } from '../app.model';
+import { type Today } from '../app.model';
 import { DatePipe } from '@angular/common';
-import { WeatherServices } from '../services/weather.services';
 
 @Component({
   selector: 'app-today',
@@ -18,7 +17,21 @@ export class TodayComponent {
   @Input() today!: Today;
   @Input() airQualityIndex!: any;
 
-  uvGraphical(uvIndex: number): number {
-    return (uvIndex / 10) * 100;
+  // SUN
+
+  // UV
+
+  // AIR PRESSURE
+
+  // WIND
+
+  // FEEL
+
+  // VISIBILITY
+
+  // AQI
+
+  linearGraphic(index: number, range: number): number {
+    return (index / range) * 100;
   }
 }
