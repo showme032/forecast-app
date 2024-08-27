@@ -15,20 +15,27 @@
   padding: var(--spacing-small) 8px;
   font-size: 0.7rem;
   max-height: 100%;
+  position: relative;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-
-  & p {
-    width: 100%;
-    text-align: justify;
-  }
-  
-  &:hover {
-    background: var(--color-background-emphasize);
-  }
+}
+.card-title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.heading-icon {
+  display: inline;
+  width: 1.1rem;
+}
+.value {
+  align-self: center;
+  font-size: 1.5rem;
+}
+.description {
+  font-size: 0.75rem;
 }
 
 /* Linear graph*/
@@ -49,6 +56,31 @@
   font-size: 0.75rem;
   display: flex;
   justify-content: space-between;
+}
+
+
+/* AIR QUALITY*/
+.air-quality {
+  /*background-image: url("/assets/decorations/blurry-spot.svg#green");*/
+  background-repeat: no-repeat;
+  background-position: center;
+
+  & * {
+    isolation: isolate;
+    z-index: 999;
+  }
+}
+.decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  
+  & > p {
+    position: absolute;
+    top: calc(50% - 0.75rem);
+    left: calc(50% - 0.75rem);
+  }
 }
 
 /* Responsiveness */

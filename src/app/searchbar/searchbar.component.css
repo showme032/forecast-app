@@ -1,34 +1,35 @@
 form {
-  margin: auto;
-  width: 100%;
+    margin: auto;
+    width: 100%;
 }
 
 input[type='text'] {
-  appearance: none;
-  width: 100%;
-  border: var(--border-emphasize);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-small);
-  color: var(--color-secondary);
-  background-color: var(--color-primary);
-  background-image: url('/assets/icons/search.svg');
-  background-repeat: no-repeat;
-  background-size: 1.25rem;
-  background-position: 0.25rem;
-  padding: 0.25rem 1.75rem;
-  font-weight: 500;
-
-  &::placeholder {
-    color: hsl(222, 47%, 35%, 0.9);
-    font-weight: 400;
-  }
-  
-  &:focus {
-    outline-offset: 2px;
-    outline: var(--border-emphasize);
+    appearance: none;
+    width: 100%;
+    border: var(--border-emphasize);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    background-image: url('/assets/icons/search.svg');
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    background-position: 0.25rem;
+    padding: 0.25rem 1.75rem;
+    font-weight: 500;
     
     &::placeholder {
-      display: none;
+        color: hsl(222, 47%, 35%, 0.9);
+        font-weight: 400;
     }
-  }
+    
+    &:focus {
+        /*box-shadow: revert;*/
+        outline-offset: 2px;
+        outline: var(--border-emphasize);
+        
+        &::placeholder {
+            display: none;
+        }
+    }
 }

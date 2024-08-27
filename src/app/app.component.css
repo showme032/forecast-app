@@ -35,7 +35,7 @@ main {
 .searchbar-wrapper {
     margin: 3rem 0 2rem;
     grid-area: search;
-    width: 30%;
+    width: 27%;
 }
 
 .current-wrapper {
@@ -108,7 +108,7 @@ main {
     }
     
     .searchbar-wrapper {
-        width: 60%;
+        width: 65%;
         margin: 2rem 0 1rem;
     }
     

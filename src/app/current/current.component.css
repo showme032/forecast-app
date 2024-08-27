@@ -30,17 +30,17 @@ p {
     grid-area: 1 / 1 / 2 / 3;
     justify-self: end;
     max-width: 100px;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
 .icon-background {
     border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-    
 }
 
 .icon {

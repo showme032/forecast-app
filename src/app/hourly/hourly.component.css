@@ -15,8 +15,4 @@ div.hourly-card {
   padding: var(--spacing-small);
   background-color: var(--color-background-emphasize);
   text-align: center;
-  
-  &:hover {
-    background-color: var(--color-background-highlight);
-  }
 }

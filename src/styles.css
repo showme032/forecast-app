@@ -1,38 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'reset.css';
+
 :root {
-  --color-primary: hsl(61, 85%, 75%);
-  --color-secondary: hsl(222 47% 35%);
-  --color-error: hsl(350, 70%, 90%);
-  --color-foreground: hsl(222 47% 10%);
-  --color-background: hsl(0 0% 100%);
-  --color-background-emphasize: hsl(240 40% 99%);
-  --color-background-highlight: hsl(240 40% 96%);
-  --color-background-muted: hsl(240 6% 90%);
-  --test: hsl(210 40% 96.1%);
-
-  --border: 1px solid hsl(240 30% 90%);
-  --border-emphasize: 1px solid hsl(222  47% 30%);
-
-  --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  --radius-small: 0.25rem;
-  --radius-medium: 0.5rem;
-
-  --spacing-small: 0.5rem;
-  --spacing-medium: 0.75rem;
-
+    --color-primary: hsl(61, 85%, 75%);
+    --color-secondary: hsl(222 47% 35%);
+    --color-error: hsl(350, 70%, 90%);
+    --color-foreground: hsl(240 47% 15%);
+    --color-background: hsl(0 0% 100%);
+    --color-background-emphasize: hsl(240 40% 99%);
+    --color-background-highlight: hsl(240 40% 96%);
+    --color-background-muted: hsl(240 6% 90%);
+    
+    --border: 1px solid hsl(240 30% 90%);
+    --border-emphasize: 1px solid hsl(222 47% 30%);
+    
+    /* TODO: Fine-tune the shadows*/
+    /*--shadow-small: 0 1px 2px rgba(0, 0, 0, 0.1);*/
+    /*--shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    
+    --shadow-color: 240deg 12% 53%;
+    --shadow-small: 0px 1px 1px -1px hsl(var(--shadow-color) / 0.36),
+    0px 3px 3px -2px hsl(var(--shadow-color) / 0.36),
+    0px 4px 6px -3px hsl(var(--shadow-color) / 0.36);
+    
+    --shadow-medium: 0px 1px 1px -1px hsl(var(--shadow-color) / 0.44),
+    0px 4px 4px -2px hsl(var(--shadow-color) / 0.36),
+    0px 10px 10px -4px hsl(var(--shadow-color) / 0.28);
+    
+    --radius-small: 0.25rem;
+    --radius-medium: 0.5rem;
+    
+    --spacing-small: 0.5rem;
+    --spacing-medium: 0.75rem;
+    
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: var(--color-foreground);
+    font-family: 'Inter', sans-serif;
+    color: var(--color-foreground);
 }
 
-h5.card-title {
-  font-size: 0.75rem;
+h5 {
+    font-size: 0.75rem;
 }
+
 span.emphasized {
-  font-weight: 500
+    font-weight: 500
 }

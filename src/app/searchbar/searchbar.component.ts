@@ -15,5 +15,6 @@ export class SearchbarComponent {
 
   onSubmit() {
     this.search.emit(this.searchQuery);
+    this.searchQuery = '';
   }
 }

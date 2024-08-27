@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Green Symbol -->
+    <symbol id="green" viewBox="0 0 800 800">
+      <g filter="url(#bbblurry-filter)">
+        <ellipse rx="180"
+                 ry="180"
+                 cx="398.5533460047857"
+                 cy="401.84597139208734"
+                 fill="hsl(120, 29%, 57%)"></ellipse>
+      </g>
+    </symbol>
+
+    <!-- Yellow Symbol -->
+    <symbol id="yellow" viewBox="0 0 800 800">
+      <g filter="url(#bbblurry-filter)">
+        <ellipse rx="180"
+                 ry="180"
+                 cx="398.5533460047857"
+                 cy="401.84597139208734"
+                 fill="hsl(61, 85%, 75%)"></ellipse>
+      </g>
+    </symbol>
+
+    <!-- Define the blur filter -->
+    <filter id="bbblurry-filter"
+            x="-100%"
+            y="-100%"
+            width="400%"
+            height="400%"
+            filterUnits="objectBoundingBox"
+            primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="106"
+                      x="0%"
+                      y="0%"
+                      width="100%"
+                      height="100%"
+                      in="SourceGraphic"
+                      edgeMode="none"
+                      result="blur"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>

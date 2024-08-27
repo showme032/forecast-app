@@ -1,69 +1,74 @@
 .extended-group {
-  width: 100%;
-  border: var(--border);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-small);
-  padding: var(--spacing-small);
-  
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: var(--spacing-small);
-
-  font-size: 0.75rem
+    width: 100%;
+    border: var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    padding: var(--spacing-small);
+    
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--spacing-small);
+    
+    font-size: 0.75rem
 }
 
 .extended-card {
-  border: var(--border);
-  border-radius: var(--radius-small);
-  padding: 0 var(--spacing-small);
-  background: var(--color-background-emphasize);
-  
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  align-items: center;
-  /*gap: var(--spacing-small);*/
-  gap: clamp(0.25rem, 0.75vw, 0.5rem);
-  
-  &:hover {
-    background-color: var(--color-background-highlight);
-  }
+    border: var(--border);
+    border-radius: var(--radius-small);
+    padding: 0 var(--spacing-small);
+    background: var(--color-background-emphasize);
+    
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+    /*gap: var(--spacing-small);*/
+    gap: clamp(0.25rem, 0.75vw, 0.5rem);
+    
+    /*&:hover {*/
+    /*  background-color: var(--color-background-highlight);*/
+    /*}*/
 }
 
 .extended-title {
-  margin-left: calc(var(--spacing-small) + 1px);
+    margin-left: calc(var(--spacing-small) + 1px);
 }
 
 .forecast-day {
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin: var(--spacing-small) 0;
-  line-height: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: var(--spacing-small) 0;
+    line-height: 0;
 }
+
 .forecast {
-  /* TODO: make inners more fluid */
-  display: grid;
-  grid-template-columns: 3rem 2fr 2fr 1fr ;
-  justify-items: center;
-  align-items: center;
-  gap: clamp(0.25rem, 8.5vw - 4.9rem, 1rem);
-  padding-left: var(--spacing-small);
+    /* TODO: make inners more fluid */
+    display: grid;
+    grid-template-columns: 3rem 2fr 2fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: clamp(0.25rem, 8.5vw - 4.9rem, 1rem);
+    padding-left: var(--spacing-small);
 }
+
 forecast > span {
-  text-align: center;
+    text-align: center;
 }
+
 .forecast-icon {
-  overflow: visible;
-  max-width: 48px;
-  
-  & img {
-    filter: drop-shadow(0px 0px 3px hsl(0, 0%, 0%, 0.35));
-  }
+    overflow: visible;
+    max-width: 48px;
+    
+    & img {
+        filter: drop-shadow(0px 0px 2px hsl(var(--shadow-color) / 0.31))
+        drop-shadow(0px 0px 4px hsl(var(--shadow-color) / 0.26))
+        drop-shadow(0px 0px 6px hsl(var(--shadow-color) / 0.21));
+    }
 }
 
 
 @media (max-width: 1100px) {
-
-  .forecast {
-    gap: 0.125rem
-  }
+    
+    .forecast {
+        gap: 0.125rem
+    }
 }
