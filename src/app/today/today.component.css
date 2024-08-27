@@ -16,7 +16,7 @@
   font-size: 0.7rem;
   max-height: 100%;
   position: relative;
-
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,10 +25,14 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  
+  & > h5 {
+    transform: translateY(2px);
+  }
 }
 .heading-icon {
   display: inline;
-  width: 1.1rem;
+  width: 1rem;
 }
 .value {
   align-self: center;
@@ -61,26 +65,22 @@
 
 /* AIR QUALITY*/
 .air-quality {
-  /*background-image: url("/assets/decorations/blurry-spot.svg#green");*/
-  background-repeat: no-repeat;
-  background-position: center;
-
+  position: relative;
+  
   & * {
     isolation: isolate;
     z-index: 999;
   }
 }
-.decoration {
+
+.air-glow {
+  height: 100%;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
   z-index: 1;
-  
-  & > p {
-    position: absolute;
-    top: calc(50% - 0.75rem);
-    left: calc(50% - 0.75rem);
-  }
+  /*transform: translateX(-50%);*/
+  /*transform: translateY(-50%);*/
 }
 
 /* Responsiveness */

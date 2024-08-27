@@ -1,6 +1,20 @@
 form {
     margin: auto;
     width: 100%;
+    position: relative;
+    
+}
+form:before {
+    content: '';
+    position: absolute;
+    background-image: url('/assets/icons/search.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1.2rem;
+    height: 1.2rem;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 input[type='text'] {
@@ -11,12 +25,9 @@ input[type='text'] {
     box-shadow: var(--shadow-small);
     color: var(--color-secondary);
     background-color: var(--color-primary);
-    background-image: url('/assets/icons/search.svg');
-    background-repeat: no-repeat;
-    background-size: 1.3rem;
-    background-position: 0.25rem;
-    padding: 0.25rem 1.75rem;
-    font-weight: 500;
+    padding: 6px 43px;
+    font-size: 1.3rem;
+    font-weight: 400;
     
     &::placeholder {
         color: hsl(222, 47%, 35%, 0.9);
@@ -24,7 +35,6 @@ input[type='text'] {
     }
     
     &:focus {
-        /*box-shadow: revert;*/
         outline-offset: 2px;
         outline: var(--border-emphasize);
         

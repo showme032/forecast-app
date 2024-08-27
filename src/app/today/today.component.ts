@@ -31,7 +31,7 @@ export class TodayComponent {
 
   // AQI
 
-  linearGraphic(index: number, range: number): number {
-    return (index / range) * 100;
+  linearGraphic(val: number, min: number, max: number): number {
+    return (val - min) / (max - min) * 100;
   }
 }

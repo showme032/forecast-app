@@ -35,7 +35,7 @@ main {
 .searchbar-wrapper {
     margin: 3rem 0 2rem;
     grid-area: search;
-    width: 27%;
+    width: 22%;
 }
 
 .current-wrapper {
@@ -62,13 +62,14 @@ main {
 
 .no-location {
     grid-area: current;
-    width: calc(30% + 4px);
+    width: calc(25% + 4px);
     border: var(--border-emphasize);
     border-radius: var(--radius-medium);
-    padding: 0.25rem 0.5rem;
+    padding: 6px 8px;
     color: var(--color-secondary);
     background-color: var(--color-error);
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 400;
     text-align: center;
 }
 
