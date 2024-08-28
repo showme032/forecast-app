@@ -1,16 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="#141438"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     class="icon icon-tabler icons-tabler-outline icon-tabler-uv-index">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M3 12h1m16 0h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m-9.7 5.7a4 4 0 1 1 8 0" />
-  <path d="M12 4v-1" />
-  <path d="M13 16l2 5h1l2 -5" />
-  <path d="M6 16v3a2 2 0 1 0 4 0v-3" />
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+  <path fill="none"
+        stroke="hsl(240 47% 13%)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2.2"
+        d="M17 13a5 5 0 0 0-10 0m5-9h.009m6.358 2.633l.006.006M5.637 6.64l.006-.007m15.361 6.363v.009m-18-.009v.009M6.5 16v3c0 .943 0 1.414.293 1.707S7.557 21 8.5 21v0c.943 0 1.414 0 1.707-.293s.293-.764.293-1.707v-3m3 0l2 5l2-5"
+        color="currentColor" />
 </svg>

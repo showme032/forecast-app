@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="24"
-     height="24"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="#141438"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     class="icon icon-tabler icons-tabler-outline icon-tabler-sunset">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M3 17h1m16 0h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m-9.7 5.7a4 4 0 0 1 8 0" />
-  <path d="M3 21l18 0" />
-  <path d="M12 3v6l3 -3m-6 0l3 3" />
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+  <path fill="none"
+        stroke="hsl(240 47% 13%)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2.2"
+        d="M9.5 7.5c.492.506 1.8 2.5 2.5 2.5m2.5-2.5c-.492.506-1.8 2.5-2.5 2.5m0 0V4m6.363 6.636L16.95 12.05M3 17h2m.637-6.364L7.05 12.05M21 17h-2m2 3H3m13-3a4 4 0 0 0-8 0"
+        color="currentColor" />
 </svg>

@@ -25,12 +25,12 @@ input[type='text'] {
     box-shadow: var(--shadow-small);
     color: var(--color-secondary);
     background-color: var(--color-primary);
-    padding: 6px 43px;
+    padding: 5px 43px;
     font-size: 1.3rem;
     font-weight: 400;
     
     &::placeholder {
-        color: hsl(222, 47%, 35%, 0.9);
+        color: hsl(222, 47%, 35%, 1);
         font-weight: 400;
     }
     

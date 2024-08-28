@@ -93,6 +93,10 @@ main {
     .searchbar-wrapper {
         width: 40%;
     }
+    
+    .no-location {
+        width: calc(40% + 4px);
+    }
 }
 
 @media (max-width: 550px) {
@@ -111,6 +115,9 @@ main {
     .searchbar-wrapper {
         width: 65%;
         margin: 2rem 0 1rem;
+    }
+    .no-location {
+        width: calc(65% + 4px);
     }
     
     .current-wrapper {
