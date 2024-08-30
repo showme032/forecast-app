@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { CardComponent } from '../shared/card/card.component';
 import { type Today } from '../app.model';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
 
 @Component({
@@ -11,6 +11,7 @@ import { TodayService } from './today.services';
     CardComponent,
     DatePipe,
     DecimalPipe,
+    NgStyle,
   ],
   templateUrl: './today.component.html',
   styleUrl: './today.component.css'

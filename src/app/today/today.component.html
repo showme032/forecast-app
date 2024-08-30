@@ -4,26 +4,33 @@
   <!--  sunrise/sunset  -->
   <div class="today-card sun">
     <div class="card-heading">
-      <img src="/assets/icons/sunset.svg" alt="sun-icon" class="card-heading-icon">
+      <img src="/assets/icons/sunset.svg"
+           alt="sun-icon"
+           class="card-heading-icon">
       <h5>SUNSET</h5>
     </div>
-    RISE: {{ today.sunrise | date: 'HH:mm' }}<br>
-    SET: {{ today.sunset | date: 'HH:mm' }}
+    <p class="description">RISE: {{ today.sunrise | date: 'HH:mm' }}<br>
+      SET: {{ today.sunset | date: 'HH:mm' }}
+    </p>
   </div>
 
   <!--  uv index  -->
   <div class="today-card uv-index">
     <div class="card-heading">
-      <img src="/assets/icons/uv.svg" alt="uv-index" class="card-heading-icon">
+      <img src="/assets/icons/uv.svg"
+           alt="uv-index"
+           class="card-heading-icon">
       <h5>UV INDEX</h5>
     </div>
-    <div class="linear-graph" >
-      <span class="graph-value uv-value" [style.left.%]="linearGraphic(today.uv, 0,
+    <div class="graph-container">
+      <span class="graph-value uv-value"
+            [style.left.%]="linearGraphic(today.uv, 0,
       10)">
-        {{ today.uv | number:'1.0-0'}}
+        {{ today.uv | number:'1.0-0' }}
       </span>
       <div class="bar-container">
-        <div class="bar-fill" [style.width.%]="linearGraphic(today.uv, 0, 10)"></div>
+        <div class="bar-fill"
+             [style.width.%]="linearGraphic(today.uv, 0, 10)"></div>
       </div>
       <div class="bar-labels">
         <span>0</span>
@@ -36,13 +43,14 @@
   <!--  pressure  -->
   <div class="today-card air-pressure">
     <div class="card-heading">
-      <img src="/assets/icons/pressure.svg" alt="air-pressure"
+      <img src="/assets/icons/pressure.svg"
+           alt="air-pressure"
            class="card-heading-icon">
       <h5>AIR PRESSURE</h5>
     </div>
-    <div class="linear-graph">
+    <div class="graph-container">
       <span class="graph-value">
-        {{ today.pressure | number:'1.0-0'}} hPa
+        {{ today.pressure | number:'1.0-0' }} hPa
       </span>
       <div class="bar-container">
         <div class="bar-fill"
@@ -59,30 +67,49 @@
   <!--  wind  -->
   <div class="today-card wind">
     <div class="card-heading">
-      <img src="/assets/icons/wind.svg" alt="wind-icon" class="card-heading-icon">
+      <img src="/assets/icons/wind.svg"
+           alt="wind-icon"
+           class="card-heading-icon">
       <h5>WIND</h5>
     </div>
-    SPEED: {{ today.windSpeed }} km/h <br>
-    DIRECTION: {{ today.windDirection }} °
+    <div class="graph-container">
+      <div class="circle">
+        <p class="n">n</p>
+        <p class="e">e</p>
+        <p class="s">s</p>
+        <p class="w">w</p>
+        <!--        <div class="pointer"-->
+        <!--             [ngStyle]="{'transform': 'translateY(-5px) rotate(' +-->
+        <!--             today.windDirection + 'deg)'}"></div>-->
+        <img src="/assets/decorations/arrow.svg"
+             alt="pointer"
+             class="pointer"
+             [ngStyle]="{'transform': 'rotate(' + today.windDirection + 'deg)'}">
+      </div>
+    </div>
+    <p class="description">Speed: {{ today.windSpeed }} km/h</p>
   </div>
 
   <!--  humidity  -->
   <div class="today-card humidity">
     <div class="card-heading">
-      <img src="/assets/icons/humidity.svg" alt="humidity-icon"
+      <img src="/assets/icons/humidity.svg"
+           alt="humidity-icon"
            class="card-heading-icon">
       <h5>HUMIDITY</h5>
     </div>
-    {{ today.humidity }} %
+    <p class="description">{{ today.humidity }} %</p>
   </div>
 
   <!--  subj feel  -->
   <div class="today-card subjective-feel">
     <div class="card-heading">
-      <img src="/assets/icons/feel.svg" alt="feels-like-icon" class="card-heading-icon">
+      <img src="/assets/icons/feel.svg"
+           alt="feels-like-icon"
+           class="card-heading-icon">
       <h5>FEELS LIKE</h5>
     </div>
-    {{ today.subjectiveTemp }} °C
+    <p class="description">{{ today.subjectiveTemp }} °C</p>
   </div>
 
   <!--  visibility  -->
@@ -93,23 +120,23 @@
            class="card-heading-icon">
       <h5>VISIBILITY</h5>
     </div>
-    <span class="value">{{ today.visibility }} km</span>
+    <div class="value">{{ today.visibility }} km</div>
     <p class="description">Exceptionally clear</p>
   </div>
 
   <!--  air-quality index  -->
   <div class="today-card air-quality">
-      <svg class="air-glow">
-        <use [attr.href]="airColor"></use>
-      </svg>
-<!--      <img src="/assets/decorations/blurry-spot.svg#green" class="air-glow">-->
+    <svg class="air-glow">
+      <use [attr.href]="airColor"></use>
+    </svg>
     <div class="card-heading">
-      <img src="./../../assets/icons/air.svg" alt="air-quality-icon"
+      <img src="./../../assets/icons/air.svg"
+           alt="air-quality-icon"
            class="card-heading-icon">
       <h5>AIR QUALITY</h5>
     </div>
-    <span class="value">{{ airQualityIndex }}</span>
-    <p class="description">{{ airMessage}}</p>
+    <div class="value">{{ airQualityIndex }}</div>
+    <p class="description">{{ airMessage }}</p>
   </div>
 
 </div>

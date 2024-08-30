@@ -10,7 +10,7 @@ export class TodayService {
     } else if (index <= 6) {
       return ['Medium', 'Use sun protection']
     } else if (index <= 10) {
-      return ['High', 'Use extra protection']
+      return ['High', 'Use extra sun protection']
     } else return ['Very high', 'Avoid exposure!']
   }
 

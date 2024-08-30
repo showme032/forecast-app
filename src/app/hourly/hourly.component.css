@@ -1,4 +1,4 @@
-div.scrollable-container {
+.scrollable-container {
   width: 100%;
   padding: var(--spacing-small);
   display: flex;
@@ -7,12 +7,17 @@ div.scrollable-container {
   white-space: nowrap;
   user-select: none;
 }
+
+
 /*TODO: make all cards the same, fixed width*/
-div.hourly-card {
+.hourly-card {
   flex: 0 0 4rem;
   border: var(--border);
   border-radius: var(--radius-small);
   padding: var(--spacing-small);
   background-color: var(--color-background-emphasize);
   text-align: center;
+}
+p:first-of-type {
+  font-weight: 500;
 }

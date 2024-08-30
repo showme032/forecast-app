@@ -9,18 +9,23 @@
 
 /* Card*/
 .today-card {
-    aspect-ratio: 4 / 3;
+    /*aspect-ratio: 5 / 4;*/
+    max-width: 100%;
     border-radius: var(--radius-medium);
     border: var(--border);
     box-shadow: var(--shadow-small);
     padding: var(--spacing-small) 8px;
     font-size: 0.7rem;
-    max-height: 100%;
     position: relative;
     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    &>div:not(.card-heading) {
+        /*display: none;*/
+    }
+    
 }
 
 .card-heading {
@@ -28,6 +33,7 @@
     gap: 0.5rem;
     align-items: center;
     opacity: 60%;
+    max-width: 100%;
 }
 
 .card-heading-icon {
@@ -38,16 +44,8 @@
 .value {
     align-self: center;
     text-align: center;
-    margin: 1rem 0
-}
-
-span.value {
+    margin: 1rem 0;
     font-size: 1.5rem;
-}
-
-p.value {
-    font-size: 0.8rem;
-    /*line-height: 1;*/
 }
 
 .description {
@@ -55,19 +53,19 @@ p.value {
     font-weight: 500;
 }
 
-/* Linear graph*/
-.linear-graph {
-    margin: 1rem 0;
+/* GRAPHS */
+.graph-container {
+    margin: 8px 4px;
     font-weight: 500;
 }
 
+/* Linear graph*/
 .graph-value {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.875rem;
     position: relative;
     
     &.uv-value {
-        
         transform: translateX(-50%);
     }
 }
@@ -93,6 +91,55 @@ p.value {
     justify-content: space-between;
 }
 
+/* Circular graph */
+.circle {
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    max-width: 64px;
+    border: 3px dotted var(--color-foreground);
+    border-radius: 50%;
+    position: relative;
+    
+    &>p {
+        position: absolute;
+        color: var(--color-foreground);
+        line-height: 1;
+        text-align: center;
+        width: 0.8rem;
+        font-weight: 800;
+        overflow: hidden;
+        z-index: 1;
+        
+        &.n {
+            top: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.e {
+            right: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &.s {
+            bottom: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.w {
+            left: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+.pointer {
+    position: absolute;
+    transform-origin: center center;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
 
 /* AIR QUALITY*/
 .air-quality {
@@ -115,17 +162,13 @@ p.value {
 /* Responsiveness */
 @media (max-width: 1100px) {
     .today-group {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
         
     }
-    
-    .today-card {
-        /*aspect-ratio: auto;*/
-    }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 660px) {
     .today-group {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(4, 1fr);
