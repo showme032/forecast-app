@@ -4,24 +4,32 @@
   <ng-container *ngFor="let day of extended; let i = index">
     <div class="extended-card">
       <span class="forecast-day">
-        {{ i === 0 ? 'Now' : (day.date | date: 'EE') }}
+        {{ i === 0 ? 'Now' : ((day.date | date: 'EE') ) }}:
       </span>
       <div class="forecast">
         <span class="forecast-icon">
           <img [src]="imagePath(day.weatherCode)"
                alt="Current conditions">
         </span>
-        <span>
-          <span class="emphasized">Lo:</span> {{ day.minTemperature | number: '1.0-0' }}° <span
-          class="emphasized">Hi:</span> {{ day.maxTemperature |
-          number: '1.0-0' }}°
-        </span>
-        <span>
-          <span class="emphasized">Rainfall:</span> {{ day.precipitation }}%
-        </span>
-        <span>
-          <span class="emphasized">UV:</span> {{ day.uvMax | number: '1.0-0'}}
-        </span>
+        <div class="loHi">
+          <div>
+            <span class="emphasized">Lo: </span>
+            <span>{{ day.minTemperature | number: '1.0-0' }}°</span>
+          </div>
+          <div>
+            <span class="emphasized">Hi: </span>
+            <span>{{ day.maxTemperature |number: '1.0-0' }}°</span>
+          </div>
+        </div>
+        <div class="uvRain">
+          <div>
+            <span class="emphasized">Rainfall: </span><span>{{ day.precipitation }}%
+          </span>
+          </div>
+          <div>
+            <span class="emphasized">UV Index: </span>{{ day.uvMax | number: '1.0-0' }}
+          </div>
+        </div>
       </div>
     </div>
   </ng-container>

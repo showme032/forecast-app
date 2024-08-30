@@ -58,7 +58,6 @@ export class AppComponent {
 
     this.weatherService.getAirQuality(lat, lng).subscribe(
       res => {
-        console.log(res);
         this.airQualityIndex = res.current.european_aqi;
       }
     )

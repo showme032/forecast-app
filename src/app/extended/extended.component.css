@@ -19,14 +19,11 @@
     background: var(--color-background-emphasize);
     
     display: grid;
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 2.5rem 1fr;
     align-items: center;
     /*gap: var(--spacing-small);*/
     gap: clamp(0.25rem, 0.75vw, 0.5rem);
-    
-    /*&:hover {*/
-    /*  background-color: var(--color-background-highlight);*/
-    /*}*/
+    overflow: hidden;
 }
 
 .extended-title {
@@ -34,31 +31,41 @@
 }
 
 .forecast-day {
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-weight: 500;
+    font-size: 1rem;
     margin: var(--spacing-small) 0;
     line-height: 0;
 }
 
 .forecast {
-    /* TODO: make inners more fluid */
     display: grid;
-    grid-template-columns: 3rem 2fr 2fr 1fr;
-    justify-items: center;
+    grid-template-columns: 3rem 2fr 2fr;
+    justify-items: start;
     align-items: center;
-    gap: clamp(0.25rem, 8.5vw - 4.9rem, 1rem);
-    padding-left: var(--spacing-small);
+    gap: 1rem;
 }
 
-forecast > span {
-    text-align: center;
+.loHi, .uvRain {
+    /*margin-left: 24px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: left;
+    /*justify-self: flex-start;*/
+    
+    &>div {
+        white-space: nowrap;
+    }
 }
 
 .forecast-icon {
     overflow: visible;
     max-width: 48px;
+    justify-self: center;
+    /*margin-right: var(--spacing-small);*/
     
     & img {
+        --shadow-color: 240deg 12% 53%;
         filter: drop-shadow(0px 0px 2px hsl(var(--shadow-color) / 0.31))
         drop-shadow(0px 0px 4px hsl(var(--shadow-color) / 0.26))
         drop-shadow(0px 0px 6px hsl(var(--shadow-color) / 0.21));

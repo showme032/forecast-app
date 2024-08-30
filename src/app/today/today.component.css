@@ -17,6 +17,7 @@
     padding: var(--spacing-small) 8px;
     font-size: 0.7rem;
     position: relative;
+    overflow: hidden;
     
     display: flex;
     flex-direction: column;
@@ -152,11 +153,14 @@
 }
 
 .air-glow {
-    height: 100%;
+    width: 150%;
+    height: 150%;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
     z-index: 1;
+    
 }
 
 /* Responsiveness */

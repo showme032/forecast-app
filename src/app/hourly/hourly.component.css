@@ -8,11 +8,10 @@
   user-select: none;
 }
 
-
 /*TODO: make all cards the same, fixed width*/
 .hourly-card {
   flex: 0 0 4rem;
-  border: var(--border);
+  border: var(--border-lighter);
   border-radius: var(--radius-small);
   padding: var(--spacing-small);
   background-color: var(--color-background-emphasize);
