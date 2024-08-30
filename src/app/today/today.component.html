@@ -78,13 +78,9 @@
         <p class="e">e</p>
         <p class="s">s</p>
         <p class="w">w</p>
-        <!--        <div class="pointer"-->
-        <!--             [ngStyle]="{'transform': 'translateY(-5px) rotate(' +-->
-        <!--             today.windDirection + 'deg)'}"></div>-->
-        <img src="/assets/decorations/arrow.svg"
-             alt="pointer"
-             class="pointer"
-             [ngStyle]="{'transform': 'rotate(' + today.windDirection + 'deg)'}">
+        <svg src="/assets/decorations/arrow.svg"
+             class="pointer"/>
+        <!--             class="pointer" [ngStyle]="{'transform': 'rotate(' + today.windDirection + 'deg)'}">-->
       </div>
     </div>
     <p class="description">Speed: {{ today.windSpeed }} km/h</p>
@@ -98,7 +94,7 @@
            class="card-heading-icon">
       <h5>HUMIDITY</h5>
     </div>
-    <p class="description">{{ today.humidity }} %</p>
+    <p class="description">{{ today.humidity }}%</p>
   </div>
 
   <!--  subj feel  -->
@@ -109,7 +105,7 @@
            class="card-heading-icon">
       <h5>FEELS LIKE</h5>
     </div>
-    <p class="description">{{ today.subjectiveTemp }} °C</p>
+    <p class="description">{{ today.subjectiveTemp }}°C</p>
   </div>
 
   <!--  visibility  -->

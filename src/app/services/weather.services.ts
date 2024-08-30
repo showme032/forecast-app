@@ -66,14 +66,15 @@ export class WeatherServices {
 
   // Get hourly weather data
   getHourly(data: any): Hourly[] {
-    return data.hourly.time
-      .slice(this.hour, this.hour + 24)
-      .map((time: Date, index: number) => {
-        return {
-          time: time,
-          temperature: data.hourly.temperature_2m[index],
-        };
-      });
+    // console.log(this.hour)
+    const hourly: Hourly[] = []
+    for (let i = this.hour; i < this.hour + 24; i++) {
+      hourly.push({
+        time: data.hourly.time[i],
+        temperature: data.hourly.temperature_2m[i],
+      })
+    }
+    return hourly
   }
 
   // Get today's weather data

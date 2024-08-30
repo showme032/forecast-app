@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CardComponent } from '../shared/card/card.component';
+import { CardComponent } from '../today/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Hourly } from '../app.model';
 

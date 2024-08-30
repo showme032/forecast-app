@@ -26,11 +26,11 @@ form {
 #search-query {
     appearance: none;
     width: 100%;
-    border: var(--border-emphasize);
+    border: solid 1px var(--color-foreground);
     border-radius: var(--radius-medium);
     /*box-shadow: var(--shadow-small);*/
-    box-shadow: 4px 4px 0 var(--color-secondary);
-    color: var(--color-secondary);
+    box-shadow: 4px 4px 0 var(--color-foreground);
+    color: var(--color-foreground);
     background-color: var(--color-primary);
     padding: 5px 43px;
     font-size: 1.3rem;
@@ -38,17 +38,19 @@ form {
     transition: 0.25s;
     
     &::placeholder {
-        color: hsl(222, 47%, 35%);
-        opacity: 0.8;
+        color: hsl(222, 47%, 0%);
+        opacity: 0.5;
         font-weight: 400;
+        transition: 0.25s;
     }
     
     &:focus {
         outline: none;
-        box-shadow: 6px 6px 0 var(--color-secondary);
+        box-shadow: 6px 6px 0 var(--color-foreground);
         transition: 0.15s;
         
         &::placeholder {
+            transition: 0.125s;
             opacity: 0;
         }
     }

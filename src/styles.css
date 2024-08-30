@@ -5,17 +5,17 @@
     --color-primary: hsl(51, 100%, 75%);
     --color-secondary: hsl(222 47% 35%);
     --color-error: hsl(350, 70%, 90%);
-    --color-foreground: hsl(240 47% 13%);
+    --color-foreground: hsl(240 47% 15%);
     --color-background: hsl(0 0% 100%);
     --color-background-emphasize: hsl(240 40% 99%);
     --color-background-highlight: hsl(240 40% 96%);
     --color-background-muted: hsl(240 6% 90%);
     
-    --border: 1px solid hsl(240 47% 13%);
+    --border: 1px solid hsl(240 47% 15%);
     --border-lighter: 1px solid hsla(240, 47%, 13%, 0.4);
     --border-emphasize: 1px solid hsl(222 47% 30%);
     
-    --shadow-small: 4px 4px 0 hsl(240, 47%, 13%, 0.1);
+    --shadow-small: 4px 4px 0 hsl(240, 47%, 13%, 0.2);
     
     --radius-small: 0.25rem;
     --radius-medium: 0.5rem;

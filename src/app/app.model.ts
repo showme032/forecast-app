@@ -21,7 +21,7 @@ export interface Current {
 }
 
 export interface Hourly {
-  time: string,
+  time: number,
   temperature: number
 }
 

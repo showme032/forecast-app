@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { CardComponent } from '../shared/card/card.component';
+import { CardComponent } from './card/card.component';
 import { type Today } from '../app.model';
 import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
