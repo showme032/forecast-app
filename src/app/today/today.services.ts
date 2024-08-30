@@ -6,11 +6,11 @@ export class TodayService {
   // UV
   getUvMessage(index: number): string[] {
     if (index <= 2) {
-      return ['Low',  'No protection necessary']
+      return ['Low',  'No risk']
     } else if (index <= 6) {
-      return ['Medium', 'Use sun protection']
+      return ['Medium', 'Wear protection']
     } else if (index <= 10) {
-      return ['High', 'Use extra sun protection']
+      return ['High', 'Protection required']
     } else return ['Very high', 'Avoid exposure!']
   }
 
@@ -26,6 +26,21 @@ export class TodayService {
       return 'Sunny, dry conditions'
     }
     return 'Stable sunny conditions'
+  }
+
+  // Visibility
+  getVisibilityMessage(index: number): string {
+    if (index > 18) {
+      return 'Exceptional range'
+    } if (index > 12) {
+      return 'Clear view'
+    } if (index > 6) {
+      return 'Slight haze'
+    } if (index > 3) {
+      return 'Haze'
+    } if (index > 1) {
+      return 'Thin fog'
+    } return 'Fog'
   }
 
   // Air Quality

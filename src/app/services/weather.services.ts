@@ -67,22 +67,22 @@ export class WeatherServices {
   // Get hourly weather data
   getHourly(data: any): Hourly[] {
     // console.log(this.hour)
-    const hourly: Hourly[] = []
+    const hourly: Hourly[] = [];
     for (let i = this.hour; i < this.hour + 24; i++) {
       hourly.push({
         time: data.hourly.time[i],
         temperature: data.hourly.temperature_2m[i],
-      })
+      });
     }
-    return hourly
+    return hourly;
   }
 
   // Get today's weather data
   getToday(data: any): Today {
     const today: Today = {
-      isDay: data.current.is_day === 1,
-      sunrise: data.daily.sunrise[0],
-      sunset: data.daily.sunset[0],
+      event: data.current.is_day === 1 ? 'SUNSET' : 'SUNRISE',
+      eventTime: data.current.is_day === 1 ? data.daily.sunset[0] : data.daily.sunrise[0],
+      eventAfter: data.current.is_day === 1 ? ['Sunrise:', data.daily.sunrise[0]] : ['Sunset:', data.daily.sunset[0]],
       uv: data.hourly.uv_index[this.hour],
       visibility: Math.round(data.hourly.visibility[this.hour] / 3281),
       pressure: data.current.pressure_msl,

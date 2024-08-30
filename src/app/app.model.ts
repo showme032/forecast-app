@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 
 export interface Today {
-  isDay: boolean,
-  sunrise: string,
-  sunset: string,
+  event: string,
+  eventTime: string,
+  eventAfter: string[],
   uv: number,
   visibility: number,
   pressure: number,

@@ -28,6 +28,7 @@ export class TodayComponent {
 
   // SUN
 
+
   // UV
   get uvMessage(): string[] {
     return this.todayService.getUvMessage(this.today.uv)
@@ -42,6 +43,9 @@ export class TodayComponent {
   // FEEL
 
   // VISIBILITY
+  get visibilityMessage():string {
+    return this.todayService.getVisibilityMessage(this.today.visibility);
+  }
 
   // AQI
   get airColor() {
