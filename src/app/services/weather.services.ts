@@ -30,7 +30,7 @@ export class WeatherServices {
       latitude: lat,
       longitude: lng,
       current: 'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m',
-      hourly: 'temperature_2m,weather_code,visibility,uv_index,is_day',
+      hourly: 'temperature_2m,weather_code,visibility,uv_index,is_day,dew_point_2m',
       daily: 'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max',
       timezone: 'auto',
     };
@@ -89,7 +89,9 @@ export class WeatherServices {
       windSpeed: data.current.wind_speed_10m,
       windDirection: data.current.wind_direction_10m,
       humidity: data.current.relative_humidity_2m,
+      dewPoint: data.hourly.dew_point_2m[this.hour],
       subjectiveTemp: data.current.apparent_temperature,
+      current: data.hourly.temperature_2m[this.hour],
     };
 
     return today;

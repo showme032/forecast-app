@@ -47,7 +47,7 @@ form {
     &:focus {
         outline: none;
         box-shadow: 6px 6px 0 var(--color-foreground);
-        transition: 0.15s;
+        transition: 0.25s;
         
         &::placeholder {
             transition: 0.125s;

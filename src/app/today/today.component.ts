@@ -14,7 +14,7 @@ import { TodayService } from './today.services';
     NgStyle,
   ],
   templateUrl: './today.component.html',
-  styleUrl: './today.component.css'
+  styleUrl: './today.component.css',
 })
 export class TodayComponent {
   @Input() today!: Today;
@@ -31,8 +31,9 @@ export class TodayComponent {
 
   // UV
   get uvMessage(): string[] {
-    return this.todayService.getUvMessage(this.today.uv)
+    return this.todayService.getUvMessage(this.today.uv);
   }
+
   // AIR PRESSURE
   get pressureMessage(): string {
     return this.todayService.getPressureMessage(this.today.pressure);
@@ -40,10 +41,18 @@ export class TodayComponent {
 
   // WIND
 
+  // HUMIDITY
+  get humidityMessage(): string {
+    return this.todayService.getHumidityMessage(this.today.dewPoint);
+  }
+
   // FEEL
+  get subjectiveMessage(): string {
+    return this.todayService.getSubjectiveMessage(this.today.current, this.today.subjectiveTemp);
+  }
 
   // VISIBILITY
-  get visibilityMessage():string {
+  get visibilityMessage(): string {
     return this.todayService.getVisibilityMessage(this.today.visibility);
   }
 
@@ -51,6 +60,7 @@ export class TodayComponent {
   get airColor() {
     return `/assets/decorations/air-pollution.svg#${this.todayService.getAirColor(this.airQualityIndex)}`;
   }
+
   get airMessage() {
     return this.todayService.getAirMessage(this.airQualityIndex);
   }

@@ -11,6 +11,8 @@ export interface Today {
   windDirection: number,
   humidity: number,
   subjectiveTemp: number,
+  dewPoint: number,
+  current: number
 }
 
 export interface Current {

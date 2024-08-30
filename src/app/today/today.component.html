@@ -3,6 +3,7 @@
 <div class="today-group">
   <!--  sunrise/sunset  -->
   <div class="today-card sun">
+    <img src="/assets/decorations/sun.svg" class="humidity-decoration" alt="humidity icon">
     <div class="card-heading">
       <img src="/assets/icons/sunset.svg"
            alt="sun-icon"
@@ -79,7 +80,9 @@
       <div class="circle">
         <div class="directions">
           <p class="n">N</p>
+          <p class="e">E</p>
           <p class="s">S</p>
+          <p class="w">W</p>
         </div>
         <img src="/assets/decorations/arrow.svg" alt="Current conditions"
              class="pointer"
@@ -91,13 +94,17 @@
 
   <!--  humidity  -->
   <div class="today-card humidity">
+    <img src="/assets/decorations/humidity.svg" class="humidity-decoration" alt="humidity icon">
     <div class="card-heading">
       <img src="/assets/icons/humidity.svg"
            alt="humidity-icon"
            class="card-heading-icon">
       <h5>HUMIDITY</h5>
     </div>
-    <p class="description">{{ today.humidity }}%</p>
+    <div class="value humid-value">
+      {{ today.humidity }}%
+    </div>
+    <p class="description">{{ humidityMessage }}</p>
   </div>
 
   <!--  subj feel  -->
@@ -108,7 +115,10 @@
            class="card-heading-icon">
       <h5>FEELS LIKE</h5>
     </div>
-    <p class="description">{{ today.subjectiveTemp }}°C</p>
+    <div class="value">
+      {{ today.subjectiveTemp }}°C
+    </div>
+    <p class="description">{{  subjectiveMessage }}</p>
   </div>
 
   <!--  visibility  -->

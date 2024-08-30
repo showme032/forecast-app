@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: space-between;
     
-    &>div:not(.card-heading) {
+    & > div:not(.card-heading) {
         /*display: none;*/
     }
     
@@ -46,6 +46,8 @@
     text-align: center;
     margin: 1rem 0;
     font-size: 1.5rem;
+    isolation: isolate;
+    z-index: 999;
     
     &:after {
         color: white;
@@ -104,18 +106,19 @@
     margin: 4px auto;
     max-width: 72px;
     /*border: 3px dotted var(--color-foreground);*/
-    background-color: var(--color-background-muted);
+    /*background-color: var(--color-background-muted);*/
     border-radius: 50%;
     position: relative;
     overflow: visible;
     
 }
+
 .directions {
     /*position: relative;*/
     text-align: center;
     height: 100%;
     aspect-ratio: 1 / 1;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: var(--color-foreground);
     position: absolute;
     top: 50%;
@@ -124,40 +127,58 @@
     overflow: visible;
     z-index: 1;
     line-height: 0;
+    filter: blur(1px);
+    /*opacity: 0.8;*/
     
-    &>.n {
-        position:absolute;
+    & > .n {
+        position: absolute;
         top: -2px;
         left: 50%;
         transform: translateX(-50%);
     }
-    &>.e {
-        position:absolute;
+    
+    & > .e {
+        position: absolute;
         right: 4px;
         top: 50%;
         transform: translateY(-50%);
     }
-    &>.s {
-        position:absolute;
+    
+    & > .s {
+        position: absolute;
         bottom: -2px;
         left: 50%;
         transform: translateX(-50%);
     }
-    &>.w {
-        position:absolute;
+    
+    & > .w {
+        position: absolute;
         left: 4px;
         top: 50%;
         transform: translateY(-50%);
     }
 }
+
 .pointer {
-    height: 1.5rem;
+    height: 1.8rem;
     position: absolute;
     transform-origin: center;
     top: 36px;
     left: 36px;
 }
 
+/* HUMIDITY */
+.humidity-decoration {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 64px;
+    opacity: 0.35;
+    filter: blur(3px);
+}
+.humid-value {
+}
 
 /* AIR QUALITY*/
 .air-quality {
