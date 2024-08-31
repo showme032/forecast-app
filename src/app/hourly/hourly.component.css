@@ -18,5 +18,5 @@
   text-align: center;
 }
 p:first-of-type {
-  font-weight: 500;
+  font-weight: var(--font-emphasized);
 }

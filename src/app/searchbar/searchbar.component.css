@@ -2,7 +2,7 @@ form {
     margin: auto;
     width: 100%;
     position: relative;
-    transition: 0.25s;
+    transition: var(--transition-medium);
     
     &:before {
         content: '';
@@ -19,7 +19,7 @@ form {
     
     &:has(> #search-query:focus) {
         transform: scale(1.05);
-        transition: 0.125s;
+        transition: var(--transition-short);
     }
 }
 
@@ -34,23 +34,23 @@ form {
     background-color: var(--color-primary);
     padding: 5px 43px;
     font-size: 1.3rem;
-    font-weight: 400;
-    transition: 0.25s;
+    font-weight: var(--font-normal);
+    transition: var(--transition-medium);
     
     &::placeholder {
         color: hsl(222, 47%, 0%);
         opacity: 0.5;
-        font-weight: 400;
-        transition: 0.25s;
+        font-weight: var(--font-normal);
+        transition: var(--transition-medium);
     }
     
     &:focus {
         outline: none;
         box-shadow: 6px 6px 0 var(--color-foreground);
-        transition: 0.25s;
+        transition: var(--transition-medium);
         
         &::placeholder {
-            transition: 0.125s;
+            transition: var(--transition-short);
             opacity: 0;
         }
     }

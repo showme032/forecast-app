@@ -21,13 +21,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    & > div:not(.card-heading) {
-        /*display: none;*/
-    }
-    
 }
 
+/* Card decoration*/
+.card-decoration {
+    position: absolute;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0.35;
+    filter: blur(3px);
+}
+
+.compass {
+    filter: blur(0.7px);
+    opacity: 0.9;
+}
+
+.air-glow {
+    height: 100%;
+    opacity: 1;
+}
+
+/* Card Heading*/
 .card-heading {
     display: flex;
     gap: 0.5rem;
@@ -41,6 +58,7 @@
     width: 1rem;
 }
 
+/* Card Value*/
 .value {
     align-self: center;
     text-align: center;
@@ -50,21 +68,21 @@
     z-index: 999;
     
     &:after {
-        color: white;
+        color: var(--color-background);
         mix-blend-mode: difference;
     }
 }
 
 .description {
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: var(--font-emphasized);
     isolation: isolate;
     z-index: 999;
 }
 
-/* GRAPHS */
+/* Graphs */
 .graph-container {
-    font-weight: 500;
+    font-weight: var(--font-emphasized);
     width: 100%;
 }
 
@@ -91,7 +109,6 @@
 .bar-fill {
     height: 100%;
     background-color: var(--color-foreground);
-    transition: width 0.3s ease-in-out;
 }
 
 .bar-labels {
@@ -103,65 +120,14 @@
 /* Circular graph */
 .circle {
     aspect-ratio: 1 / 1;
-    margin: 4px auto;
-    max-width: 72px;
-    /*border: 3px dotted var(--color-foreground);*/
-    border-radius: 50%;
     position: relative;
+    max-width: 72px;
+    margin: 4px auto;
+    border-radius: 50%;
     overflow: visible;
-    /*background-color: var(--color-foreground);*/
-    /*filter: blur(1px);*/
-    
 }
 
-.directions {
-    /*position: relative;*/
-    display: none;
-    text-align: center;
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    font-size: 1rem;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    overflow: visible;
-    z-index: 1;
-    line-height: 0;
-    /*filter: blur(1px);*/
-    /*opacity: 0.8;*/
-    
-    & > .n {
-        position: absolute;
-        top: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    & > .e {
-        position: absolute;
-        right: 4px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    & > .s {
-        position: absolute;
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    & > .w {
-        position: absolute;
-        left: 4px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-
-.pointer {
+.arrow {
     height: 2.5rem;
     position: absolute;
     z-index: 999;
@@ -170,24 +136,7 @@
     left: 36px;
 }
 
-/* HUMIDITY */
-.card-decoration {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 64px;
-    opacity: 0.35;
-    filter: blur(3px);
-}
-.humid-value {
-}
-.compass {
-    filter: none;
-    opacity: 0.9;
-}
-
-/* AIR QUALITY*/
+/* Air-Quality*/
 .air-quality {
     position: relative;
     
@@ -195,17 +144,6 @@
         isolation: isolate;
         z-index: 999;
     }
-}
-
-.air-glow {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 1;
-    
 }
 
 /* Responsiveness */

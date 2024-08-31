@@ -3,7 +3,7 @@
 <div class="today-group">
   <!--  sunrise/sunset  -->
   <div class="today-card sun">
-    <img src="/assets/decorations/sun.svg" class="card-decoration" alt="humidity icon">
+    <img src="/assets/decorations/sun.svg" class="card-decoration" alt="sun icon">
     <div class="card-heading">
       <img src="/assets/icons/sunset.svg"
            alt="sun-icon"
@@ -21,7 +21,7 @@
   <div class="today-card uv-index">
     <div class="card-heading">
       <img src="/assets/icons/uv.svg"
-           alt="uv-index"
+           alt="uv index"
            class="card-heading-icon">
       <h5>UV INDEX</h5>
     </div>
@@ -68,7 +68,6 @@
   </div>
 
   <!--  wind  -->
-<!--  TODO: CHANGE COMPAS STYLE-->
   <div class="today-card wind">
     <img src="/assets/decorations/compass.svg" class="card-decoration compass" alt="humidity icon">
     <div class="card-heading">
@@ -79,14 +78,8 @@
     </div>
     <div class="graph-container">
       <div class="circle">
-        <div class="directions">
-          <p class="n">N</p>
-          <p class="e">E</p>
-          <p class="s">S</p>
-          <p class="w">W</p>
-        </div>
         <img src="/assets/decorations/arrow.svg" alt="Current conditions"
-             class="pointer"
+             class="arrow"
              [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today.windDirection + 'deg)'}">
       </div>
     </div>
@@ -102,7 +95,7 @@
            class="card-heading-icon">
       <h5>HUMIDITY</h5>
     </div>
-    <div class="value humid-value">
+    <div class="value">
       {{ today.humidity }}%
     </div>
     <p class="description">{{ humidityMessage }}</p>
@@ -136,7 +129,7 @@
 
   <!--  air-quality index  -->
   <div class="today-card air-quality">
-    <svg class="air-glow">
+    <svg class="card-decoration air-glow">
       <use [attr.href]="airColor"></use>
     </svg>
     <div class="card-heading">

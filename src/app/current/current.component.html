@@ -5,7 +5,7 @@
     <img [src]="imagePath" alt="Current conditions" class="icon">
   </div>
   <div class="current-data">
-    <p class="emphasized location">
+    <p class="bold location">
       {{ location }}
     </p>
     <p>
@@ -14,8 +14,8 @@
     <p [innerHTML]="conditions">
     </p>
     <p>
-      <span class="emphasized">Lo:</span> {{ current.min | number:'1.0-0' }}°
-      <span class="emphasized">Hi:</span> {{ this.current.max | number:'1.0-0' }}°
+      <span class="bold">Lo:</span> {{ current.min | number:'1.0-0' }}°
+      <span class="bold">Hi:</span> {{ this.current.max | number:'1.0-0' }}°
     </p>
   </div>
 

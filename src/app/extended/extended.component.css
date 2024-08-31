@@ -31,7 +31,7 @@
 }
 
 .forecast-day {
-    font-weight: 500;
+    font-weight: var(--font-emphasized);
     font-size: 1rem;
     margin: var(--spacing-small) 0;
     line-height: 0;

@@ -8,7 +8,6 @@
     --color-foreground: hsl(240 47% 15%);
     --color-background: hsl(0 0% 100%);
     --color-background-emphasize: hsl(240 40% 99%);
-    --color-background-highlight: hsl(240 40% 96%);
     --color-background-muted: hsl(240 6% 90%);
     
     --border: 1px solid hsl(240 47% 15%);
@@ -23,6 +22,13 @@
     --spacing-small: 0.5rem;
     --spacing-medium: 0.75rem;
     
+    --transition-short: 0.15s;
+    --transition-medium: 0.25s;
+    --transition-long: 0.35s;
+    
+    --font-normal: 400;
+    --font-emphasized: 500;
+    --font-bold: 700;
 }
 
 body {
@@ -34,6 +40,9 @@ h5 {
     font-size: 0.75rem;
 }
 
-span.emphasized {
-    font-weight: 500
+.emphasized {
+    font-weight: var(--font-emphasized);
+}
+.bold {
+    font-weight: var(--font-bold);
 }
