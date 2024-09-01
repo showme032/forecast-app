@@ -51,10 +51,11 @@
     justify-self: center;
     
     & img {
-        --shadow-color: 240deg 12% 53%;
+        --shadow-color: 240 47% 15%;
         filter: drop-shadow(0px 0px 2px hsl(var(--shadow-color) / 0.31))
         drop-shadow(0px 0px 4px hsl(var(--shadow-color) / 0.26))
         drop-shadow(0px 0px 6px hsl(var(--shadow-color) / 0.21));
+        /*filter: drop-shadow(1px px 0 hsl(var(--shadow-color)));*/
     }
 }
 

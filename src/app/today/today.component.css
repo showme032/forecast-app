@@ -36,6 +36,8 @@
 
 .compass {
     filter: blur(0.7px);
+    height: 55%;
+    transform: translateX(-50%) translateY(-53%);
     opacity: 0.9;
 }
 

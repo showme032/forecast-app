@@ -18,7 +18,7 @@ form {
     }
     
     &:has(> #search-query:focus) {
-        transform: scale(1.05);
+        transform: scale(1.03);
         transition: var(--transition-short);
     }
 }

@@ -13,8 +13,9 @@ export class SearchbarComponent {
 
   searchQuery = '';
 
-  onSubmit() {
+  onSubmit(queryInput: HTMLInputElement) {
     this.search.emit(this.searchQuery);
-    this.searchQuery = '';
+    queryInput.value = '';
+    queryInput.blur();
   }
 }

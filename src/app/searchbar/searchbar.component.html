@@ -1,5 +1,10 @@
-<form (ngSubmit)="onSubmit()">
-  <input placeholder="Location" type="text" id="search-query"
-         name="search-query" autocomplete="off" spellcheck="false"
+<form (ngSubmit)="onSubmit(queryInput)">
+  <input placeholder="Location"
+         type="text"
+         id="search-query"
+         name="search-query"
+         autocomplete="off"
+         spellcheck="false"
+         #queryInput
          [(ngModel)]="searchQuery">
 </form>
