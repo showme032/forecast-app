@@ -15,7 +15,7 @@ form {
         left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        transition: 1s;
+        transition: var(--transition-short);
     }
     
     &:has(> #search-query:focus) {
