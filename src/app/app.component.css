@@ -8,9 +8,7 @@ main {
 
 .content-wrapper {
     width: 60%;
-    /*border: var(--border);*/
     border-radius: var(--radius-medium);
-    /*box-shadow: var(--shadow-small);*/
     padding: 0 2rem;
     
     display: grid;
@@ -26,11 +24,6 @@ main {
     "extended extended . .";
     justify-items: center;
     transition: var(--transition-long);
-}
-
-.wrapper {
-    /*max-height: 128px;*/
-    /*padding: var(--spacing-small);*/
 }
 
 .searchbar-wrapper {
@@ -117,7 +110,7 @@ main {
     }
     
     .searchbar-wrapper {
-        width: 65%;
+        width: 75%;
         margin: 2rem 0 1rem;
         transition: var(--transition-long);
     }

@@ -6,8 +6,8 @@
     --color-secondary: hsl(222 47% 35%);
     --color-error: hsl(350, 70%, 90%);
     --color-foreground: hsl(240 47% 15%);
-    --color-background: hsl(0 0% 100%);
-    --color-background-emphasize: hsl(240 40% 99%);
+    --color-background: hsl(240 3% 99%);
+    --color-background-emphasize: hsl(240 4% 97%);
     --color-background-muted: hsl(240 6% 90%);
     
     --border: 1px solid hsl(240 47% 15%);
@@ -29,11 +29,13 @@
     --font-normal: 400;
     --font-emphasized: 500;
     --font-bold: 700;
+    
 }
 
 body {
     font-family: 'JetBrains Mono','Inter', sans-serif;
     color: var(--color-foreground);
+    background-color: var(--color-background);
 }
 
 h5 {
