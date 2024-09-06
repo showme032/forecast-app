@@ -57,11 +57,12 @@ main {
 
 .no-location {
     grid-area: current;
-    width: calc(25% + 4px);
-    border: var(--border-emphasize);
+    width: 22%;
+    border: var(--border-lighter);
     border-radius: var(--radius-medium);
-    padding: 6px 8px;
-    color: var(--color-secondary);
+    box-shadow: var(--shadow-small);
+    padding: 5px;
+    color: hsl(240 47% 15% / 0.8);
     background-color: var(--color-error);
     font-size: 1.3rem;
     font-weight: var(--font-normal);
@@ -91,7 +92,7 @@ main {
     }
     
     .no-location {
-        width: calc(35% + 4px);
+        width: 35%;
     }
 }
 
@@ -115,7 +116,7 @@ main {
         transition: var(--transition-long);
     }
     .no-location {
-        width: calc(65% + 4px);
+        width: 75%;
     }
     
     .current-wrapper {

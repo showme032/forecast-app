@@ -29,7 +29,6 @@ form {
     width: 100%;
     border: solid 1px var(--color-foreground);
     border-radius: var(--radius-medium);
-    /*box-shadow: var(--shadow-small);*/
     box-shadow: 4px 4px 0 var(--color-foreground);
     color: var(--color-foreground);
     background-color: var(--color-primary);

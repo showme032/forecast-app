@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterContentChecked, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -6,16 +6,23 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './searchbar.component.html',
-  styleUrl: './searchbar.component.css'
+  styleUrl: './searchbar.component.css',
 })
-export class SearchbarComponent {
+export class SearchbarComponent implements AfterContentChecked {
   @Output() search = new EventEmitter<string>();
 
   searchQuery = '';
 
-  onSubmit(queryInput: HTMLInputElement) {
+  onSubmit(form: HTMLFormElement) {
     this.search.emit(this.searchQuery);
-    queryInput.value = '';
-    queryInput.blur();
+    form.reset();
+    form.blur();
+  }
+
+  ngAfterContentChecked() {
+    if (this.searchQuery.length >= 3) {
+      console.log(this.searchQuery);
+    //   Start searching and displaying suggestions
+    }
   }
 }

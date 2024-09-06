@@ -30,6 +30,8 @@
     --font-emphasized: 500;
     --font-bold: 700;
     
+    scroll-behavior: smooth;
+    
 }
 
 body {

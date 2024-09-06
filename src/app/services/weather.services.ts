@@ -54,14 +54,12 @@ export class WeatherServices {
 
   // Get current weather data
   getCurrent(data: any): Current {
-    const current: Current = {
+    return {
       temperature: data.current.temperature_2m,
       weatherCode: data.current.weather_code,
       min: data.daily.temperature_2m_min[0],
       max: data.daily.temperature_2m_max[0],
     };
-
-    return current;
   };
 
   // Get hourly weather data
@@ -79,7 +77,7 @@ export class WeatherServices {
 
   // Get today's weather data
   getToday(data: any): Today {
-    const today: Today = {
+    return {
       event: data.current.is_day === 1 ? 'SUNSET' : 'SUNRISE',
       eventTime: data.current.is_day === 1 ? data.daily.sunset[0] : data.daily.sunrise[0],
       eventAfter: data.current.is_day === 1 ? ['Sunrise:', data.daily.sunrise[0]] : ['Sunset:', data.daily.sunset[0]],
@@ -93,8 +91,6 @@ export class WeatherServices {
       subjectiveTemp: data.current.apparent_temperature,
       current: data.hourly.temperature_2m[this.hour],
     };
-
-    return today;
   }
 
   // Get weather data for 7 days
