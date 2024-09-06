@@ -1,19 +1,15 @@
 <main>
   <!--  Location search-->
   <div class="searchbar-wrapper">
-    <app-searchbar (search)="onLocationSearch($event)" />
+    <app-search  (location)="onLocationFound($event)"/>
   </div>
-  @if (errorMessage) {
-    <div class="no-location">
-      {{ errorMessage }}
-    </div>
-  }
   @if (weatherData && airQualityIndex) {
-    <div class="content-wrapper">    <!--  Current weather conditions  -->
+    <div class="content-wrapper">
+      <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
         <app-current [current]="getCurrentData()" [location]="location" />
       </div>
-      <!--  Hourly weather  -->
+      <!--  Hourly temperatures  -->
       <div class="hourly-wrapper">
         <app-hourly [hourly]="getHourlyData()" />
       </div>

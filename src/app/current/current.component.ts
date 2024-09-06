@@ -1,8 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
 import { DatePipe, DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CardComponent } from '../today/card/card.component';
-import { Current } from '../app.model';
-import { WeatherServices } from '../services/weather.services';
+import { Current, LocationObj } from '../app.model';
+import { WeatherServices } from '../weather.services';
 
 @Component({
   selector: 'app-current',
@@ -20,7 +20,7 @@ export class CurrentComponent {
   // Inject the service
   private weatherService = inject(WeatherServices);
   @Input() current!: Current;
-  @Input() location!: string | undefined;
+  @Input() location!: LocationObj;
 
   get conditions() {
     return this.weatherService.getConditions(this.current.weatherCode);

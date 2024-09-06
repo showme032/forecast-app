@@ -55,21 +55,6 @@ main {
     align-items: start;
 }
 
-.no-location {
-    grid-area: current;
-    width: 22%;
-    border: var(--border-lighter);
-    border-radius: var(--radius-medium);
-    box-shadow: var(--shadow-small);
-    padding: 5px;
-    color: hsl(240 47% 15% / 0.8);
-    background-color: var(--color-error);
-    font-size: 1.3rem;
-    font-weight: var(--font-normal);
-    text-align: center;
-}
-
-
 /* Responsiveness */
 @media (max-width: 1100px) {
     .content-wrapper {
@@ -114,9 +99,6 @@ main {
         width: 75%;
         margin: 2rem 0 1rem;
         transition: var(--transition-long);
-    }
-    .no-location {
-        width: 75%;
     }
     
     .current-wrapper {

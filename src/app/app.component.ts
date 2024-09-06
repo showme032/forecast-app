@@ -1,16 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchComponent } from './search/search.component';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
 import { TodayComponent } from './today/today.component';
 import { HourlyComponent } from './hourly/hourly.component';
-import { WeatherServices } from './services/weather.services';
+import { WeatherServices } from './weather.services';
+import { LocationObj } from './app.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    SearchbarComponent,
+    SearchComponent,
     CurrentComponent,
     ExtendedComponent,
     TodayComponent,
@@ -22,41 +23,26 @@ import { WeatherServices } from './services/weather.services';
 export class AppComponent {
   // Inject the service
   private weatherService = inject(WeatherServices);
-  location: undefined | string;
+
+  location!: LocationObj;
   weatherData: undefined | {};
   airQualityIndex: undefined | number;
-  errorMessage: undefined | string;
 
-  // Set variables on search, call weather
-  onLocationSearch(location: string) {
-    this.weatherService.getCoordinates(location).subscribe(
-      res => {
-        if (res.results) {
-          const lat = res.results[0].latitude;
-          const lng = res.results[0].longitude;
+  // Get data if queried location found
+  onLocationFound(location: LocationObj) {
+    this.location = {...location}
+    console.log(this.location);
 
-          this.location = `${res.results[0].name}, ${res.results[0].country_code}`;
-          this.errorMessage = undefined;
-          this.getAllData(lat, lng);
-        } else {
-          console.log(`No location for '${location}' query found`);
-          this.errorMessage = 'No location found';
-          this.weatherData = undefined;
-        }
-      },
-    );
-  }
-
-  // Get Weather & Air Quality data
-  getAllData(lat: number, lng: number) {
-    this.weatherService.getWeatherData(lat, lng).subscribe(
+    // Weather conditions
+    this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
       res => {
         this.weatherData = res;
         console.log(res);
       },
     );
 
-    this.weatherService.getAirQuality(lat, lng).subscribe(
+    // Air quality
+    this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
       res => {
         this.airQualityIndex = res.current.european_aqi;
       }

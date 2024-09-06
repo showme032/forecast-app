@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Current, Extended, Hourly, type Today } from '../app.model';
+import { Current, Extended, Hourly, type Today } from './app.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,19 +9,6 @@ export class WeatherServices {
   }
 
   private hour = new Date().getHours();
-
-  // Get coordinates for queried location via geocoding API
-  getCoordinates(location: string): Observable<any> {
-    const baseUrl = 'https://geocoding-api.open-meteo.com/v1/search';
-    const params = {
-      name: location,
-      count: '1',
-      language: 'en',
-      format: 'json',
-    };
-
-    return this.http.get<any>(baseUrl, { params });
-  }
 
   // Get weather data for given coordinates
   getWeatherData(lat: number, lng: number): Observable<any> {
@@ -52,7 +39,7 @@ export class WeatherServices {
     return this.http.get<any>(baseUrl, { params });
   }
 
-  // Get current weather data
+  // Return current weather data
   getCurrent(data: any): Current {
     return {
       temperature: data.current.temperature_2m,
@@ -62,9 +49,8 @@ export class WeatherServices {
     };
   };
 
-  // Get hourly weather data
+  // Return hourly weather data
   getHourly(data: any): Hourly[] {
-    // console.log(this.hour)
     const hourly: Hourly[] = [];
     for (let i = this.hour; i < this.hour + 24; i++) {
       hourly.push({
@@ -75,7 +61,7 @@ export class WeatherServices {
     return hourly;
   }
 
-  // Get today's weather data
+  // Return today's weather data
   getToday(data: any): Today {
     return {
       event: data.current.is_day === 1 ? 'SUNSET' : 'SUNRISE',
@@ -93,7 +79,7 @@ export class WeatherServices {
     };
   }
 
-  // Get weather data for 7 days
+  // Return weather data for 7 days
   getExtended(data: any): Extended[] {
     const extended = [];
     for (let i = 0; i < 7; i += 1) {
@@ -112,7 +98,7 @@ export class WeatherServices {
     return extended;
   }
 
-  // Get weather conditions via given WMO code
+  // Return weather conditions according to input WMO code
   getConditions(code: number): string {
     const codes: { [key: number]: string } = {
       0: 'Clear sky',

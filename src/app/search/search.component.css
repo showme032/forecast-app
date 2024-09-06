@@ -1,3 +1,8 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
 form {
     margin: auto;
     width: 100%;
@@ -54,5 +59,18 @@ form {
             opacity: 0;
         }
     }
-    
+}
+
+.no-location {
+    /*grid-area: current;*/
+    width: 100%;
+    border: var(--border-lighter);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    padding: 5px;
+    color: hsl(240 47% 15% / 0.8);
+    background-color: var(--color-error);
+    font-size: 1.3rem;
+    font-weight: var(--font-normal);
+    text-align: center;
 }

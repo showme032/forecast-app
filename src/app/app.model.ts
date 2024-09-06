@@ -1,5 +1,12 @@
 import { Observable } from 'rxjs';
 
+export interface LocationObj {
+  lat: number;
+  lng: number;
+  name: string;
+  country: string;
+}
+
 export interface Today {
   event: string,
   eventTime: string,

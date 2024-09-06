@@ -8,3 +8,8 @@
          #queryInput
          [(ngModel)]="searchQuery">
 </form>
+@if (errorMessage) {
+  <div class="no-location">
+    {{ errorMessage }}
+  </div>
+}
