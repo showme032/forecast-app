@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterContentChecked, Component, ContentChild, DestroyRef, ElementRef, inject, ViewChild } from '@angular/core';
 import { SearchComponent } from './search/search.component';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
@@ -25,44 +25,50 @@ export class AppComponent {
   private weatherService = inject(WeatherServices);
 
   location!: LocationObj;
-  weatherData: undefined | {};
-  airQualityIndex: undefined | number;
+  weatherData: {} | undefined;
+  airQualityIndex: number | undefined;
+
 
   // Get data if queried location found
-  onLocationFound(location: LocationObj) {
-    this.location = {...location}
-    console.log(this.location);
+  onLocationFound(location?: LocationObj) {
+    if (location) {
+      this.location = { ...location };
 
-    // Weather conditions
-    this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
-      res => {
-        this.weatherData = res;
-        console.log(res);
-      },
-    );
+      // Weather conditions
+      this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
+        res => {
+          this.weatherData = res;
+          console.log(res);
+        },
+      );
 
-    // Air quality
-    this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
-      res => {
-        this.airQualityIndex = res.current.european_aqi;
-      }
-    )
+      // Air quality
+      this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
+        res => {
+          this.airQualityIndex = res.current.european_aqi;
+        },
+      );
+    } else {
+      this.weatherData = undefined;
+      this.airQualityIndex = undefined;
+    }
+
   }
 
   // Get component-specific data
   getCurrentData() {
-    return this.weatherService.getCurrent(this.weatherData)
+    return this.weatherService.getCurrent(this.weatherData);
   }
 
   getHourlyData() {
-    return this.weatherService.getHourly(this.weatherData)
+    return this.weatherService.getHourly(this.weatherData);
   }
 
   getTodayData() {
-    return this.weatherService.getToday(this.weatherData)
+    return this.weatherService.getToday(this.weatherData);
   }
 
   getExtendedData() {
-    return this.weatherService.getExtended(this.weatherData)
+    return this.weatherService.getExtended(this.weatherData);
   }
 }

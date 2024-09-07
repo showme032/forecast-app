@@ -30,5 +30,4 @@ export class CurrentComponent {
     return `/assets/weather-icons/${this.current.weatherCode}.svg`;
   }
 
-  // currentDate = new Date();
 }
