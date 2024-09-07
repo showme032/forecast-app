@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { type Today } from '../app.model';
 import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
@@ -17,8 +17,8 @@ import { TodayService } from './today.services';
   styleUrl: './today.component.css',
 })
 export class TodayComponent {
-  @Input() today!: Today;
-  @Input() airQualityIndex!: any;
+  today = input.required<Today>();
+  airQualityIndex = input.required<number>();
 
   private todayService = inject(TodayService);
 
@@ -31,37 +31,37 @@ export class TodayComponent {
 
   // UV
   get uvMessage(): string[] {
-    return this.todayService.getUvMessage(this.today.uv);
+    return this.todayService.getUvMessage(this.today().uv);
   }
 
   // AIR PRESSURE
   get pressureMessage(): string {
-    return this.todayService.getPressureMessage(this.today.pressure);
+    return this.todayService.getPressureMessage(this.today().pressure);
   }
 
   // WIND
 
   // HUMIDITY
   get humidityMessage(): string {
-    return this.todayService.getHumidityMessage(this.today.dewPoint);
+    return this.todayService.getHumidityMessage(this.today().dewPoint);
   }
 
   // FEEL
   get subjectiveMessage(): string {
-    return this.todayService.getSubjectiveMessage(this.today.current, this.today.subjectiveTemp);
+    return this.todayService.getSubjectiveMessage(this.today().current, this.today().subjectiveTemp);
   }
 
   // VISIBILITY
   get visibilityMessage(): string {
-    return this.todayService.getVisibilityMessage(this.today.visibility);
+    return this.todayService.getVisibilityMessage(this.today().visibility);
   }
 
   // AQI
   get airColor() {
-    return `/assets/decorations/air-pollution.svg#${this.todayService.getAirColor(this.airQualityIndex)}`;
+    return `/assets/decorations/air-pollution.svg#${this.todayService.getAirColor(this.airQualityIndex())}`;
   }
 
   get airMessage() {
-    return this.todayService.getAirMessage(this.airQualityIndex);
+    return this.todayService.getAirMessage(this.airQualityIndex());
   }
 }

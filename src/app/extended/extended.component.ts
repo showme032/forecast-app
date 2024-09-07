@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Extended } from '../app.model';
 import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
 
@@ -15,7 +15,7 @@ import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
   styleUrl: './extended.component.css'
 })
 export class ExtendedComponent {
-  @Input() extended!: Extended[];
+  extended = input.required<Extended[]>();
 
   imagePath(code: number) {
     return `/assets/weather-icons/${code}.svg`;

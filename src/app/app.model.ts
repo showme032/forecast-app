@@ -35,6 +35,7 @@ export interface Hourly {
 }
 
 export interface Extended {
+  isToday: boolean,
   date: string,
   weatherCode: number,
   minTemperature: number,

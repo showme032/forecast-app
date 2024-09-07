@@ -4,7 +4,7 @@
     <app-search  (location)="onLocationFound($event)"/>
   </div>
   @if (weatherData && airQualityIndex) {
-    <div class="content-wrapper">
+    <div class="content-wrapper" [@animateContent]>
       <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
         <app-current [current]="getCurrentData()" [location]="location" />

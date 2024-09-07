@@ -6,16 +6,16 @@
   </div>
   <div class="current-data">
     <p class="bold location">
-      {{ location.name }},{{location.country}}
+      {{ location().name }},{{location().country}}
     </p>
     <p>
-      {{ current.temperature | number:'1.0-0' }}°
+      {{ current().temperature | number:'1.0-0' }}°
     </p>
     <p [innerHTML]="conditions">
     </p>
     <p>
-      <span class="bold">Lo:</span> {{ current.min | number:'1.0-0' }}°
-      <span class="bold">Hi:</span> {{ this.current.max | number:'1.0-0' }}°
+      <span class="bold">Lo:</span> {{ current().min | number:'1.0-0' }}°
+      <span class="bold">Hi:</span> {{ this.current().max | number:'1.0-0' }}°
     </p>
   </div>
 

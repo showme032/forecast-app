@@ -1,10 +1,9 @@
 <div class="extended-group">
   <h5 class="card-title extended-title">7-DAY FORECAST</h5>
-  <!--  use *ngFor instead of @for to keep track of iterations-->
-  <ng-container *ngFor="let day of extended; let i = index">
+  @for (day of extended(); track day.date){
     <div class="extended-card">
       <span class="forecast-day">
-        {{ i === 0 ? 'Now' : ((day.date | date: 'EE') ) }}:
+        {{ day.isToday === true ? 'Now' : ((day.date | date: 'EE') ) }}:
       </span>
       <div class="forecast">
         <span class="forecast-icon">
@@ -32,5 +31,5 @@
         </div>
       </div>
     </div>
-  </ng-container>
+  }
 </div>

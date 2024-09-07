@@ -8,12 +8,12 @@
       <img src="/assets/icons/sunset.svg"
            alt="sun-icon"
            class="card-heading-icon">
-      <h5>{{ today.event }}</h5>
+      <h5>{{ today().event }}</h5>
     </div>
-    <div class="value">{{ today.eventTime | date: 'HH:mm' }}</div>
+    <div class="value">{{ today().eventTime | date: 'HH:mm' }}</div>
     <p class="description">
-      {{ today.eventAfter[0] }}
-      {{ today.eventAfter[1] | date:'HH:mm' }}
+      {{ today().eventAfter[0] }}
+      {{ today().eventAfter[1] | date:'HH:mm' }}
     </p>
   </div>
 
@@ -27,13 +27,13 @@
     </div>
     <div class="graph-container">
       <span class="graph-value uv-value"
-            [style.left.%]="linearGraphic(today.uv, 0,
+            [style.left.%]="linearGraphic(today().uv, 0,
       10)">
-        {{ today.uv | number:'1.0-0' }}
+        {{ today().uv | number:'1.0-0' }}
       </span>
       <div class="bar-container">
         <div class="bar-fill"
-             [style.width.%]="linearGraphic(today.uv, 0, 10)"></div>
+             [style.width.%]="linearGraphic(today().uv, 0, 10)"></div>
       </div>
       <div class="bar-labels">
         <span>0</span>
@@ -53,11 +53,11 @@
     </div>
     <div class="graph-container">
       <span class="graph-value">
-        {{ today.pressure | number:'1.0-0' }} hPa
+        {{ today().pressure | number:'1.0-0' }} hPa
       </span>
       <div class="bar-container">
         <div class="bar-fill"
-             [style.width.%]="linearGraphic(today.pressure, 950, 1078)"></div>
+             [style.width.%]="linearGraphic(today().pressure, 950, 1078)"></div>
       </div>
       <div class="bar-labels">
         <span>lo</span>
@@ -80,10 +80,10 @@
       <div class="circle">
         <img src="/assets/decorations/arrow.svg" alt="Current conditions"
              class="arrow"
-             [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today.windDirection + 'deg)'}">
+             [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today().windDirection + 'deg)'}">
       </div>
     </div>
-    <p class="description">Speed: {{ today.windSpeed }} km/h</p>
+    <p class="description">Speed: {{ today().windSpeed }} km/h</p>
   </div>
 
   <!--  humidity  -->
@@ -96,7 +96,7 @@
       <h5>HUMIDITY</h5>
     </div>
     <div class="value">
-      {{ today.humidity }}%
+      {{ today().humidity }}%
     </div>
     <p class="description">{{ humidityMessage }}</p>
   </div>
@@ -110,7 +110,7 @@
       <h5>FEELS LIKE</h5>
     </div>
     <div class="value">
-      {{ today.subjectiveTemp }}°C
+      {{ today().subjectiveTemp }}°C
     </div>
     <p class="description">{{  subjectiveMessage }}</p>
   </div>
@@ -123,7 +123,7 @@
            class="card-heading-icon">
       <h5>VISIBILITY</h5>
     </div>
-    <div class="value">{{ today.visibility }} km</div>
+    <div class="value">{{ today().visibility }} km</div>
     <p class="description">{{ visibilityMessage }}</p>
   </div>
 
@@ -138,7 +138,7 @@
            class="card-heading-icon">
       <h5>AIR QUALITY</h5>
     </div>
-    <div class="value">{{ airQualityIndex }}</div>
+    <div class="value">{{ airQualityIndex() }}</div>
     <p class="description">{{ airMessage }}</p>
   </div>
 

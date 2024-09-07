@@ -1,7 +1,8 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchServices } from './search.services';
 import { LocationObj } from '../app.model';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-search',
@@ -9,14 +10,27 @@ import { LocationObj } from '../app.model';
   imports: [FormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
+  animations: [
+    trigger('appear', [
+      transition(':enter', [
+        style({ scale: 0 }),
+        animate('125ms ease-in-out', style({ scale: 1 }))
+      ]),
+      transition(':leave', [
+        style({ scale: 1 }),
+        animate('125ms ease-in-out', style({ scale: 0 }))
+      ])
+    ])
+  ]
 })
 export class SearchComponent {
   private searchService = inject(SearchServices);
-  @Output() location = new EventEmitter<LocationObj>();
+  location = output<LocationObj | null>()
+
   searchQuery = '';
   errorMessage: undefined | string;
 
-  onSubmit(form: HTMLFormElement) {
+  onSubmit(input: HTMLInputElement) {
     this.searchService.getLocationCoordinates(this.searchQuery).subscribe((res) => {
       if (res.results) {
         const locationObj: LocationObj = {
@@ -27,13 +41,14 @@ export class SearchComponent {
 
         };
 
-        form.reset();
+        input.value = '';
         this.errorMessage = undefined;
         this.location.emit(locationObj);
 
       } else {
-        this.location.emit();
-        form.reset();
+        this.location.emit(null);
+        input.value= '';
+        this.errorMessage = 'No Location Found';
         console.log(`No location for '${this.searchQuery}' query found`);
 
       }

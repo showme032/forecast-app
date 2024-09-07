@@ -23,6 +23,7 @@ export class WeatherServices {
     };
 
     return this.http.get<any>(baseUrl, { params });
+
   }
 
   // Get air quality index for given coordinates
@@ -34,6 +35,7 @@ export class WeatherServices {
       current: 'european_aqi',
       hourly: 'pm10,pm2_5',
       forecast_days: '1',
+
     };
 
     return this.http.get<any>(baseUrl, { params });
@@ -46,6 +48,7 @@ export class WeatherServices {
       weatherCode: data.current.weather_code,
       min: data.daily.temperature_2m_min[0],
       max: data.daily.temperature_2m_max[0],
+
     };
   };
 
@@ -56,9 +59,12 @@ export class WeatherServices {
       hourly.push({
         time: data.hourly.time[i],
         temperature: data.hourly.temperature_2m[i],
+
       });
     }
+
     return hourly;
+
   }
 
   // Return today's weather data
@@ -77,6 +83,7 @@ export class WeatherServices {
       subjectiveTemp: data.current.apparent_temperature,
       current: data.hourly.temperature_2m[this.hour],
     };
+
   }
 
   // Return weather data for 7 days
@@ -84,18 +91,22 @@ export class WeatherServices {
     const extended = [];
     for (let i = 0; i < 7; i += 1) {
       let day: Extended = {
+        isToday: i === 0 ? true : false,
         date: data.daily.time[i],
         weatherCode: data.daily.weather_code[i],
         minTemperature: data.daily.temperature_2m_min[i],
         maxTemperature: data.daily.temperature_2m_max[i],
         uvMax: data.daily.uv_index_max[i],
         precipitation: data.daily.precipitation_probability_max[i],
+
       };
 
       extended.push(day);
+
     }
 
     return extended;
+
   }
 
   // Return weather conditions according to input WMO code
@@ -127,8 +138,10 @@ export class WeatherServices {
       95: 'Thunderstorm',
       96: 'Hailstorm',
       99: 'Heavy Hailstorm',
+
     };
 
     return codes[code];
+
   }
 }

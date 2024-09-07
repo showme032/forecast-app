@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(form)" #form>
+<form (ngSubmit)="onSubmit(queryInput)" #form>
   <input placeholder="Location"
          type="text"
          id="search-query"
@@ -9,7 +9,7 @@
          [(ngModel)]="searchQuery">
 </form>
 @if (errorMessage) {
-  <div class="no-location">
+  <div class="no-location" [@appear]>
     {{ errorMessage }}
   </div>
 }

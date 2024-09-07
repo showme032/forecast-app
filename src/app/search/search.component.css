@@ -73,4 +73,5 @@ form {
     font-size: 1.3rem;
     font-weight: var(--font-normal);
     text-align: center;
+    transition: opacity 1s ease-in-out;
 }

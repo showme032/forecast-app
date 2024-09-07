@@ -3,8 +3,5 @@ div {
   border: var(--border);
   color: var(--color-foreground);
   box-shadow: var(--shadow-small);
-
-  &:hover {
-    /*background-color: hsl(240, 5%, 96%);*/
-  }
+  
 }

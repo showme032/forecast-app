@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CardComponent } from '../today/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Hourly } from '../app.model';
@@ -15,5 +15,5 @@ import { Hourly } from '../app.model';
   styleUrl: './hourly.component.css'
 })
 export class HourlyComponent {
-  @Input() hourly!: Hourly[];
+  hourly = input.required<Hourly[]>();
 }
