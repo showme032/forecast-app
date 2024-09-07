@@ -17,7 +17,6 @@ import { WeatherServices } from '../weather.services';
   styleUrl: './current.component.css',
 })
 export class CurrentComponent {
-  // Inject the service
   private weatherService = inject(WeatherServices);
 
   current = input.required<Current>();
