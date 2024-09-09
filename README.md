@@ -1,8 +1,9 @@
 # ForecastApp
 
-Web-app for displaying current, today's and extended weather forecast for a searched location. Data is retrieved via 
-Open-Meteo's 
-[Geocoding](https://open-meteo.com/en/docs/geocoding-api),
+Web-app for displaying current, today's and extended weather forecast for a searched location. Data is retrieved via
+Geocodify's 
+[Geocoding](https://geocodify.com/)
+and Open-Meteo's
 [Weather Forecast](https://open-meteo.com/en/docs) and
 [Air Quality](https://open-meteo.com/en/docs/air-quality-api) APIs.<br/>
 
@@ -21,6 +22,9 @@ installed, app can be run in developement mode via executing: <br/>
 npm i
 ng serve
 ```
+Note: For local deployment, free [Geocodify](https://geocodify.com/register) API key must be placed in 
+*environment.ts* as 
+'geoApiKey: [API key]'.
 
 # Credits
 Base weather icons come from
