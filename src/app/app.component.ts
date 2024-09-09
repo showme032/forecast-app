@@ -21,7 +21,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   animations: [
-    trigger('animateContent', [
+    trigger('animateElement', [
       transition(':enter', [
         style({ opacity: 0 }),
         animate('125ms ease-in-out', style({ opacity: 1 }))
@@ -38,6 +38,7 @@ export class AppComponent {
   private weatherService = inject(WeatherServices);
 
   location!: LocationObj;
+  // ok
   weatherData: {} | undefined;
   airQualityIndex: number | undefined;
 

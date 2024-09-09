@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit(queryInput)" #form>
+<form (ngSubmit)="onSubmit(queryInput)"
+      #form>
   <input placeholder="Location"
          type="text"
          id="search-query"
@@ -7,9 +8,13 @@
          spellcheck="false"
          #queryInput
          [(ngModel)]="searchQuery">
+  <img class="location-button"
+       src="/assets/icons/location.svg"
+        (click)="onGeoLocate()">
 </form>
 @if (errorMessage) {
-  <div class="no-location" [@appear]>
+  <div class="no-location"
+       [@appear]>
     {{ errorMessage }}
   </div>
 }

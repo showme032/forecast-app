@@ -1,10 +1,10 @@
 <main>
   <!--  Location search-->
   <div class="searchbar-wrapper">
-    <app-search  (location)="onLocationFound($event)"/>
+    <app-search  (locationEmitter)="onLocationFound($event)"/>
   </div>
   @if (weatherData && airQualityIndex) {
-    <div class="content-wrapper" [@animateContent]>
+    <div class="content-wrapper" [@animateElement]>
       <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
         <app-current [current]="getCurrentData()" [location]="location" />
