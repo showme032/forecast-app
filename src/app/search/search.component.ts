@@ -25,35 +25,40 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class SearchComponent {
   private searchService = inject(SearchServices);
+
   locationEmitter = output<LocationObj | null>();
   locationObj: LocationObj | undefined;
-
-  searchQuery = '';
+  searchQuery: string | undefined;
   errorMessage: undefined | string;
+  loading = false;
 
   // Get coordinates based on search query
-  onSubmit(input: HTMLInputElement) {
-    this.searchService.getLocationCoordinates(this.searchQuery).subscribe(res => {
-      if (res.response.features.length != 0) {
-        this.locationObj = {
-          lat: res.response.features[0].geometry.coordinates[1],
-          lng: res.response.features[0].geometry.coordinates[0],
-          name: res.response.features[0].properties.name,
-          country: res.response.features[0].properties.country_code,
-        };
-        console.log(this.locationObj);
+  onSubmit() {
+    if (this.searchQuery) {
+      this.loading = true;
+      this.searchService.getLocationCoordinates(this.searchQuery).subscribe(res => {
+        if (res.response.features.length != 0) {
+          this.locationObj = {
+            lat: res.response.features[0].geometry.coordinates[1],
+            lng: res.response.features[0].geometry.coordinates[0],
+            name: res.response.features[0].properties.name,
+            country: res.response.features[0].properties.country_code,
+          };
+          console.log(this.locationObj);
 
-        input.value = '';
-        this.locationEmitter.emit(this.locationObj);
-        this.errorMessage = undefined;
+          this.locationEmitter.emit(this.locationObj);
+          this.searchQuery = undefined;
+          this.errorMessage = undefined;
+        } else {
+          this.locationEmitter.emit(null);
+          this.searchQuery = undefined;
+          this.errorMessage = 'No Location Found';
+        }
 
-      } else {
-        input.value = '';
-        this.locationEmitter.emit(null);
-        this.errorMessage = 'No Location Found';
-      }
+        this.loading = false;
+      });
+    }
 
-    });
   }
 
   // Get location data based on HTML geoLocation API
@@ -66,13 +71,13 @@ export class SearchComponent {
       this.errorMessage = 'Geolocation not supported';
     }
 
+    // Success callback
     const geoSuccess = (position: GeolocationPosition) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
       this.searchService.getCoordinatesLocation(lat, lng).subscribe(res => {
-        if (res) {
-          console.log(res);
+        if (res.response.features[0]) {
           this.locationObj = {
             lat,
             lng,
@@ -89,6 +94,7 @@ export class SearchComponent {
       });
     };
 
+    // Error callback
     const geoError = (error: any) => {
       this.errorMessage = error.message;
     };

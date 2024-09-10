@@ -24,26 +24,25 @@ import { animate, style, transition, trigger } from '@angular/animations';
     trigger('animateElement', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('125ms ease-in-out', style({ opacity: 1 }))
+        animate('125ms ease-in-out', style({ opacity: 1 })),
       ]),
       transition(':leave', [
         style({ opacity: 1 }),
-        animate('125ms ease-in-out', style({ opacity: 0 }))
-      ])
-    ])
-  ]
+        animate('125ms ease-in-out', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class AppComponent {
   // Inject the service
   private weatherService = inject(WeatherServices);
 
   location!: LocationObj;
-  // ok
   weatherData: {} | undefined;
   airQualityIndex: number | undefined;
 
 
-  // Get data if queried location found
+  // Get data if queried location found otherwise clear data
   onLocationFound(location?: LocationObj | null) {
     if (location) {
       this.location = { ...location };
@@ -52,8 +51,6 @@ export class AppComponent {
       this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
         res => {
           this.weatherData = res;
-          console.log(res);
-
         },
       );
 
@@ -61,13 +58,11 @@ export class AppComponent {
       this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
         res => {
           this.airQualityIndex = res.current.european_aqi;
-
         },
       );
     } else {
       this.weatherData = undefined;
       this.airQualityIndex = undefined;
-
     }
   }
 

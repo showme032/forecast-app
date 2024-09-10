@@ -1,28 +1,16 @@
 :host {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--spacing-large);
     position: relative;
 }
+
 form {
     margin: auto;
     width: 100%;
     position: relative;
     transition: var(--transition-medium);
-    
-    &:before {
-        content: '';
-        position: absolute;
-        background-image: url('/assets/icons/search.svg');
-        background-size: contain;
-        width: 1.2rem;
-        height: 1.2rem;
-        left: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: var(--transition-short);
-    }
-    
     
     &:has(> #search-query:focus) {
         transform: scale(1.03);
@@ -62,6 +50,19 @@ form {
     }
 }
 
+.search-button {
+    position: absolute;
+    width: 1.3rem;
+    height: 1.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14px;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .location-button {
     position: absolute;
     width: 1.3rem;
@@ -75,8 +76,18 @@ form {
     }
 }
 
+.loading {
+    align-self: center;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    border: 0.4rem solid var(--color-background-muted);
+    border-top: 0.4rem solid var(--color-foreground);
+    border-left: 0.4rem solid var(--color-foreground);
+    animation: rotate 0.5s linear infinite;
+}
+
 .no-location {
-    /*grid-area: current;*/
     width: 100%;
     border: var(--border-lighter);
     border-radius: var(--radius-medium);
@@ -88,4 +99,14 @@ form {
     font-weight: var(--font-normal);
     text-align: center;
     transition: opacity 1s ease-in-out;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

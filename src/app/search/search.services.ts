@@ -7,6 +7,10 @@ import {environment} from '../../environments/environment';
 export class SearchServices {
   constructor(private http: HttpClient) {
   }
+  //
+  // getLocationObj(response) {
+  //
+  // }
 
   // Get location coordinates based on query
   getLocationCoordinates(location: string): Observable<any> {

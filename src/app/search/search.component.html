@@ -1,17 +1,23 @@
-<form (ngSubmit)="onSubmit(queryInput)"
-      #form>
+<form (ngSubmit)="onSubmit()">
   <input placeholder="Location"
          type="text"
          id="search-query"
          name="search-query"
          autocomplete="off"
          spellcheck="false"
-         #queryInput
          [(ngModel)]="searchQuery">
+  <img class="search-button"
+       src="/assets/icons/search.svg"
+       alt="search-button"
+       (click)="onSubmit()">
   <img class="location-button"
        src="/assets/icons/location.svg"
-        (click)="onGeoLocate()">
+       alt="location-lookup"
+       (click)="onGeoLocate()">
 </form>
+@if (loading) {
+  <div class="loading"></div>
+}
 @if (errorMessage) {
   <div class="no-location"
        [@appear]>
