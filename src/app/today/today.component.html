@@ -1,145 +1,212 @@
-<!-- TODO: ADD SOME GRAPHICAL PRESENTATIONS-->
-
 <div class="today-group">
   <!--  sunrise/sunset  -->
   <div class="today-card sun">
-    <img src="/assets/decorations/sun.svg" class="card-decoration" alt="sun icon">
-    <div class="card-heading">
-      <img src="/assets/icons/sunset.svg"
-           alt="sun-icon"
-           class="card-heading-icon">
-      <h5>{{ today().event }}</h5>
+    <div class="card-content">
+      <img src="/assets/decorations/sun.svg"
+           class="card-decoration"
+           alt="sun icon">
+      <div class="card-heading">
+        <img src="/assets/icons/sunset.svg"
+             alt="sun-icon"
+             class="card-heading-icon">
+        <h5>{{ today().event }}</h5>
+      </div>
+      <div class="value">{{ today().eventTime | date: 'HH:mm' }}</div>
+      <p class="description">
+        {{ today().eventAfter[0] }}
+        {{ today().eventAfter[1] | date:'HH:mm' }}
+      </p>
     </div>
-    <div class="value">{{ today().eventTime | date: 'HH:mm' }}</div>
-    <p class="description">
-      {{ today().eventAfter[0] }}
-      {{ today().eventAfter[1] | date:'HH:mm' }}
-    </p>
+    <div class="card-info">
+      <p>
+        The sun is at it's highest <span class="heavy">at noon</span>. <br>The temperature is at it lowest
+        <span class="heavy">right before the sunrise</span>.
+      </p>
+    </div>
   </div>
 
   <!--  uv index  -->
   <div class="today-card uv-index">
-    <div class="card-heading">
-      <img src="/assets/icons/uv.svg"
-           alt="uv index"
-           class="card-heading-icon">
-      <h5>UV INDEX</h5>
-    </div>
-    <div class="graph-container">
-      <span class="graph-value uv-value"
-            [style.left.%]="linearGraphic(today().uv, 0,
-      10)">
-        {{ today().uv | number:'1.0-0' }}
-      </span>
-      <div class="bar-container">
-        <div class="bar-fill"
-             [style.width.%]="linearGraphic(today().uv, 0, 10)"></div>
+    <div class="card-content">
+      <div class="card-heading">
+        <img src="/assets/icons/uv.svg"
+             alt="uv index"
+             class="card-heading-icon">
+        <h5>UV INDEX</h5>
       </div>
-      <div class="bar-labels">
-        <span>0</span>
-        <span>10</span>
+      <div class="graph-container">
+          <span class="graph-value uv-value">
+            {{ today().uv | number:'1.0-0' }}
+          </span>
+        <div class="bar-container">
+          <div class="bar-fill"
+               [style.width.%]="linearGraphic(today().uv, 0, 10)"></div>
+        </div>
+        <div class="bar-labels">
+          <span>0</span>
+          <span>10</span>
+        </div>
       </div>
+      <p class="description">{{ uvMessage[1] }}</p>
     </div>
-    <p class="description">{{ uvMessage[1] }}</p>
+    <div class="card-info">
+      <p>
+        A UV index over <span class="heavy">7</span> means strong radiation. <br> Wear layered protection and
+        <span class="heavy">minimize exposure</span> to avoid burns.
+      </p>
+    </div>
   </div>
 
   <!--  pressure  -->
   <div class="today-card air-pressure">
-    <div class="card-heading">
-      <img src="/assets/icons/pressure.svg"
-           alt="air-pressure"
-           class="card-heading-icon">
-      <h5>AIR PRESSURE</h5>
-    </div>
-    <div class="graph-container">
-      <span class="graph-value">
-        {{ today().pressure | number:'1.0-0' }} hPa
-      </span>
-      <div class="bar-container">
-        <div class="bar-fill"
-             [style.width.%]="linearGraphic(today().pressure, 950, 1078)"></div>
+    <div class="card-content">
+      <div class="card-heading">
+        <img src="/assets/icons/pressure.svg"
+             alt="air-pressure"
+             class="card-heading-icon">
+        <h5>AIR PRESSURE</h5>
       </div>
-      <div class="bar-labels">
-        <span>lo</span>
-        <span>hi</span>
+      <div class="graph-container">
+          <span class="graph-value">
+            {{ today().pressure | number:'1.0-0' }} hPa
+          </span>
+        <div class="bar-container">
+          <div class="bar-fill"
+               [style.width.%]="linearGraphic(today().pressure, 950, 1078)"></div>
+        </div>
+        <div class="bar-labels">
+          <span>lo</span>
+          <span>hi</span>
+        </div>
       </div>
+      <p class="description">{{ pressureMessage }}</p>
     </div>
-    <p class="description">{{ pressureMessage }}</p>
+    <div class="card-info">
+      <p>
+        Air pressure affects the weather: while the<span class="heavy"> low</span> usually brings <span class="heavy">rain</span>,
+        the
+        <span class="heavy">high</span> implies <span class="heavy">stable weather</span> and <span class="heavy">clear skies</span>.
+      </p>
+    </div>
   </div>
 
   <!--  wind  -->
   <div class="today-card wind">
-    <img src="/assets/decorations/compass.svg" class="card-decoration compass" alt="humidity icon">
-    <div class="card-heading">
-      <img src="/assets/icons/wind.svg"
-           alt="wind-icon"
-           class="card-heading-icon">
-      <h5>WIND</h5>
-    </div>
-    <div class="graph-container">
-      <div class="circle">
-        <img src="/assets/decorations/arrow.svg" alt="Current conditions"
-             class="arrow"
-             [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today().windDirection + 'deg)'}">
+    <div class="card-content">
+      <img src="/assets/decorations/compass.svg"
+           class="card-decoration compass"
+           alt="humidity icon">
+      <div class="card-heading">
+        <img src="/assets/icons/wind.svg"
+             alt="wind-icon"
+             class="card-heading-icon">
+        <h5>WIND</h5>
       </div>
+      <div class="graph-container">
+        <div class="circle">
+          <img src="/assets/decorations/arrow.svg"
+               alt="Current conditions"
+               class="arrow"
+               [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today().windDirection + 'deg)'}">
+        </div>
+      </div>
+      <p class="description">Speed: {{ today().windSpeed }} km/h</p>
     </div>
-    <p class="description">Speed: {{ today().windSpeed }} km/h</p>
+    <div class="card-info">
+      <p>
+        Winds blowing from the <span class="heavy">north</span> cools things down. <br><span class="heavy">
+        Southern</span> often brings warmth and humid air.
+      </p>
+    </div>
   </div>
 
   <!--  humidity  -->
   <div class="today-card humidity">
-    <img src="/assets/decorations/humidity.svg" class="card-decoration" alt="humidity icon">
-    <div class="card-heading">
-      <img src="/assets/icons/humidity.svg"
-           alt="humidity-icon"
-           class="card-heading-icon">
-      <h5>HUMIDITY</h5>
+    <div class="card-content">
+      <img src="/assets/decorations/humidity.svg"
+           class="card-decoration"
+           alt="humidity icon">
+      <div class="card-heading">
+        <img src="/assets/icons/humidity.svg"
+             alt="humidity-icon"
+             class="card-heading-icon">
+        <h5>HUMIDITY</h5>
+      </div>
+      <div class="value">
+        {{ today().humidity }}%
+      </div>
+      <p class="description">{{ humidityMessage }}</p>
     </div>
-    <div class="value">
-      {{ today().humidity }}%
+    <div class="card-info">
+      <p>
+        Humidity raising above <span class="heavy">65%</span> makes the air less and less comfortable. <br>Body has
+        trouble
+        cooling down.
+      </p>
     </div>
-    <p class="description">{{ humidityMessage }}</p>
   </div>
 
   <!--  subj feel  -->
   <div class="today-card subjective-feel">
-    <div class="card-heading">
-      <img src="/assets/icons/feel.svg"
-           alt="feels-like-icon"
-           class="card-heading-icon">
-      <h5>FEELS LIKE</h5>
+    <div class="card-content">
+      <div class="card-heading">
+        <img src="/assets/icons/feel.svg"
+             alt="feels-like-icon"
+             class="card-heading-icon">
+        <h5>FEELS LIKE</h5>
+      </div>
+      <div class="value">
+        {{ today().subjectiveTemp }}°C
+      </div>
+      <p class="description">{{ subjectiveMessage }}</p>
     </div>
-    <div class="value">
-      {{ today().subjectiveTemp }}°C
+    <div class="card-info">
+      <p>
+        Combines actual air <span class="heavy">temperature</span>, <span class="heavy">humidity</span>, and
+        <span class="heavy">wind</span> to reflect on how hot or cold it feels like.
     </div>
-    <p class="description">{{  subjectiveMessage }}</p>
   </div>
 
   <!--  visibility  -->
   <div class="today-card visibility">
-    <div class="card-heading">
-      <img src="/assets/icons/visibility.svg"
-           alt="visibility-icon"
-           class="card-heading-icon">
-      <h5>VISIBILITY</h5>
+    <div class="card-content">
+      <div class="card-heading">
+        <img src="/assets/icons/visibility.svg"
+             alt="visibility-icon"
+             class="card-heading-icon">
+        <h5>VISIBILITY</h5>
+      </div>
+      <div class="value">{{ today().visibility }} km</div>
+      <p class="description">{{ visibilityMessage }}</p>
     </div>
-    <div class="value">{{ today().visibility }} km</div>
-    <p class="description">{{ visibilityMessage }}</p>
+    <div class="card-info">
+      <p>
+        Poor visibility, caused by <span class="heavy">fog</span>, <span class="heavy">smog</span> or
+        <span class="heavy">haze</span>, reduces how far you see. It can impact driving conditions greatly.
+      </p>
+    </div>
   </div>
 
   <!--  air-quality index  -->
   <div class="today-card air-quality">
-    <svg class="card-decoration air-glow">
-      <use [attr.xlink:href]="airColor"></use>
-    </svg>
-    <div class="card-heading">
-      <img src="./../../assets/icons/air.svg"
-           alt="air-quality-icon"
-           class="card-heading-icon">
-      <h5>AIR QUALITY</h5>
+    <div class="card-content">
+      <svg class="card-decoration air-glow">
+        <use [attr.xlink:href]="airColor"></use>
+      </svg>
+      <div class="card-heading">
+        <img src="./../../assets/icons/air.svg"
+             alt="air-quality-icon"
+             class="card-heading-icon">
+        <h5>AIR QUALITY</h5>
+      </div>
+      <div class="value">{{ airQualityIndex() }}</div>
+      <p class="description">{{ airMessage }}</p>
     </div>
-    <div class="value">{{ airQualityIndex() }}</div>
-    <p class="description">{{ airMessage }}</p>
+    <div class="card-info">
+      <p>
+        AQI index <span class="heavy">above 40</span> means air pollution can be <span class="heavy">harmful
+      </span>, especially to more sensitive groups.
+      </p>
+    </div>
   </div>
-
 </div>

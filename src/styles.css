@@ -30,6 +30,7 @@
     --font-normal: 400;
     --font-emphasized: 500;
     --font-bold: 700;
+    --font-heavy: 800;
     
     scroll-behavior: smooth;
     
@@ -50,4 +51,7 @@ h5 {
 }
 .bold {
     font-weight: var(--font-bold);
+}
+.heavy {
+    font-weight: var(--font-heavy);
 }

@@ -81,9 +81,8 @@ form {
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    border: 0.4rem solid var(--color-background-muted);
-    border-top: 0.4rem solid var(--color-foreground);
-    border-left: 0.4rem solid var(--color-foreground);
+    border: 0.35rem solid var(--color-foreground);
+    border-top: 0.35rem solid var(--color-background-muted);
     animation: rotate 0.5s linear infinite;
 }
 

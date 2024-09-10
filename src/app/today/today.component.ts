@@ -1,8 +1,9 @@
 import { Component, inject, input } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { type Today } from '../app.model';
-import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-today',
@@ -12,6 +13,8 @@ import { TodayService } from './today.services';
     DatePipe,
     DecimalPipe,
     NgStyle,
+    NgOptimizedImage,
+    NgClass,
   ],
   templateUrl: './today.component.html',
   styleUrl: './today.component.css',
@@ -19,7 +22,6 @@ import { TodayService } from './today.services';
 export class TodayComponent {
   today = input.required<Today>();
   airQualityIndex = input.required<number>();
-
   private todayService = inject(TodayService);
 
   linearGraphic(val: number, min: number, max: number): number {
