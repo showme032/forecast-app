@@ -20,16 +20,23 @@ import { NgOptimizedImage } from '@angular/common'
   styleUrl: './today.component.css',
 })
 export class TodayComponent {
+  private todayService = inject(TodayService);
   today = input.required<Today>();
   airQualityIndex = input.required<number>();
-  private todayService = inject(TodayService);
+
+  onCardClick(card: HTMLElement) {
+    if (card.classList.contains('clicked')) {
+      // Remove class or attribute
+      card.classList.remove('clicked');
+    } else {
+      // Add class or attribute
+      card.classList.add('clicked');
+    }
+  }
 
   linearGraphic(val: number, min: number, max: number): number {
     return (val - min) / (max - min) * 100;
   }
-
-  // SUN
-
 
   // UV
   get uvMessage(): string[] {
@@ -48,7 +55,7 @@ export class TodayComponent {
     return this.todayService.getHumidityMessage(this.today().dewPoint);
   }
 
-  // FEEL
+  // SUBJECTIVE FEEL
   get subjectiveMessage(): string {
     return this.todayService.getSubjectiveMessage(this.today().current, this.today().subjectiveTemp);
   }

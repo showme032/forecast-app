@@ -44,17 +44,16 @@ export class SearchComponent {
             name: res.response.features[0].properties.name,
             country: res.response.features[0].properties.country_code,
           };
-          console.log(this.locationObj);
 
           this.locationEmitter.emit(this.locationObj);
-          this.searchQuery = undefined;
           this.errorMessage = undefined;
+
         } else {
           this.locationEmitter.emit(null);
-          this.searchQuery = undefined;
           this.errorMessage = 'No Location Found';
         }
 
+        this.searchQuery = undefined;
         this.loading = false;
       });
     }

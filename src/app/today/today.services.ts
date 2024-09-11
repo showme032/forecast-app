@@ -19,13 +19,13 @@ export class TodayService {
     if (index < 1000) {
       return 'Unsettled weather.';
     } else if (index < 1010) {
-      return 'Conditions for rain';
+      return 'Rain might fall';
     } else if (index < 1020) {
       return 'Fair conditions';
     } else if (index < 1030) {
       return 'Sunny, dry conditions';
     }
-    return 'Stable sunny conditions';
+    return 'Stable conditions';
   }
 
   // Visibility

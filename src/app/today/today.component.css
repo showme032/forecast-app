@@ -20,15 +20,19 @@
     background-color: var(--color-background);
     
     &:hover {
-        & > .card-content {
-            transform: translateX(-100%);
-            transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
-        }
-        
-        & > .card-info {
-            transform: translateX(0);
-            transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
-        }
+        cursor: pointer;
+    }
+}
+
+.clicked {
+    & > .card-content {
+        transform: translateX(-105%);
+        transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
+    }
+    
+    & > .card-info {
+        transform: translateX(0);
+        transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
     }
 }
 
@@ -59,9 +63,14 @@
     align-items: center;
     
     & > p {
+        line-height: 1.1;
         font-size: 0.8rem;
         font-weight: var(--font-emphasized);
-        text-align: justify;
+        text-align: justify-all;
+    }
+    
+    & span {
+        line-height: 1.1;
     }
 }
 

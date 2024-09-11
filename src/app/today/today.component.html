@@ -1,6 +1,8 @@
 <div class="today-group">
   <!--  sunrise/sunset  -->
-  <div class="today-card sun">
+  <div class="today-card sun"
+       #sun
+       (click)="onCardClick(sun)">
     <div class="card-content">
       <img src="/assets/decorations/sun.svg"
            class="card-decoration"
@@ -19,14 +21,16 @@
     </div>
     <div class="card-info">
       <p>
-        The sun is at it's highest <span class="heavy">at noon</span>. <br>The temperature is at it lowest
+        The sun is at it's highest <span class="heavy">at noon</span>. The temperature is at it lowest
         <span class="heavy">right before the sunrise</span>.
       </p>
     </div>
   </div>
 
   <!--  uv index  -->
-  <div class="today-card uv-index">
+  <div class="today-card uv-index"
+       #uv
+       (click)="onCardClick(uv)">
     <div class="card-content">
       <div class="card-heading">
         <img src="/assets/icons/uv.svg"
@@ -35,9 +39,9 @@
         <h5>UV INDEX</h5>
       </div>
       <div class="graph-container">
-          <span class="graph-value uv-value">
-            {{ today().uv | number:'1.0-0' }}
-          </span>
+            <span class="graph-value uv-value">
+              {{ today().uv | number:'1.0-0' }}
+            </span>
         <div class="bar-container">
           <div class="bar-fill"
                [style.width.%]="linearGraphic(today().uv, 0, 10)"></div>
@@ -51,14 +55,16 @@
     </div>
     <div class="card-info">
       <p>
-        A UV index over <span class="heavy">7</span> means strong radiation. <br> Wear layered protection and
-        <span class="heavy">minimize exposure</span> to avoid burns.
+        UV index shows the amount of radiation. <br> <span class="heavy">Wear protection</span> in layers and
+        <span class="heavy">reduce exposure</span> accordingly.
       </p>
     </div>
   </div>
 
   <!--  pressure  -->
-  <div class="today-card air-pressure">
+  <div class="today-card air-pressure"
+       #pressure
+       (click)="onCardClick(pressure)">
     <div class="card-content">
       <div class="card-heading">
         <img src="/assets/icons/pressure.svg"
@@ -67,9 +73,9 @@
         <h5>AIR PRESSURE</h5>
       </div>
       <div class="graph-container">
-          <span class="graph-value">
-            {{ today().pressure | number:'1.0-0' }} hPa
-          </span>
+            <span class="graph-value">
+              {{ today().pressure | number:'1.0-0' }} hPa
+            </span>
         <div class="bar-container">
           <div class="bar-fill"
                [style.width.%]="linearGraphic(today().pressure, 950, 1078)"></div>
@@ -84,14 +90,16 @@
     <div class="card-info">
       <p>
         Air pressure affects the weather: while the<span class="heavy"> low</span> usually brings <span class="heavy">rain</span>,
-        the
-        <span class="heavy">high</span> implies <span class="heavy">stable weather</span> and <span class="heavy">clear skies</span>.
+        <span class="heavy">high</span> means <span class="heavy">stable weather</span> and <span
+        class="heavy">clear skies</span>.
       </p>
     </div>
   </div>
 
   <!--  wind  -->
-  <div class="today-card wind">
+  <div class="today-card wind"
+       #wind
+       (click)="onCardClick(wind)">
     <div class="card-content">
       <img src="/assets/decorations/compass.svg"
            class="card-decoration compass"
@@ -114,14 +122,16 @@
     </div>
     <div class="card-info">
       <p>
-        Winds blowing from the <span class="heavy">north</span> cools things down. <br><span class="heavy">
-        Southern</span> often brings warmth and humid air.
+        Winds blowing from the <span class="heavy">north</span> cools things down.<span class="heavy"> Southern
+      </span> often brings warmth and humid air.
       </p>
     </div>
   </div>
 
   <!--  humidity  -->
-  <div class="today-card humidity">
+  <div class="today-card humidity"
+       #humidity
+       (click)="onCardClick(humidity)">
     <div class="card-content">
       <img src="/assets/decorations/humidity.svg"
            class="card-decoration"
@@ -139,7 +149,7 @@
     </div>
     <div class="card-info">
       <p>
-        Humidity raising above <span class="heavy">65%</span> makes the air less and less comfortable. <br>Body has
+        Humidity raising above <span class="heavy">65%</span> makes the air less and less pleasant. <br>Body has
         trouble
         cooling down.
       </p>
@@ -147,7 +157,9 @@
   </div>
 
   <!--  subj feel  -->
-  <div class="today-card subjective-feel">
+  <div class="today-card subjective-feel"
+       #subjective
+       (click)="onCardClick(subjective)">
     <div class="card-content">
       <div class="card-heading">
         <img src="/assets/icons/feel.svg"
@@ -162,13 +174,15 @@
     </div>
     <div class="card-info">
       <p>
-        Combines actual air <span class="heavy">temperature</span>, <span class="heavy">humidity</span>, and
-        <span class="heavy">wind</span> to reflect on how hot or cold it feels like.
+        Combines actual air <span class="heavy">temperature</span>, <span class="heavy">wind</span>, and
+        <span class="heavy">humidity</span> to reflect on how hot or cold it feels.
     </div>
   </div>
 
   <!--  visibility  -->
-  <div class="today-card visibility">
+  <div class="today-card visibility"
+       #visibility
+       (click)="onCardClick(visibility)">
     <div class="card-content">
       <div class="card-heading">
         <img src="/assets/icons/visibility.svg"
@@ -182,13 +196,15 @@
     <div class="card-info">
       <p>
         Poor visibility, caused by <span class="heavy">fog</span>, <span class="heavy">smog</span> or
-        <span class="heavy">haze</span>, reduces how far you see. It can impact driving conditions greatly.
+        <span class="heavy">haze</span> can impact driving conditions greatly.
       </p>
     </div>
   </div>
 
   <!--  air-quality index  -->
-  <div class="today-card air-quality">
+  <div class="today-card air-quality"
+       #aqi
+       (click)="onCardClick(aqi)">
     <div class="card-content">
       <svg class="card-decoration air-glow">
         <use [attr.xlink:href]="airColor"></use>
@@ -204,8 +220,8 @@
     </div>
     <div class="card-info">
       <p>
-        AQI index <span class="heavy">above 40</span> means air pollution can be <span class="heavy">harmful
-      </span>, especially to more sensitive groups.
+        AQI <span class="heavy">above 40</span> means air pollution can be <span class="heavy">harmful</span>,
+        especially to more sensitive groups.
       </p>
     </div>
   </div>
