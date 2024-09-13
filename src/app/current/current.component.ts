@@ -1,5 +1,10 @@
 import { Component, inject, input } from '@angular/core';
-import { DatePipe, DecimalPipe, TitleCasePipe } from '@angular/common';
+import {
+  DatePipe,
+  DecimalPipe,
+  NgOptimizedImage, NgStyle,
+  TitleCasePipe,
+} from '@angular/common';
 import { CardComponent } from '../today/card/card.component';
 import { Current, LocationObj } from '../app.model';
 import { WeatherServices } from '../weather.services';
@@ -12,6 +17,8 @@ import { WeatherServices } from '../weather.services';
     CardComponent,
     DecimalPipe,
     DatePipe,
+    NgOptimizedImage,
+    NgStyle,
   ],
   templateUrl: './current.component.html',
   styleUrl: './current.component.css',

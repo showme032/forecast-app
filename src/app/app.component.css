@@ -6,6 +6,17 @@ main {
     margin-bottom: 2rem;
 }
 
+.loading-backdrop {
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    background-color: hsl(240, 32%, 40%, 0.05);
+    backdrop-filter: blur(16px);
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
 .content-wrapper {
     width: 60%;
     border-radius: var(--radius-medium);

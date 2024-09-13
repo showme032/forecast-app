@@ -34,10 +34,12 @@
     
     scroll-behavior: smooth;
     
+    --bezier: cubic-bezier(0.2, 0, 0.4, 1);
+    
 }
 
 body {
-    font-family: 'JetBrains Mono','Inter', sans-serif;
+    font-family: 'JetBrains Mono', 'Inter', sans-serif;
     color: var(--color-foreground);
     background-color: var(--color-background);
 }
@@ -49,9 +51,11 @@ h5 {
 .emphasized {
     font-weight: var(--font-emphasized);
 }
+
 .bold {
     font-weight: var(--font-bold);
 }
+
 .heavy {
     font-weight: var(--font-heavy);
 }

@@ -15,12 +15,8 @@
        alt="location-lookup"
        (click)="onGeoLocate()">
 </form>
-@if (loading) {
-  <div class="loading"></div>
-}
-@if (errorMessage) {
-  <div class="no-location"
-       [@appear]>
-    {{ errorMessage }}
+@if (errorMessage()) {
+  <div class="no-location">
+    {{ errorMessage() }}
   </div>
 }

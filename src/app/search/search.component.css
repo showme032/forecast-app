@@ -11,6 +11,7 @@ form {
     width: 100%;
     position: relative;
     transition: var(--transition-medium);
+    z-index: 1000;
     
     &:has(> #search-query:focus) {
         transform: scale(1.03);
@@ -76,16 +77,6 @@ form {
     }
 }
 
-.loading {
-    align-self: center;
-    border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-    border: 0.35rem solid var(--color-foreground);
-    border-top: 0.35rem solid var(--color-background-muted);
-    animation: rotate 0.5s linear infinite;
-}
-
 .no-location {
     width: 100%;
     border: var(--border-lighter);
@@ -97,7 +88,7 @@ form {
     font-size: 1.3rem;
     font-weight: var(--font-normal);
     text-align: center;
-    transition: opacity 1s ease-in-out;
+    z-index: 1000;
 }
 
 

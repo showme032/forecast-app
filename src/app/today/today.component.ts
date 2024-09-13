@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { type Today } from '../app.model';
 import { DatePipe, DecimalPipe, NgClass, NgStyle } from '@angular/common';

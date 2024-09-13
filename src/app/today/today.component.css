@@ -27,12 +27,12 @@
 .clicked {
     & > .card-content {
         transform: translateX(-105%);
-        transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
+        transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
     }
     
     & > .card-info {
         transform: translateX(0);
-        transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
+        transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
     }
 }
 
@@ -44,7 +44,7 @@
     justify-content: space-between;
     position: relative;
     
-    transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
+    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
 }
 
 .card-info {
@@ -54,7 +54,7 @@
     top: 0;
     left: 0;
     transform: translateX(100%);
-    transition: cubic-bezier(.2, 0, .4, 1) var(--transition-medium);
+    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
     padding: var(--spacing-small) 8px;
     line-height: 0;
     
@@ -118,14 +118,14 @@
     margin: 1rem 0;
     font-size: 1.5rem;
     isolation: isolate;
-    z-index: 999;
+    z-index: 1;
 }
 
 .description {
     font-size: 0.8rem;
     font-weight: var(--font-emphasized);
     isolation: isolate;
-    z-index: 999;
+    z-index: 1;
 }
 
 /* Graphs */
@@ -140,10 +140,6 @@
     display: inline-block;
     font-size: 0.875rem;
     position: relative;
-    
-    &.uv-value {
-        /*transform: translateX(-50%);*/
-    }
 }
 
 .bar-container {
@@ -179,7 +175,7 @@
 .arrow {
     height: 2.5rem;
     position: absolute;
-    z-index: 999;
+    z-index: 1;
     transform-origin: center;
     top: 36px;
     left: 36px;
@@ -191,7 +187,7 @@
     
     & * {
         isolation: isolate;
-        z-index: 999;
+        z-index: 1;
     }
 }
 

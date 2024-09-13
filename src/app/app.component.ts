@@ -1,4 +1,8 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { SearchComponent } from './search/search.component';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
@@ -31,6 +35,12 @@ import { animate, style, transition, trigger } from '@angular/animations';
         animate('125ms ease-in-out', style({ opacity: 0 })),
       ]),
     ]),
+    trigger('load', [
+      transition(':leave', [
+        style({ opacity: 0 }),
+        animate('0.25s cubic-bezier(0.2, 0, 0.4, 1)', style({ opacity: 0 })),
+      ]),
+    ]),
   ],
 })
 export class AppComponent {
@@ -40,10 +50,15 @@ export class AppComponent {
   location!: LocationObj;
   weatherData: {} | undefined;
   airQualityIndex: number | undefined;
-
+  backdrop = signal<boolean>(false);
 
   // Get data if queried location found otherwise clear data
   onLocationFound(location?: LocationObj | null) {
+    this.backdrop.set(true);
+    setTimeout(() => {
+      this.backdrop.set(false);
+    }, 300)
+
     if (location) {
       this.location = { ...location };
 
@@ -61,9 +76,11 @@ export class AppComponent {
         },
       );
     } else {
+      // Remove content
       this.weatherData = undefined;
       this.airQualityIndex = undefined;
     }
+    // this.backdrop.set(false);
   }
 
   // Get component-specific data
@@ -80,6 +97,8 @@ export class AppComponent {
   }
 
   getExtendedData() {
+    // this.loading.set(false);
     return this.weatherService.getExtended(this.weatherData);
   }
+
 }
