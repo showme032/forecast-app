@@ -4,24 +4,15 @@ main {
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
+    
 }
 
-.loading-backdrop {
-    height: 100%;
-    width: 100vw;
-    position: fixed;
-    background-color: hsl(240, 32%, 40%, 0.05);
-    backdrop-filter: blur(16px);
-    top: 0;
-    left: 0;
-    z-index: 99;
-}
 
 .content-wrapper {
     width: 60%;
     border-radius: var(--radius-medium);
     padding: 0 2rem;
-    
+
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
@@ -32,7 +23,7 @@ main {
     "hourly hourly hourly hourly"
     "today today today today"
     "today today today today"
-    "extended extended . .";
+    ". extended extended .";
     justify-items: center;
     transition: var(--transition-long);
 }
@@ -81,12 +72,12 @@ main {
             "extended extended .";
         transition: var(--transition-long);
     }
-    
+
     .searchbar-wrapper {
         width: 35%;
         transition: var(--transition-long);
     }
-    
+
     .no-location {
         width: 35%;
     }
@@ -105,13 +96,13 @@ main {
             "extended extended extended";
         transition: var(--transition-long);
     }
-    
+
     .searchbar-wrapper {
         width: 75%;
         margin: 2rem 0 1rem;
         transition: var(--transition-long);
     }
-    
+
     .current-wrapper {
         width: 100%;
         grid-area: current;
@@ -127,7 +118,7 @@ main {
             "hourly hourly hourly hourly"
             "today today today today"
             "today today today today"
-            "extended extended . .";
+            ". extended extended .";
         transition: var(--transition-long);
     }
 }

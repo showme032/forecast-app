@@ -17,15 +17,15 @@ export class TodayService {
   // Atmospheric Pressure
   getPressureMessage(index: number): string {
     if (index < 1000) {
-      return 'Unsettled weather.';
+      return 'Unsettled weather';
     } else if (index < 1010) {
-      return 'Rain might fall';
+      return 'It might rain';
     } else if (index < 1020) {
       return 'Fair conditions';
     } else if (index < 1030) {
-      return 'Sunny, dry conditions';
+      return 'Sunny, dry weather';
     }
-    return 'Stable conditions';
+    return 'Stable weather';
   }
 
   // Visibility

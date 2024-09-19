@@ -14,13 +14,13 @@ export class SearchComponent {
   private searchService = inject(SearchServices);
 
   locationEmitter = output<LocationObj | null>();
-  searchQuery = signal<string>('');
   errorMessage = signal<string | undefined>(undefined);
+  searchQuery?: string | undefined;
 
   // Get coordinates based on search query
   onSubmit() {
     if (this.searchQuery) {
-      this.searchService.getLocationCoordinates(this.searchQuery()).subscribe(res => {
+      this.searchService.getLocationCoordinates(this.searchQuery).subscribe(res => {
         if (res.response.features.length != 0) {
           this.locationEmitter.emit({
             lat: res.response.features[0].geometry.coordinates[1],
@@ -35,7 +35,7 @@ export class SearchComponent {
           this.errorMessage.set('No Location Found');
         }
 
-        this.searchQuery.set('');
+        this.searchQuery = undefined;
       });
     }
 
