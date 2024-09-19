@@ -6,9 +6,10 @@
   overflow: auto;
   white-space: nowrap;
   user-select: none;
+  background-color: var(--color-background);
+  border-radius: var(--radius-medium);
 }
 
-/*TODO: make all cards the same, fixed width*/
 .hourly-card {
   flex: 0 0 4rem;
   border: var(--border-lighter);

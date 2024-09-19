@@ -2,46 +2,52 @@
 @import 'reset.css';
 
 :root {
-    --color-primary: hsl(51, 100%, 75%);
+    --color-primary: hsl(51, 100%, 75%, 100);
     --color-secondary: hsl(222 47% 35%);
     --color-error: hsl(350, 70%, 90%);
     --color-foreground: hsl(240 47% 15%);
     --color-background: hsl(240 3% 99%);
     --color-background-emphasize: hsl(240 4% 97%);
     --color-background-muted: hsl(240 6% 90%);
-    
+
     --border: 1px solid hsl(240 47% 15%);
     --border-lighter: 1px solid hsla(240, 47%, 13%, 0.4);
     --border-emphasize: 1px solid hsl(222 47% 30%);
-    
-    --shadow-small: 4px 4px 0 hsl(240, 47%, 13%, 0.2);
-    
+
+    --shadow-small: 4px 4px 0 hsl(240, 47%, 13%, 0.25);
+
     --radius-small: 0.25rem;
     --radius-medium: 0.5rem;
-    
+
     --spacing-small: 0.5rem;
     --spacing-medium: 0.75rem;
     --spacing-large: 1.25rem;
-    
+
     --transition-short: 0.15s;
     --transition-medium: 0.25s;
     --transition-long: 0.35s;
-    
+
     --font-normal: 400;
     --font-emphasized: 500;
     --font-bold: 700;
     --font-heavy: 800;
-    
+
     scroll-behavior: smooth;
-    
+
+    -webkit-font-smoothing: antialiased;
+
     --bezier: cubic-bezier(0.2, 0, 0.4, 1);
-    
+
 }
 
 body {
     font-family: 'JetBrains Mono', 'Inter', sans-serif;
     color: var(--color-foreground);
     background-color: var(--color-background);
+    
+    background-image: radial-gradient(hsl(240, 47%, 15%, 0.5) 0.7000000000000001px, #fcfcfd 0.7000000000000001px);
+    background-size: 14px 14px;
+
 }
 
 h5 {
@@ -59,3 +65,5 @@ h5 {
 .heavy {
     font-weight: var(--font-heavy);
 }
+
+

@@ -54,11 +54,6 @@ export class AppComponent {
 
   // Get data if queried location found otherwise clear data
   onLocationFound(location?: LocationObj | null) {
-    this.backdrop.set(true);
-    setTimeout(() => {
-      this.backdrop.set(false);
-    }, 300)
-
     if (location) {
       this.location = { ...location };
 
@@ -97,7 +92,6 @@ export class AppComponent {
   }
 
   getExtendedData() {
-    // this.loading.set(false);
     return this.weatherService.getExtended(this.weatherData);
   }
 
