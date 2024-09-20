@@ -16,14 +16,14 @@ main {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, auto);
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:
     ". search search ."
     "current current current current"
     "hourly hourly hourly hourly"
-    "today today today today"
-    "today today today today"
-    ". extended extended .";
+    "extended extended today today";
+    /*"today today today today"*/
+    /*". extended extended .";*/
     justify-items: center;
     transition: var(--transition-long);
 }
@@ -110,15 +110,15 @@ main {
     }
 }
 
-@media (min-width: 1500px) {
-    .content-wrapper {
-        grid-template-areas:
-            ". search search ."
-            "current current current current"
-            "hourly hourly hourly hourly"
-            "today today today today"
-            "today today today today"
-            ". extended extended .";
-        transition: var(--transition-long);
-    }
-}
+/*@media (min-width: 1500px) {*/
+/*    .content-wrapper {*/
+/*        grid-template-areas:*/
+/*            ". search search ."*/
+/*            "current current current current"*/
+/*            "hourly hourly hourly hourly"*/
+/*            "today today today today"*/
+/*            "today today today today"*/
+/*            ". extended extended .";*/
+/*        transition: var(--transition-long);*/
+/*    }*/
+/*}*/

@@ -1,5 +1,6 @@
 .extended-group {
     width: 100%;
+    height: calc(75% - 4px);
     border: var(--border);
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
@@ -7,7 +8,7 @@
     background-color: var(--color-background);
     
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto repeat(7, 1fr);
     gap: var(--spacing-small);
     
     font-size: 0.75rem
@@ -70,4 +71,10 @@
 }
 .uvRain {
     justify-self: start;
+}
+
+@media (max-width: 1100px) {
+    .extended-group {
+        height: 100%;
+    }
 }

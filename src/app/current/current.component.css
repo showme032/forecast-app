@@ -17,14 +17,16 @@
     justify-self: start;
     display: flex;
     flex-direction: column;
+    
+    & > * {
+        width: fit-content;
+        background-color: var(--color-background);
+    }
 }
 
 .location {
     width: fit-content;
     box-shadow: inset 0 -0.75rem 0 0 var(--color-primary);
-}
-
-p {
 }
 
 .current-icon {
