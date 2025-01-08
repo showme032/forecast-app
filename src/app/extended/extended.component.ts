@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Extended } from '../app.model';
-import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { ExtendedCardComponent } from './extended-card/extended-card.component';
 
 
 @Component({
@@ -8,17 +9,34 @@ import { DatePipe, DecimalPipe, NgForOf } from '@angular/common';
   standalone: true,
   imports: [
     DatePipe,
-    NgForOf,
     DecimalPipe,
+    ExtendedCardComponent,
   ],
   templateUrl: './extended.component.html',
-  styleUrl: './extended.component.css'
+  styleUrl: './extended.component.css',
 })
-export class ExtendedComponent {
+export class ExtendedComponent implements OnInit {
   extended = input.required<Extended[]>();
+  extendedMinTemp!: number;
+  extendedMaxTemp!: number;
+  extendedRange!: number;
 
-  imagePath(code: number) {
-    return `/assets/weather-icons/${code}.svg`;
+  ngOnInit() {
+    console.log(this.extended());
+
+    // Get the lowest minimum for graph range
+    this.extendedMinTemp = this.extended()
+      .reduce((min, current) => current.minTemperature > min ? min : current.minTemperature,
+        Infinity);
+
+    // and maximum
+    this.extendedMaxTemp = this.extended()
+      .reduce((max, current) => current.maxTemperature > max ? current.maxTemperature : max,
+        -Infinity);
+
+    // Get temperature range for graph
+    this.extendedRange = this.extendedMaxTemp - this.extendedMinTemp;
+
   }
 
 }

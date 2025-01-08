@@ -50,20 +50,20 @@ export class TodayService {
 
   // Humidity
   getHumidityMessage(index: number): string {
-    if (index > 27) {
-      return 'Oppressive';
-    } else if (index > 24) {
-      return 'Very humid';
-    } else if (index > 20) {
-      return 'Muggy';
-    } else if (index > 16) {
-      return 'Getting sticky';
-    } else if (index > 10) {
-      return 'Comfortable';
-    } else if (index > 5) {
-      return 'very dry';
+    if (index > 24) {
+      return 'Feels oppressive';
+    } else if (index > 21) {
+      return 'Feels very humid';
+    } else if (index > 18) {
+      return 'Feels humid';
+    } else if (index > 15.5) {
+      return 'Feels slightly humid';
+    } else if (index > 12.5) {
+      return 'Feels comfortable';
+    } else if (index > 9) {
+      return 'Feels dry';
     }
-    return 'Very Dry';
+    return 'Feels very dry';
   }
 
   // Subj Feel

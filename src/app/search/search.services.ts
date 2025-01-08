@@ -13,12 +13,22 @@ export class SearchServices {
   // }
 
   // Get location coordinates based on query
-  getLocationCoordinates(location: string): Observable<any> {
+  getLocationCoordinates(query: string): Observable<any> {
     const baseUrl = 'https://api.geocodify.com/v2/geocode';
     const params = {
       api_key: environment.geoApiKey,
-      q: location,
+      q: query,
     };
+
+    return this.http.get<any>(baseUrl, { params });
+  }
+
+  getAutoComplete(query: string): Observable<any> {
+    const baseUrl = 'https://api.geocodify.com/v2/autocomplete';
+    const params = {
+      api_key: environment.geoApiKey,
+      q: query,
+    }
 
     return this.http.get<any>(baseUrl, { params });
   }

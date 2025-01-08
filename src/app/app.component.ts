@@ -50,10 +50,9 @@ export class AppComponent {
   location!: LocationObj;
   weatherData: {} | undefined;
   airQualityIndex: number | undefined;
-  backdrop = signal<boolean>(false);
 
   // Get data if queried location found otherwise clear data
-  onLocationFound(location?: LocationObj | null) {
+  onLocationFound(location: LocationObj | null) {
     if (location) {
       this.location = { ...location };
 
@@ -61,6 +60,7 @@ export class AppComponent {
       this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
         res => {
           this.weatherData = res;
+          // console.log(this.weatherData);
         },
       );
 
@@ -75,7 +75,6 @@ export class AppComponent {
       this.weatherData = undefined;
       this.airQualityIndex = undefined;
     }
-    // this.backdrop.set(false);
   }
 
   // Get component-specific data

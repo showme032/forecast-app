@@ -69,7 +69,7 @@ main {
             "hourly hourly hourly"
             "today today today"
             "today today today"
-            "extended extended .";
+            "extended extended extended";
         transition: var(--transition-long);
     }
 

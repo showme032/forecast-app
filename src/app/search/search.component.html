@@ -6,6 +6,7 @@
          autocomplete="off"
          spellcheck="false"
          [(ngModel)]="searchQuery">
+<!--         (keydown)="onNewChar()">-->
   <img class="search-button"
        src="/assets/icons/search.svg"
        alt="search-button"
@@ -15,6 +16,11 @@
        alt="location-lookup"
        (click)="onGeoLocate()">
 </form>
+<!--@if (searchResults().length > 0) {-->
+<!--  @for (result of searchResults(); track result) {-->
+
+<!--  }-->
+<!--}-->
 @if (errorMessage()) {
   <div class="no-location">
     {{ errorMessage() }}

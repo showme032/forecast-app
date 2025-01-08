@@ -15,11 +15,12 @@ export class SearchComponent {
 
   locationEmitter = output<LocationObj | null>();
   errorMessage = signal<string | undefined>(undefined);
-  searchQuery?: string | undefined;
+  searchQuery = '';
+  searchResults: {}[] = [];
 
   // Get coordinates based on search query
   onSubmit() {
-    if (this.searchQuery) {
+    if (this.searchQuery.length > 0) {
       this.searchService.getLocationCoordinates(this.searchQuery).subscribe(res => {
         if (res.response.features.length != 0) {
           this.locationEmitter.emit({
@@ -35,10 +36,32 @@ export class SearchComponent {
           this.errorMessage.set('No Location Found');
         }
 
-        this.searchQuery = undefined;
+        this.searchQuery = '';
       });
     }
 
+  }
+
+  onNewChar() {
+    setTimeout(() => {
+      if (this.searchQuery.length >= 3) {
+        this.searchService.getAutoComplete(this.searchQuery).subscribe(res => {
+          if (res) {
+            this.searchResults = [];
+            for (let i = 0; i <= 4; i++) {
+
+              this.searchResults.push({
+                lat: res.response.features[i].geometry.coordinates[1],
+                lng: res.response.features[i].geometry.coordinates[0],
+                label: `${res.response.features[i].properties.name}, ${res.response.features[i].properties.country}`,
+              });
+            }
+
+            console.log(this.searchResults);
+          }
+        });
+      }
+    }, 250);
   }
 
   // Get location data based on HTML geoLocation API
