@@ -1,32 +1,34 @@
+<div class="extended-card-wrapper">
+    <span class="forecast-day">
+            {{ dayData().isToday === true ? 'Now' : ((dayData().date | date: 'EE')) }}:
+          </span>
 
-<span class="forecast-day">
-        {{ dayData().isToday === true ? 'Now' : ((dayData().date | date: 'EE')) }}:
-      </span>
+  <div class="forecast">
+            <span class="forecast-icon">
+              <img [src]="imagePath(dayData().weatherCode)"
+                   alt="Current conditions">
+            </span>
 
-<div class="forecast">
-        <span class="forecast-icon">
-          <img [src]="imagePath(dayData().weatherCode)"
-               alt="Current conditions">
-        </span>
-
-  <div class="loHi">
-    <div class="graph-container">
+    <div class="loHi">
       <span class="graph-num">{{ dayData().minTemperature }}°</span>
-      <div class="bar-container">
-        <div class="bar-fill"
-             [style.width.%]="(dayData().maxTemperature - dayData().minTemperature) / extendedRange * 100"
-             [style.left.%]="(dayData().minTemperature - extendedMinTemp) / extendedRange * 100"></div>
+      <div class="graph-container">
+        <div class="bar-container">
+          <div class="bar-fill"
+               [style.width.%]="temperatureGraphWidth()"
+               [style.left.%]="temperatureGraphOffset()"></div>
+        </div>
       </div>
       <span class="graph-num">{{ dayData().maxTemperature }}°</span>
     </div>
-  </div>
 
-  <div class="uvRain">
-    <div>
-      <span class="emphasized">Rainfall: </span><span>{{ dayData().precipitation }}%
-          </span>
-    </div>
-    <div>
-      <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
+    <div class="uvRain">
+      <div>
+        <span class="emphasized">Rainfall: </span><span>{{ dayData().precipitation }}%
+              </span>
+      </div>
+      <div>
+        <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
+      </div>
     </div>
   </div>
+</div>

@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, Input, input, Signal } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
+import { Extended } from '../../app.model';
 
 @Component({
   selector: 'app-extended-card',
@@ -9,15 +10,28 @@ import { DatePipe, DecimalPipe } from '@angular/common';
     DecimalPipe,
   ],
   templateUrl: './extended-card.component.html',
-  styleUrl: './extended-card.component.css'
+  styleUrl: './extended-card.component.css',
 })
 export class ExtendedCardComponent {
+  // @Input() dayData!: Signal<any>
   dayData = input.required<any>()
-  extendedMinTemp = input.required()
-  extendedRange = input.required()
+  @Input() extendedMinTemp!: Signal<number>;
+  @Input() extendedRange!: Signal<number>;
+  temperatureGraphWidth: Signal<number | undefined>;
+  temperatureGraphOffset: Signal<number | undefined>;
+
+  constructor() {
+    this.temperatureGraphWidth = computed(() => {
+      return (this.dayData().maxTemperature - this.dayData().minTemperature) / this.extendedRange() * 100;
+    });
+
+    this.temperatureGraphOffset = computed(() => {
+      return (this.dayData().minTemperature - this.extendedMinTemp() / this.extendedRange() * 100);
+    });
+  }
 
 
-  // Set glow color depending on air quality index
+  // Get weather icon to be shown
   imagePath(code: number) {
     return `/assets/weather-icons/${code}.svg`;
   }
