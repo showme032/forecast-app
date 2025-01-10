@@ -1,7 +1,7 @@
 .extended-card-wrapper {
-    border: var(--border-lighter);
+    border: var(--border-medium);
     border-radius: var(--radius-small);
-    padding: 0 var(--spacing-small);
+    padding: var(--spacing-x-small) var(--spacing-large) var(--spacing-x-small) var(--spacing-small);
     background: var(--color-background-emphasize);
     
     display: grid;
@@ -28,7 +28,7 @@
     grid-template-rows: 1fr 1fr;
     justify-content: space-between;
     align-items: center;
-    column-gap: var(--spacing-small);
+    column-gap: var(--spacing-medium);
     
     grid-template-areas:
     "ficon lohi lohi"
@@ -36,20 +36,23 @@
 }
 
 .forecast-icon {
+    position: relative;
     overflow: visible;
     justify-self: center;
     grid-area: ficon;
-    height: 2.25rem;
+    height: 2.5rem;
+    border: var(--border-light);
+    border-radius: var(--radius-small);
+    background-color: var(--color-background-muted);;
     
     & img {
-        max-height: 100%;
-        --shadow-color: 240 47% 15%;
-        filter: drop-shadow(0px 0px 2px hsl(var(--shadow-color) / 0.31)) drop-shadow(0px 0px 4px hsl(var(--shadow-color) / 0.26));
+        max-height: 105%;
     }
 }
 
 
 .loHi, .uvRain {
+    position: relative;
     display: flex;
     align-items: start;
     justify-content: space-between;
@@ -61,26 +64,23 @@
 
 .loHi {
     grid-area: lohi;
+    font-weight: var(--font-emphasized);
 }
 
 /* Hi-lo graph */
-.graph-container {
-    font-weight: var(--font-emphasized);
-    width: 100%;
-    align-self: center;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: var(--spacing-small);
-}
-
 .graph-num {
-    width: 3rem;
+    width: 2rem;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     
-    &:nth-child(2) {
-        justify-self: start;
+    &:last-of-type {
+        justify-content: end;
+        
+        &::after {
+            content: '°';
+            position: absolute;
+            right: -0.5rem;
+        }
     }
 }
 
@@ -91,6 +91,7 @@
     border-radius: var(--radius-small);
     background-color: var(--color-background-muted);
     overflow: hidden;
+    align-self: center;
     
     position: relative;
 }

@@ -10,12 +10,13 @@
                   r="160.943459"
                   fx="159.999724"
                   fy="160.000447"
-                  gradientUnits="userSpaceOnUse">
+                  gradientUnits="userSpaceOnUse"
+  >
     <stop offset="1e-05"
-          stop-color="#ffffff"
+          stop-color="#f2f2f2"
           stop-opacity="1" />
     <stop offset="1"
-          stop-color="#d9e6ea"
+          stop-color="#dcdce0"
           stop-opacity="1" />
   </radialGradient>
   <path id="Path"

@@ -12,7 +12,7 @@
 
 .hourly-card {
   flex: 0 0 4rem;
-  border: var(--border-lighter);
+  border: var(--border-medium);
   border-radius: var(--radius-small);
   padding: var(--spacing-small);
   background-color: var(--color-background-emphasize);

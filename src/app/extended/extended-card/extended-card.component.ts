@@ -13,8 +13,8 @@ import { Extended } from '../../app.model';
   styleUrl: './extended-card.component.css',
 })
 export class ExtendedCardComponent {
-  // @Input() dayData!: Signal<any>
-  dayData = input.required<any>()
+  // @Input() dayData!: Signal<Extended>
+  dayData = input.required<Extended>()
   @Input() extendedMinTemp!: Signal<number>;
   @Input() extendedRange!: Signal<number>;
   temperatureGraphWidth: Signal<number | undefined>;
@@ -30,9 +30,8 @@ export class ExtendedCardComponent {
     });
   }
 
-
-  // Get weather icon to be shown
-  imagePath(code: number) {
-    return `/assets/weather-icons/${code}.svg`;
+  // Get weather icon path
+  imagePath(weatherCode: number) {
+    return `/assets/weather-icons/${weatherCode}.svg`;
   }
 }

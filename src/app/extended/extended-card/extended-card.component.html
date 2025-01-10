@@ -4,21 +4,20 @@
           </span>
 
   <div class="forecast">
-            <span class="forecast-icon">
-              <img [src]="imagePath(dayData().weatherCode)"
-                   alt="Current conditions">
-            </span>
+    <span class="forecast-icon">
+      <img [src]="imagePath(dayData().weatherCode)"
+           alt="Current conditions">
+      <div class="background"></div>
+    </span>
 
     <div class="loHi">
       <span class="graph-num">{{ dayData().minTemperature }}°</span>
-      <div class="graph-container">
-        <div class="bar-container">
-          <div class="bar-fill"
-               [style.width.%]="temperatureGraphWidth()"
-               [style.left.%]="temperatureGraphOffset()"></div>
-        </div>
+      <div class="bar-container">
+        <div class="bar-fill"
+             [style.width.%]="temperatureGraphWidth()"
+             [style.left.%]="temperatureGraphOffset()"></div>
       </div>
-      <span class="graph-num">{{ dayData().maxTemperature }}°</span>
+      <span class="graph-num">{{ dayData().maxTemperature }}</span>
     </div>
 
     <div class="uvRain">
