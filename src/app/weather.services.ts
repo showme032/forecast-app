@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Current, Extended, Hourly, type Today } from './app.model';
+import { type Current, type Extended, type Hourly, type Today } from './app.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

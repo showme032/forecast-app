@@ -1,28 +1,26 @@
-<form (ngSubmit)="onSubmit()">
-  <input placeholder="Location"
-         type="text"
-         id="search-query"
-         name="search-query"
-         autocomplete="off"
-         spellcheck="false"
-         [(ngModel)]="searchQuery">
-<!--         (keydown)="onNewChar()">-->
-  <img class="search-button"
-       src="/assets/icons/search.svg"
-       alt="search-button"
-       (click)="onSubmit()">
-  <img class="location-button"
-       src="/assets/icons/location.svg"
-       alt="location-lookup"
-       (click)="onGeoLocate()">
-</form>
-<!--@if (searchResults().length > 0) {-->
-<!--  @for (result of searchResults(); track result) {-->
+<div class="search-wrapper">
+  <form (ngSubmit)="onSubmit()">
+    <input placeholder="Location"
+           type="text"
+           id="search-query"
+           name="search-query"
+           autocomplete="off"
+           spellcheck="false"
+           [(ngModel)]="searchQuery">
+    <!--         (keydown)="onNewChar()">-->
+    <img class="search-button"
+         src="/assets/icons/search.svg"
+         alt="search-button"
+         (click)="onSubmit()">
+    <img class="location-button"
+         src="/assets/icons/location.svg"
+         alt="location-lookup"
+         (click)="onGeoLocate()">
+  </form>
 
-<!--  }-->
-<!--}-->
-@if (errorMessage()) {
-  <div class="no-location">
-    {{ errorMessage() }}
-  </div>
-}
+  @if (errorMessage()) {
+    <div class="no-location">
+      {{ errorMessage() }}
+    </div>
+  }
+</div>

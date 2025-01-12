@@ -3,6 +3,9 @@ import {
   inject, Signal,
   signal,
 } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Observable } from 'rxjs';
+
 import { SearchComponent } from './search/search.component';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
@@ -10,7 +13,6 @@ import { TodayComponent } from './today/today.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { WeatherServices } from './weather.services';
 import { Current, Extended, Hourly, LocationObj, Today } from './app.model';
-import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -48,21 +50,21 @@ export class AppComponent {
   private weatherService = inject(WeatherServices);
 
   location!: LocationObj;
-  // Switch to signal
   weatherData: {} | undefined;
-  airQualityIndex: number | undefined;
+
   currentData!: Signal<Current>;
   hourlyData!: Signal<Hourly[]>;
   todayData!: Signal<Today>;
+  airQualityIndex: number | undefined;
   extendedData!: Signal<Extended[]>;
 
   // Get data if queried location found otherwise clear data
-  onLocationFound(location: LocationObj | null) {
-    if (location) {
-      this.location = { ...location };
+  onLocationFound(foundLocation: LocationObj | null) {
+    if (foundLocation) {
+      this.location = { ...foundLocation };
 
       // Weather conditions
-      this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
+      this.weatherService.getWeatherData(this.location.lat, this.location.lng).subscribe(
         res => {
           this.weatherData = res;
           console.log('weather data set');
@@ -75,7 +77,7 @@ export class AppComponent {
       this.todayData = computed(() => this.weatherService.getToday(this.weatherData));
 
       // Air quality
-      this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
+      this.weatherService.getAirQuality(this.location.lat, this.location.lng).subscribe(
         res => {
           this.airQualityIndex = res.current.european_aqi;
         },

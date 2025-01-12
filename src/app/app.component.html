@@ -1,15 +1,15 @@
 <main>
   <!--  Location search-->
-  <div class="searchbar-wrapper">
-    <app-search  (locationEmitter)="onLocationFound($event)"/>
-  </div>
+  <app-search (locationEmitter)="onLocationFound($event)" />
 
   <!-- Weather data  -->
   @if (weatherData && airQualityIndex) {
-    <div class="content-wrapper" [@animateElement]>
+    <div class="content-wrapper"
+         [@animateElement]>
       <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
-        <app-current [current]="currentData()" [location]="location" />
+        <app-current [current]="currentData()"
+                     [location]="location" />
       </div>
 
       <!--  Hourly temperatures  -->
@@ -19,7 +19,8 @@
 
       <!--  Today's conditions  -->
       <div class="wrapper today-wrapper">
-        <app-today [today]="todayData()" [airQualityIndex]="airQualityIndex" />
+        <app-today [today]="todayData()"
+                   [airQualityIndex]="airQualityIndex" />
       </div>
 
       <!--  7-day Forecast  -->
