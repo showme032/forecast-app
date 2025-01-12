@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class WeatherServices {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private hour = new Date().getHours();
 
@@ -23,7 +22,6 @@ export class WeatherServices {
     };
 
     return this.http.get<any>(baseUrl, { params });
-
   }
 
   // Get air quality index for given coordinates
@@ -35,7 +33,6 @@ export class WeatherServices {
       current: 'european_aqi',
       hourly: 'pm10,pm2_5',
       forecast_days: '1',
-
     };
 
     return this.http.get<any>(baseUrl, { params });
@@ -64,7 +61,6 @@ export class WeatherServices {
     }
 
     return hourly;
-
   }
 
   // Return today's weather data
@@ -88,7 +84,9 @@ export class WeatherServices {
 
   // Return weather data for 7 days
   getExtended(data: any): Extended[] {
-    const extended = [];
+    let extended: Extended[] = [];
+    console.log('getExtended called')
+
     for (let i = 0; i < 7; i += 1) {
       let day: Extended = {
         isToday: i === 0,
@@ -104,7 +102,6 @@ export class WeatherServices {
     }
 
     return extended;
-
   }
 
   // Return weather conditions according to input WMO code
@@ -136,10 +133,8 @@ export class WeatherServices {
       95: 'Thunderstorm',
       96: 'Hailstorm',
       99: 'Heavy Hailstorm',
-
     };
 
     return codes[code];
-
   }
 }

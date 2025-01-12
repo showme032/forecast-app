@@ -3,7 +3,6 @@ import { Component, inject, input } from '@angular/core';
 import { type Today } from '../app.model';
 import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
-// import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-today',
@@ -40,29 +39,29 @@ export class TodayComponent {
     return this.todayService.getUvMessage(this.today().uv);
   }
 
-  // AIR PRESSURE
+  // Air Pressure
   get pressureMessage(): string {
     return this.todayService.getPressureMessage(this.today().pressure);
   }
 
-  // WIND
+  // Wind
 
-  // HUMIDITY
+  // Humidity
   get humidityMessage(): string {
     return this.todayService.getHumidityMessage(this.today().dewPoint);
   }
 
-  // SUBJECTIVE FEEL
+  // Subjective Feel
   get subjectiveMessage(): string {
     return this.todayService.getSubjectiveMessage(this.today().current, this.today().subjectiveTemp);
   }
 
-  // VISIBILITY
+  // Visibility
   get visibilityMessage(): string {
     return this.todayService.getVisibilityMessage(this.today().visibility);
   }
 
-  // AQI
+  // Air Quality Index
   get airColor() {
     return `/assets/decorations/air-pollution.svg#${this.todayService.getAirColor(this.airQualityIndex())}`;
   }

@@ -13,7 +13,6 @@ import { Extended } from '../../app.model';
   styleUrl: './extended-card.component.css',
 })
 export class ExtendedCardComponent {
-  // @Input() dayData!: Signal<Extended>
   dayData = input.required<Extended>()
   @Input() extendedMinTemp!: Signal<number>;
   @Input() extendedRange!: Signal<number>;

@@ -13,12 +13,7 @@ import { WeatherServices } from '../weather.services';
   selector: 'app-current',
   standalone: true,
   imports: [
-    TitleCasePipe,
-    CardComponent,
     DecimalPipe,
-    DatePipe,
-    NgOptimizedImage,
-    NgStyle,
   ],
   templateUrl: './current.component.html',
   styleUrl: './current.component.css',

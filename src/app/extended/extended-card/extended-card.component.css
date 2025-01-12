@@ -7,8 +7,10 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-small);
     overflow: hidden;
+    height: 3.125rem;
 }
 
 .extended-title {

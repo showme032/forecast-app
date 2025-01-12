@@ -3,23 +3,28 @@
   <div class="searchbar-wrapper">
     <app-search  (locationEmitter)="onLocationFound($event)"/>
   </div>
+
+  <!-- Weather data  -->
   @if (weatherData && airQualityIndex) {
     <div class="content-wrapper" [@animateElement]>
       <!--  Current weather conditions  -->
       <div class="wrapper current-wrapper">
-        <app-current [current]="getCurrentData()" [location]="location" />
+        <app-current [current]="currentData()" [location]="location" />
       </div>
+
       <!--  Hourly temperatures  -->
       <div class="hourly-wrapper">
-        <app-hourly [hourly]="getHourlyData()" />
+        <app-hourly [hourly]="hourlyData()" />
       </div>
+
       <!--  Today's conditions  -->
       <div class="wrapper today-wrapper">
-        <app-today [today]="getTodayData()" [airQualityIndex]="airQualityIndex" />
+        <app-today [today]="todayData()" [airQualityIndex]="airQualityIndex" />
       </div>
+
       <!--  7-day Forecast  -->
       <div class="extended-wrapper">
-        <app-extended [extended]="getExtendedData()" />
+        <app-extended [extended]="extendedData()" />
       </div>
     </div>
   }

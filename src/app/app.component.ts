@@ -1,6 +1,6 @@
 import {
-  Component,
-  inject,
+  Component, computed,
+  inject, Signal,
   signal,
 } from '@angular/core';
 import { SearchComponent } from './search/search.component';
@@ -9,7 +9,7 @@ import { ExtendedComponent } from './extended/extended.component';
 import { TodayComponent } from './today/today.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { WeatherServices } from './weather.services';
-import { LocationObj } from './app.model';
+import { Current, Extended, Hourly, LocationObj, Today } from './app.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -48,8 +48,13 @@ export class AppComponent {
   private weatherService = inject(WeatherServices);
 
   location!: LocationObj;
+  // Switch to signal
   weatherData: {} | undefined;
   airQualityIndex: number | undefined;
+  currentData!: Signal<Current>;
+  hourlyData!: Signal<Hourly[]>;
+  todayData!: Signal<Today>;
+  extendedData!: Signal<Extended[]>;
 
   // Get data if queried location found otherwise clear data
   onLocationFound(location: LocationObj | null) {
@@ -60,9 +65,14 @@ export class AppComponent {
       this.weatherService.getWeatherData(location.lat, location.lng).subscribe(
         res => {
           this.weatherData = res;
-          // console.log(this.weatherData);
+          console.log('weather data set');
         },
       );
+
+      this.currentData = computed(() => this.weatherService.getCurrent(this.weatherData));
+      this.hourlyData = computed(() => this.weatherService.getHourly(this.weatherData));
+      this.extendedData = computed(() => this.weatherService.getExtended(this.weatherData));
+      this.todayData = computed(() => this.weatherService.getToday(this.weatherData));
 
       // Air quality
       this.weatherService.getAirQuality(location.lat, location.lng).subscribe(
@@ -76,22 +86,4 @@ export class AppComponent {
       this.airQualityIndex = undefined;
     }
   }
-
-  // Get component-specific data
-  getCurrentData() {
-    return this.weatherService.getCurrent(this.weatherData);
-  }
-
-  getHourlyData() {
-    return this.weatherService.getHourly(this.weatherData);
-  }
-
-  getTodayData() {
-    return this.weatherService.getToday(this.weatherData);
-  }
-
-  getExtendedData() {
-    return this.weatherService.getExtended(this.weatherData);
-  }
-
 }

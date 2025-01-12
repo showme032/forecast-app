@@ -68,14 +68,14 @@ export class SearchComponent {
   onGeoLocate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        position => geoSuccess(position),
-        error => geoError(error));
+        position => onGeoSuccess(position),
+        error => onGeoError(error));
     } else {
       this.errorMessage.set('Geolocation not supported');
     }
 
     // Success callback
-    const geoSuccess = (position: GeolocationPosition) => {
+    const onGeoSuccess = (position: GeolocationPosition) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
@@ -95,11 +95,9 @@ export class SearchComponent {
       });
     };
 
-    // Error callback
-    const geoError = (error: any) => {
+    // On Error
+    const onGeoError = (error: any) => {
       this.errorMessage = error.message;
     };
-
   }
-
 }

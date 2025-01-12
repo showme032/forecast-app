@@ -8,8 +8,6 @@ import { ExtendedCardComponent } from './extended-card/extended-card.component';
   selector: 'app-extended',
   standalone: true,
   imports: [
-    DatePipe,
-    DecimalPipe,
     ExtendedCardComponent,
   ],
   templateUrl: './extended.component.html',
@@ -22,7 +20,7 @@ export class ExtendedComponent implements OnInit {
   extendedRange!: Signal<number>;
 
   ngOnInit() {
-    console.log(this.extended());
+    // console.log(this.extended());
 
     // Get the lowest minimum for graph range
     this.extendedMinTemp = computed(() => this.extended()
