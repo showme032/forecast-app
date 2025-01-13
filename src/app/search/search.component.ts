@@ -2,7 +2,6 @@ import {
   Component,
   EventEmitter,
   inject,
-  Input,
   Output,
   output,
   signal,
@@ -24,7 +23,6 @@ export class SearchComponent {
   locationEmitter = output<Location | null>();
   errorMessage = signal<string | undefined>(undefined);
   searchQuery = '';
-  searchResults: {}[] = [];
   @Output() loading = new EventEmitter<unknown>();
 
   // Get coordinates based on search query
@@ -49,28 +47,6 @@ export class SearchComponent {
       });
     }
   }
-
-  // onNewChar() {
-  //   setTimeout(() => {
-  //     if (this.searchQuery.length >= 3) {
-  //       this.searchService.getAutoComplete(this.searchQuery).subscribe(res => {
-  //         if (res) {
-  //           this.searchResults = [];
-  //           for (let i = 0; i <= 4; i++) {
-  //
-  //             this.searchResults.push({
-  //               lat: res.response.features[i].geometry.coordinates[1],
-  //               lng: res.response.features[i].geometry.coordinates[0],
-  //               label: `${res.response.features[i].properties.name}, ${res.response.features[i].properties.country}`,
-  //             });
-  //           }
-  //
-  //           console.log(this.searchResults);
-  //         }
-  //       });
-  //     }
-  //   }, 250);
-  // }
 
   // Get location data based on HTML geoLocation API
   onGeoLocate() {

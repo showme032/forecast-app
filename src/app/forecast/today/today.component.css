@@ -200,7 +200,7 @@
     }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 770px) {
     .today-group {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(4, 1fr);

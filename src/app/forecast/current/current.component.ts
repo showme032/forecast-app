@@ -6,8 +6,8 @@ import {
   TitleCasePipe,
 } from '@angular/common';
 import { CardComponent } from '../today/card/card.component';
-import { Current, Location } from '../app.model';
-import { WeatherServices } from '../weather.services';
+import { Current, Location } from '../../app.model';
+import { WeatherServices } from '../../weather.services';
 
 @Component({
   selector: 'app-current',

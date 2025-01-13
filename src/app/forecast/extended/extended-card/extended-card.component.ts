@@ -1,6 +1,6 @@
 import { Component, computed, Input, input, Signal } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { Extended } from '../../app.model';
+import { Extended } from '../../../app.model';
 
 @Component({
   selector: 'app-extended-card',

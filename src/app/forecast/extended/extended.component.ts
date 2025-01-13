@@ -1,5 +1,5 @@
 import { Component, computed, input, OnInit, Signal } from '@angular/core';
-import { Extended } from '../app.model';
+import { Extended } from '../../app.model';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { ExtendedCardComponent } from './extended-card/extended-card.component';
 
