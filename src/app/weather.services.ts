@@ -85,7 +85,6 @@ export class WeatherServices {
   // Return weather data for 7 days
   getExtended(data: any): Extended[] {
     let extended: Extended[] = [];
-    console.log('getExtended called')
 
     for (let i = 0; i < 7; i += 1) {
       let day: Extended = {
