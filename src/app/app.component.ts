@@ -1,28 +1,19 @@
 import {
-  Component, computed,
-  inject, Signal,
+  Component, output,
   signal,
 } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Observable } from 'rxjs';
 
 import { SearchComponent } from './search/search.component';
-import { CurrentComponent } from './current/current.component';
-import { ExtendedComponent } from './extended/extended.component';
-import { TodayComponent } from './today/today.component';
-import { HourlyComponent } from './hourly/hourly.component';
-import { WeatherServices } from './weather.services';
-import { Current, Extended, Hourly, LocationObj, Today } from './app.model';
+import { Location } from './app.model';
+import { ForecastComponent } from './forecast/forecast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     SearchComponent,
-    CurrentComponent,
-    ExtendedComponent,
-    TodayComponent,
-    HourlyComponent,
+    ForecastComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -46,46 +37,20 @@ import { Current, Extended, Hourly, LocationObj, Today } from './app.model';
   ],
 })
 export class AppComponent {
-  // Inject the service
-  private weatherService = inject(WeatherServices);
-
-  location!: LocationObj;
-  weatherData: {} | undefined;
-
-  currentData!: Signal<Current>;
-  hourlyData!: Signal<Hourly[]>;
-  todayData!: Signal<Today>;
-  airQualityIndex: number | undefined;
-  extendedData!: Signal<Extended[]>;
+  location?: Location | false;
+  spinner = signal<true | false>(false)
 
   // Get data if queried location found otherwise clear data
-  onLocationFound(foundLocation: LocationObj | null) {
+  onLocationFound(foundLocation: Location | null) {
     if (foundLocation) {
-      this.location = { ...foundLocation };
-
-      // Weather conditions
-      this.weatherService.getWeatherData(this.location.lat, this.location.lng).subscribe(
-        res => {
-          this.weatherData = res;
-          console.log('weather data set');
-        },
-      );
-
-      this.currentData = computed(() => this.weatherService.getCurrent(this.weatherData));
-      this.hourlyData = computed(() => this.weatherService.getHourly(this.weatherData));
-      this.extendedData = computed(() => this.weatherService.getExtended(this.weatherData));
-      this.todayData = computed(() => this.weatherService.getToday(this.weatherData));
-
-      // Air quality
-      this.weatherService.getAirQuality(this.location.lat, this.location.lng).subscribe(
-        res => {
-          this.airQualityIndex = res.current.european_aqi;
-        },
-      );
+      this.location = foundLocation;
     } else {
       // Remove content
-      this.weatherData = undefined;
-      this.airQualityIndex = undefined;
+      this.location = false;
     }
   }
+
+  onLoading() {
+    this.spinner.set(!this.spinner);
+  };
 }

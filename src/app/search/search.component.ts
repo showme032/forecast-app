@@ -1,7 +1,15 @@
-import { Component, inject, output, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  output,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchServices } from './search.services';
-import { LocationObj } from '../app.model';
+import { Location } from '../app.model';
 
 @Component({
   selector: 'app-search',
@@ -13,10 +21,11 @@ import { LocationObj } from '../app.model';
 export class SearchComponent {
   private searchService = inject(SearchServices);
 
-  locationEmitter = output<LocationObj | null>();
+  locationEmitter = output<Location | null>();
   errorMessage = signal<string | undefined>(undefined);
   searchQuery = '';
   searchResults: {}[] = [];
+  @Output() loading = new EventEmitter<unknown>();
 
   // Get coordinates based on search query
   onSubmit() {
@@ -39,30 +48,29 @@ export class SearchComponent {
         this.searchQuery = '';
       });
     }
-
   }
 
-  onNewChar() {
-    setTimeout(() => {
-      if (this.searchQuery.length >= 3) {
-        this.searchService.getAutoComplete(this.searchQuery).subscribe(res => {
-          if (res) {
-            this.searchResults = [];
-            for (let i = 0; i <= 4; i++) {
-
-              this.searchResults.push({
-                lat: res.response.features[i].geometry.coordinates[1],
-                lng: res.response.features[i].geometry.coordinates[0],
-                label: `${res.response.features[i].properties.name}, ${res.response.features[i].properties.country}`,
-              });
-            }
-
-            console.log(this.searchResults);
-          }
-        });
-      }
-    }, 250);
-  }
+  // onNewChar() {
+  //   setTimeout(() => {
+  //     if (this.searchQuery.length >= 3) {
+  //       this.searchService.getAutoComplete(this.searchQuery).subscribe(res => {
+  //         if (res) {
+  //           this.searchResults = [];
+  //           for (let i = 0; i <= 4; i++) {
+  //
+  //             this.searchResults.push({
+  //               lat: res.response.features[i].geometry.coordinates[1],
+  //               lng: res.response.features[i].geometry.coordinates[0],
+  //               label: `${res.response.features[i].properties.name}, ${res.response.features[i].properties.country}`,
+  //             });
+  //           }
+  //
+  //           console.log(this.searchResults);
+  //         }
+  //       });
+  //     }
+  //   }, 250);
+  // }
 
   // Get location data based on HTML geoLocation API
   onGeoLocate() {

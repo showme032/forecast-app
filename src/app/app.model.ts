@@ -1,11 +1,11 @@
-import { Observable } from 'rxjs';
 
-export interface LocationObj {
+export interface Location {
   lat: number;
   lng: number;
   name: string;
   country: string;
 }
+
 
 export interface Today {
   event: string,

@@ -6,7 +6,7 @@ import {
   TitleCasePipe,
 } from '@angular/common';
 import { CardComponent } from '../today/card/card.component';
-import { Current, LocationObj } from '../app.model';
+import { Current, Location } from '../app.model';
 import { WeatherServices } from '../weather.services';
 
 @Component({
@@ -22,7 +22,7 @@ export class CurrentComponent {
   private weatherService = inject(WeatherServices);
 
   current = input.required<Current>();
-  location = input.required<LocationObj>();
+  location = input.required<Location>();
 
 
   get conditions() {
