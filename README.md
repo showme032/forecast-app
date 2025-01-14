@@ -10,7 +10,7 @@ and Open-Meteo's
 The app was made using Angular v18.
 
 # Live demo
-Live demo of current version can be viewed **[here](https://forecast-page.netlify.app/)**.
+Live demo of current version can be viewed **[here](https://forecast-app-brutalism.netlify.app/)**.
 
 # Usage
 Type the desired location into the search field and press enter 🤷‍♂️

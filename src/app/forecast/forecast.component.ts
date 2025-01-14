@@ -1,11 +1,12 @@
-import { Component, computed, inject, input, Input, Signal } from '@angular/core';
+import { Component, computed, inject, input, Signal } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+
+import { Current, Extended, Hourly, Location, Today } from '../app.model';
+import { WeatherServices } from '../weather.services';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { TodayComponent } from './today/today.component';
-import { WeatherServices } from '../weather.services';
-import { Current, Extended, Hourly, Location, Today } from '../app.model';
-import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-forecast',
@@ -32,7 +33,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ]
 })
 export class ForecastComponent {
-  // Inject the service
   private weatherService = inject(WeatherServices);
   location = input.required<Location>();
 

@@ -1,11 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import {
-  DatePipe,
   DecimalPipe,
-  NgOptimizedImage, NgStyle,
-  TitleCasePipe,
 } from '@angular/common';
-import { CardComponent } from '../today/card/card.component';
 import { Current, Location } from '../../app.model';
 import { WeatherServices } from '../../weather.services';
 

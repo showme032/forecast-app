@@ -1,11 +1,8 @@
-import {
-  Component, output,
-  signal,
-} from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
-import { SearchComponent } from './search/search.component';
 import { Location } from './app.model';
+import { SearchComponent } from './search/search.component';
 import { ForecastComponent } from './forecast/forecast.component';
 
 @Component({
@@ -38,7 +35,7 @@ import { ForecastComponent } from './forecast/forecast.component';
 })
 export class AppComponent {
   location?: Location | false;
-  spinner = signal<true | false>(false)
+  spinner = signal<true | false>(false);
 
   // Get data if queried location found otherwise clear data
   onLocationFound(foundLocation: Location | null) {
