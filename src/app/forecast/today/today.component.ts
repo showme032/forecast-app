@@ -1,7 +1,12 @@
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input, OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
-import { WeatherServices } from '../../weather.services';
 
 @Component({
   selector: 'app-today',
@@ -11,56 +16,46 @@ import { WeatherServices } from '../../weather.services';
     DecimalPipe,
     NgStyle,
   ],
+  providers: [TodayService],
   templateUrl: './today.component.html',
   styleUrl: './today.component.css',
 })
-export class TodayComponent {
+export class TodayComponent implements OnChanges {
   private todayService = inject(TodayService);
-  private weatherService = inject(WeatherServices);
 
   weatherData = input.required<{} | undefined>();
-  todayData = computed(() => this.weatherService.getToday(this.weatherData()));
   airQualityIndex = input.required<number>();
+  todayData = computed(() => this.todayService.getToday(this.weatherData()));
 
+  uvMessage?: string[];
+  pressureMessage?: string
+  humidityMessage?: string
+  subjectiveMessage?: string
+  visibilityMessage?: string
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['weatherData']) {
+      this.uvMessage = this.todayService.getUvMessage(this.todayData().uv);
+      this.pressureMessage = this.todayService.getPressureMessage(this.todayData().pressure);
+      this.humidityMessage = this.todayService.getHumidityMessage(this.todayData().dewPoint);
+      this.subjectiveMessage = this.todayService.getSubjectiveMessage(this.todayData().current, this.todayData().subjectiveTemp);
+      this.visibilityMessage = this.todayService.getVisibilityMessage(this.todayData().visibility);
+    }
+  }
+
+  // Change class to "slide" the card
   onCardClick(card: HTMLElement) {
     if (card.classList.contains('clicked')) {
-      // Remove class or attribute
       card.classList.remove('clicked');
     } else {
-      // Add class or attribute
       card.classList.add('clicked');
     }
   }
 
+
   linearGraphic(val: number, min: number, max: number): number {
     return (val - min) / (max - min) * 100;
-  }
-
-  // UV
-  get uvMessage(): string[] {
-    return this.todayService.getUvMessage(this.todayData().uv);
-  }
-
-  // Air Pressure
-  get pressureMessage(): string {
-    return this.todayService.getPressureMessage(this.todayData().pressure);
-  }
-
-  // Wind
-
-  // Humidity
-  get humidityMessage(): string {
-    return this.todayService.getHumidityMessage(this.todayData().dewPoint);
-  }
-
-  // Subjective Feel
-  get subjectiveMessage(): string {
-    return this.todayService.getSubjectiveMessage(this.todayData().current, this.todayData().subjectiveTemp);
-  }
-
-  // Visibility
-  get visibilityMessage(): string {
-    return this.todayService.getVisibilityMessage(this.todayData().visibility);
   }
 
   // Air Quality Index

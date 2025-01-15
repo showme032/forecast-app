@@ -3,13 +3,11 @@ import {
   computed,
   inject,
   input, OnChanges,
-  OnInit,
   Signal,
   SimpleChanges,
 } from '@angular/core';
-import { Extended } from '../../app.model';
 import { ExtendedCardComponent } from './extended-card/extended-card.component';
-import { WeatherServices } from '../../weather.services';
+import { ExtendedService } from './extended.service';
 
 
 @Component({
@@ -18,14 +16,15 @@ import { WeatherServices } from '../../weather.services';
   imports: [
     ExtendedCardComponent,
   ],
+  providers: [ExtendedService],
   templateUrl: './extended.component.html',
   styleUrl: './extended.component.css',
 })
 export class ExtendedComponent implements OnChanges {
-  private weatherService = inject(WeatherServices);
+  private extendedService = inject(ExtendedService);
   weatherData = input.required<{} | undefined>();
 
-  extendedData = computed(() => this.weatherService.getExtended(this.weatherData()));
+  extendedData = computed(() => this.extendedService.getExtended(this.weatherData()));
   extendedMinTemp!: Signal<number>;
   extendedMaxTemp!: Signal<number>;
   extendedRange!: Signal<number>;

@@ -1,7 +1,7 @@
-import { Component, computed, inject, input, SimpleChanges } from '@angular/core';
+import { Component, computed, inject, input} from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { Current, Location } from '../../app.model';
-import { WeatherServices } from '../../weather.services';
+import { Location } from '../../app.model';
+import { CurrentService } from './current.service';
 
 @Component({
   selector: 'app-current',
@@ -9,18 +9,19 @@ import { WeatherServices } from '../../weather.services';
   imports: [
     DecimalPipe,
   ],
+  providers: [CurrentService],
   templateUrl: './current.component.html',
   styleUrl: './current.component.css',
 })
 export class CurrentComponent {
-  private weatherService = inject(WeatherServices);
+  private forecastService = inject(CurrentService);
   weatherData = input.required<{} | undefined>();
 
-  current = computed(() => this.weatherService.getCurrent(this.weatherData()));
+  current = computed(() => this.forecastService.getCurrent(this.weatherData()));
   location = input.required<Location>();
 
   get conditions() {
-    return this.weatherService.getConditions(this.current().weatherCode);
+    return this.forecastService.getConditions(this.current().weatherCode);
   }
 
   get imagePath() {

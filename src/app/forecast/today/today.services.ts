@@ -1,7 +1,27 @@
 import { Injectable } from '@angular/core';
+import type { Today } from '../../app.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TodayService {
+  private hour = new Date().getHours();
+
+  // Return today's weather data
+  getToday(data: any): Today {
+    return {
+      event: data.current.is_day === 1 ? 'SUNSET' : 'SUNRISE',
+      eventTime: data.current.is_day === 1 ? data.daily.sunset[0] : data.daily.sunrise[0],
+      eventAfter: data.current.is_day === 1 ? ['Sunrise:', data.daily.sunrise[0]] : ['Sunset:', data.daily.sunset[0]],
+      uv: data.hourly.uv_index[this.hour],
+      visibility: Math.round(data.hourly.visibility[this.hour] / 3281),
+      pressure: data.current.pressure_msl,
+      windSpeed: data.current.wind_speed_10m,
+      windDirection: data.current.wind_direction_10m,
+      humidity: data.current.relative_humidity_2m,
+      dewPoint: data.hourly.dew_point_2m[this.hour],
+      subjectiveTemp: data.current.apparent_temperature,
+      current: data.hourly.temperature_2m[this.hour],
+    };
+  }
 
   // UV
   getUvMessage(index: number): string[] {
@@ -103,7 +123,5 @@ export class TodayService {
     } else if (index < 100) {
       return 'Very poor';
     } else return 'Extremely poor';
-
-
   }
 }

@@ -1,8 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { CardComponent } from '../today/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { Hourly } from '../../app.model';
-import { WeatherServices } from '../../weather.services';
+import { HourlyService } from './hourly.service';
 
 @Component({
   selector: 'app-hourly',
@@ -12,12 +11,13 @@ import { WeatherServices } from '../../weather.services';
     DatePipe,
     DecimalPipe,
   ],
+  providers: [HourlyService],
   templateUrl: './hourly.component.html',
   styleUrl: './hourly.component.css'
 })
 export class HourlyComponent {
-  private weatherService = inject(WeatherServices);
+  private hourlyService = inject(HourlyService);
 
   weatherData = input.required<{} | undefined>();
-  hourly = computed(() => this.weatherService.getHourly(this.weatherData()));
+  hourly = computed(() => this.hourlyService.getHourly(this.weatherData()));
 }

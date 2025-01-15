@@ -1,6 +1,5 @@
 import {
   Component,
-  inject,
   input,
   OnChanges,
   signal,
@@ -9,7 +8,6 @@ import {
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import { Location } from '../app.model';
-import { WeatherServices } from '../weather.services';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
 import { HourlyComponent } from './hourly/hourly.component';
@@ -42,15 +40,11 @@ import { ForecastService } from './forecast.service';
   ],
 })
 export class ForecastComponent implements OnChanges {
+  constructor(private forecastService: ForecastService) {}
   location = input.required<Location>();
 
   weatherData = signal<{} | undefined>(undefined);
   airQualityIndex = signal<number>(0);
-  // weatherData!: Signal<{}>;
-  // weatherData = signal<{} | undefined>({});
-
-  constructor(private forecastService: ForecastService) {
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['location']) {
@@ -58,7 +52,6 @@ export class ForecastComponent implements OnChanges {
         .getWeatherData(this.location().lat, this.location().lng)
         .subscribe(
           res => {
-            // this.weatherData = signal(res);
             this.weatherData.set(res);
           },
         );
