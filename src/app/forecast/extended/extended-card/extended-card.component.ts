@@ -14,8 +14,8 @@ import { Extended } from '../../../app.model';
 })
 export class ExtendedCardComponent {
   dayData = input.required<Extended>()
-  @Input() extendedMinTemp!: Signal<number>;
-  @Input() extendedRange!: Signal<number>;
+  extendedMinTemp = input.required<number>();
+  extendedRange = input.required<number>();
   temperatureGraphWidth: Signal<number | undefined>;
   temperatureGraphOffset: Signal<number | undefined>;
 

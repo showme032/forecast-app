@@ -11,12 +11,12 @@
         <img src="/assets/icons/sunset.svg"
              alt="sun-icon"
              class="card-heading-icon">
-        <h5>{{ today().event }}</h5>
+        <h5>{{ todayData().event }}</h5>
       </div>
-      <div class="value">{{ today().eventTime | date: 'HH:mm' }}</div>
+      <div class="value">{{ todayData().eventTime | date: 'HH:mm' }}</div>
       <p class="description">
-        {{ today().eventAfter[0] }}
-        {{ today().eventAfter[1] | date:'HH:mm' }}
+        {{ todayData().eventAfter[0] }}
+        {{ todayData().eventAfter[1] | date:'HH:mm' }}
       </p>
     </div>
     <div class="card-info">
@@ -40,11 +40,11 @@
       </div>
       <div class="graph-container">
             <span class="graph-value uv-value">
-              {{ today().uv | number:'1.0-0' }}
+              {{ todayData().uv | number:'1.0-0' }}
             </span>
         <div class="bar-container">
           <div class="bar-fill"
-               [style.width.%]="linearGraphic(today().uv, 0, 10)"></div>
+               [style.width.%]="linearGraphic(todayData().uv, 0, 10)"></div>
         </div>
         <div class="bar-labels">
           <span>0</span>
@@ -74,11 +74,11 @@
       </div>
       <div class="graph-container">
             <span class="graph-value">
-              {{ today().pressure | number:'1.0-0' }} hPa
+              {{ todayData().pressure | number:'1.0-0' }} hPa
             </span>
         <div class="bar-container">
           <div class="bar-fill"
-               [style.width.%]="linearGraphic(today().pressure, 950, 1078)"></div>
+               [style.width.%]="linearGraphic(todayData().pressure, 950, 1078)"></div>
         </div>
         <div class="bar-labels">
           <span>lo</span>
@@ -115,10 +115,11 @@
           <img src="/assets/decorations/arrow.svg"
                alt="Current conditions"
                class="arrow"
-               [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.today().windDirection + 'deg)'}">
+               [ngStyle]="{'transform': 'translateX(-50%) translateY(-50%) rotate(' + this.todayData().windDirection +
+               'deg)'}">
         </div>
       </div>
-      <p class="description">Speed: {{ today().windSpeed }} km/h</p>
+      <p class="description">Speed: {{ todayData().windSpeed }} km/h</p>
     </div>
     <div class="card-info">
       <p>
@@ -143,7 +144,7 @@
         <h5>AIR HUMIDITY</h5>
       </div>
       <div class="value">
-        {{ today().humidity }}%
+        {{ todayData().humidity }}%
       </div>
       <p class="description">{{ humidityMessage }}</p>
     </div>
@@ -167,7 +168,7 @@
         <h5>FEELS LIKE</h5>
       </div>
       <div class="value">
-        {{ today().subjectiveTemp }}°C
+        {{ todayData().subjectiveTemp }}°C
       </div>
       <p class="description">{{ subjectiveMessage }}</p>
     </div>
@@ -189,7 +190,7 @@
              class="card-heading-icon">
         <h5>VISIBILITY</h5>
       </div>
-      <div class="value">{{ today().visibility }} km</div>
+      <div class="value">{{ todayData().visibility }} km</div>
       <p class="description">{{ visibilityMessage }}</p>
     </div>
     <div class="card-info">

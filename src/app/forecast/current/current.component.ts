@@ -1,7 +1,5 @@
-import { Component, inject, input } from '@angular/core';
-import {
-  DecimalPipe,
-} from '@angular/common';
+import { Component, computed, inject, input, SimpleChanges } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { Current, Location } from '../../app.model';
 import { WeatherServices } from '../../weather.services';
 
@@ -16,10 +14,10 @@ import { WeatherServices } from '../../weather.services';
 })
 export class CurrentComponent {
   private weatherService = inject(WeatherServices);
+  weatherData = input.required<{} | undefined>();
 
-  current = input.required<Current>();
+  current = computed(() => this.weatherService.getCurrent(this.weatherData()));
   location = input.required<Location>();
-
 
   get conditions() {
     return this.weatherService.getConditions(this.current().weatherCode);

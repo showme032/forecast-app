@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import { Location } from './app.model';
@@ -34,8 +34,8 @@ import { ForecastComponent } from './forecast/forecast.component';
   ],
 })
 export class AppComponent {
-  location?: Location | false;
-  spinner = signal<true | false>(false);
+  location?: Location | undefined;
+  // spinner = signal<true | false>(false);
 
   // Get data if queried location found otherwise clear data
   onLocationFound(foundLocation: Location | null) {
@@ -43,11 +43,12 @@ export class AppComponent {
       this.location = foundLocation;
     } else {
       // Remove content
-      this.location = false;
+      this.location = undefined;
     }
   }
 
+  // Loading Spinner
   onLoading() {
-    this.spinner.set(!this.spinner);
+    // this.spinner.set(!this.spinner);
   };
 }

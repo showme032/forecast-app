@@ -1,12 +1,20 @@
-import { Component, computed, inject, input, Signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  OnChanges,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
-import { Current, Extended, Hourly, Location, Today } from '../app.model';
+import { Location } from '../app.model';
 import { WeatherServices } from '../weather.services';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { TodayComponent } from './today/today.component';
+import { ForecastService } from './forecast.service';
 
 @Component({
   selector: 'app-forecast',
@@ -17,6 +25,7 @@ import { TodayComponent } from './today/today.component';
     HourlyComponent,
     TodayComponent,
   ],
+  providers: [ForecastService],
   templateUrl: './forecast.component.html',
   styleUrl: './forecast.component.css',
   animations: [
@@ -30,39 +39,37 @@ import { TodayComponent } from './today/today.component';
         animate('125ms ease-in-out', style({ opacity: 0 })),
       ]),
     ]),
-  ]
+  ],
 })
-export class ForecastComponent {
-  private weatherService = inject(WeatherServices);
+export class ForecastComponent implements OnChanges {
   location = input.required<Location>();
 
+  weatherData = signal<{} | undefined>(undefined);
+  airQualityIndex = signal<number>(0);
+  // weatherData!: Signal<{}>;
+  // weatherData = signal<{} | undefined>({});
 
-  weatherData?: {} | undefined;
-  currentData!: Signal<Current>;
-  hourlyData!: Signal<Hourly[]>;
-  todayData!: Signal<Today>;
-  airQualityIndex!: number;
-  extendedData!: Signal<Extended[]>;
-
-  ngOnInit(): void {
-    // Weather conditions
-    this.weatherService.getWeatherData(this.location().lat, this.location().lng).subscribe(
-      res => {
-        this.weatherData = res;
-      },
-    );
-
-    this.currentData = computed(() => this.weatherService.getCurrent(this.weatherData));
-    this.hourlyData = computed(() => this.weatherService.getHourly(this.weatherData));
-    this.extendedData = computed(() => this.weatherService.getExtended(this.weatherData));
-    this.todayData = computed(() => this.weatherService.getToday(this.weatherData));
-
-    // Air quality
-    this.weatherService.getAirQuality(this.location().lat, this.location().lng).subscribe(
-      res => {
-        this.airQualityIndex = res.current.european_aqi;
-      },
-    );
+  constructor(private forecastService: ForecastService) {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['location']) {
+      this.forecastService
+        .getWeatherData(this.location().lat, this.location().lng)
+        .subscribe(
+          res => {
+            // this.weatherData = signal(res);
+            this.weatherData.set(res);
+          },
+        );
+
+      this.forecastService
+        .getAirQuality(this.location().lat, this.location().lng)
+        .subscribe(
+          res => {
+            this.airQualityIndex.set(res.current.european_aqi);
+          },
+        );
+    }
+  }
 }

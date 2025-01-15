@@ -1,8 +1,7 @@
-import { Component, inject, input } from '@angular/core';
-// import { CardComponent } from './card/card.component';
-import { type Today } from '../../app.model';
+import { Component, computed, inject, input } from '@angular/core';
 import { DatePipe, DecimalPipe, NgStyle } from '@angular/common';
 import { TodayService } from './today.services';
+import { WeatherServices } from '../../weather.services';
 
 @Component({
   selector: 'app-today',
@@ -17,7 +16,10 @@ import { TodayService } from './today.services';
 })
 export class TodayComponent {
   private todayService = inject(TodayService);
-  today = input.required<Today>();
+  private weatherService = inject(WeatherServices);
+
+  weatherData = input.required<{} | undefined>();
+  todayData = computed(() => this.weatherService.getToday(this.weatherData()));
   airQualityIndex = input.required<number>();
 
   onCardClick(card: HTMLElement) {
@@ -36,29 +38,29 @@ export class TodayComponent {
 
   // UV
   get uvMessage(): string[] {
-    return this.todayService.getUvMessage(this.today().uv);
+    return this.todayService.getUvMessage(this.todayData().uv);
   }
 
   // Air Pressure
   get pressureMessage(): string {
-    return this.todayService.getPressureMessage(this.today().pressure);
+    return this.todayService.getPressureMessage(this.todayData().pressure);
   }
 
   // Wind
 
   // Humidity
   get humidityMessage(): string {
-    return this.todayService.getHumidityMessage(this.today().dewPoint);
+    return this.todayService.getHumidityMessage(this.todayData().dewPoint);
   }
 
   // Subjective Feel
   get subjectiveMessage(): string {
-    return this.todayService.getSubjectiveMessage(this.today().current, this.today().subjectiveTemp);
+    return this.todayService.getSubjectiveMessage(this.todayData().current, this.todayData().subjectiveTemp);
   }
 
   // Visibility
   get visibilityMessage(): string {
-    return this.todayService.getVisibilityMessage(this.today().visibility);
+    return this.todayService.getVisibilityMessage(this.todayData().visibility);
   }
 
   // Air Quality Index

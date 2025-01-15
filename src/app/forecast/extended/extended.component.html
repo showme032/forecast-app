@@ -1,7 +1,7 @@
 <div class="extended-group">
   <h5 class="card-title extended-title">7-DAY FORECAST</h5>
 
-  @for (day of extended(); track day.date) {
-    <app-extended-card [dayData]="day" [extendedMinTemp]="extendedMinTemp" [extendedRange]="extendedRange"/>
+  @for (day of extendedData(); track day.date) {
+    <app-extended-card [dayData]="day" [extendedMinTemp]="extendedMinTemp()" [extendedRange]="extendedRange()"/>
   }
 </div>

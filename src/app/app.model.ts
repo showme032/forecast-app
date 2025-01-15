@@ -6,6 +6,21 @@ export interface Location {
   country: string;
 }
 
+export interface WeatherData {
+  current_units: {},
+  current: {},
+  daily_units: {},
+  daily: {}
+  elevation: number,
+  generationtime_ms: number,
+  hourly_units: {},
+  hourly: {},
+  latitude: number,
+  longitude: number,
+  utc_offset_seconds: number,
+  timezone: string,
+  timezone_abbreviation: string,
+}
 
 export interface Today {
   event: string,

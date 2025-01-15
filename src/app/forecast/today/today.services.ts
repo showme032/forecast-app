@@ -77,7 +77,7 @@ export class TodayService {
   }
 
   // Air Quality
-  getAirColor(index: number): string {
+  getAirColor(index: number ): string {
     if (index <= 20) {
       return 'blue';
     } else if (index < 40) {

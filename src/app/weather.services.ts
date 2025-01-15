@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { type Current, type Extended, type Hourly, type Today } from './app.model';
+import {
+  type Current,
+  type Extended,
+  type Hourly,
+  type Today,
+} from './app.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,43 +14,14 @@ export class WeatherServices {
 
   private hour = new Date().getHours();
 
-  // Get weather data for given coordinates
-  getWeatherData(lat: number, lng: number): Observable<any> {
-    const baseUrl = 'https://api.open-meteo.com/v1/forecast';
-    const params = {
-      latitude: lat,
-      longitude: lng,
-      current: 'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m',
-      hourly: 'temperature_2m,weather_code,visibility,uv_index,is_day,dew_point_2m',
-      daily: 'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max',
-      timezone: 'auto',
-    };
-
-    return this.http.get<any>(baseUrl, { params });
-  }
-
-  // Get air quality index for given coordinates
-  getAirQuality(lat: number, lng: number): Observable<any> {
-    const baseUrl = 'https://air-quality-api.open-meteo.com/v1/air-quality?';
-    const params = {
-      latitude: lat,
-      longitude: lng,
-      current: 'european_aqi',
-      hourly: 'pm10,pm2_5',
-      forecast_days: '1',
-    };
-
-    return this.http.get<any>(baseUrl, { params });
-  }
-
   // Return current weather data
   getCurrent(data: any): Current {
+    console.log(data);
     return {
       temperature: data.current.temperature_2m,
       weatherCode: data.current.weather_code,
       min: data.daily.temperature_2m_min[0],
       max: data.daily.temperature_2m_max[0],
-
     };
   };
 
