@@ -2,12 +2,13 @@ import {
   Component,
   computed,
   inject,
-  input, OnChanges,
+  input, OnChanges, OnInit,
   Signal,
   SimpleChanges,
 } from '@angular/core';
 import { ExtendedCardComponent } from './extended-card/extended-card.component';
 import { ExtendedService } from './extended.service';
+import { Extended } from '../../app.model';
 
 
 @Component({
@@ -20,28 +21,33 @@ import { ExtendedService } from './extended.service';
   templateUrl: './extended.component.html',
   styleUrl: './extended.component.css',
 })
-export class ExtendedComponent implements OnChanges {
+export class ExtendedComponent implements OnChanges, OnInit {
   private extendedService = inject(ExtendedService);
   weatherData = input.required<{} | undefined>();
 
-  extendedData = computed(() => this.extendedService.getExtended(this.weatherData()));
+  extendedData!: Signal<Extended[]>;
   extendedMinTemp!: Signal<number>;
   extendedMaxTemp!: Signal<number>;
   extendedRange!: Signal<number>;
 
+  ngOnInit() {
+    this.extendedData = computed(() => this.extendedService.getExtended(this.weatherData()));
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    // Get the lowest minimum for graph range
+    // Get the lowest temperature for graphs
     this.extendedMinTemp = computed(() => this.extendedData()
       .reduce((min, current) => current.minTemperature > min ? min : current.minTemperature,
         Infinity));
 
-    // and maximum
+    // maximum
     this.extendedMaxTemp = computed(() => this.extendedData()
       .reduce((max, current) => current.maxTemperature > max ? current.maxTemperature : max,
         -Infinity));
 
-    // Get temperature range for graph
+    // and range
     this.extendedRange = computed(() => this.extendedMaxTemp() - this.extendedMinTemp());
+
   }
 
 }

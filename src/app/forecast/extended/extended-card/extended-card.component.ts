@@ -1,4 +1,12 @@
-import { Component, computed, Input, input, Signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  Input,
+  input,
+  OnChanges,
+  Signal,
+  SimpleChanges,
+} from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Extended } from '../../../app.model';
 
@@ -12,20 +20,21 @@ import { Extended } from '../../../app.model';
   templateUrl: './extended-card.component.html',
   styleUrl: './extended-card.component.css',
 })
-export class ExtendedCardComponent {
+export class ExtendedCardComponent implements OnChanges {
   dayData = input.required<Extended>()
   extendedMinTemp = input.required<number>();
+  extendedMaxTemp = input.required<number>();
   extendedRange = input.required<number>();
-  temperatureGraphWidth: Signal<number | undefined>;
-  temperatureGraphOffset: Signal<number | undefined>;
 
-  constructor() {
-    this.temperatureGraphWidth = computed(() => {
-      return (this.dayData().maxTemperature - this.dayData().minTemperature) / this.extendedRange() * 100;
+  graphFillWidth!: Signal<number>;
+  graphFillOffset!: Signal<number>;
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.graphFillWidth = computed(() => {
+      return ((this.dayData().maxTemperature - this.dayData().minTemperature) / this.extendedRange()) * 100;
     });
-
-    this.temperatureGraphOffset = computed(() => {
-      return (this.dayData().minTemperature - this.extendedMinTemp() / this.extendedRange() * 100);
+    this.graphFillOffset = computed(() => {
+      return ((this.dayData().minTemperature - this.extendedMinTemp()) / this.extendedRange() * 100);
     });
   }
 

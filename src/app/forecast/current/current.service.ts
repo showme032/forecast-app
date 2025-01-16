@@ -8,7 +8,6 @@ export class CurrentService {
 
   // Return current weather data
   getCurrent(data: any): Current {
-    console.log(data);
     return {
       temperature: data.current.temperature_2m,
       weatherCode: data.current.weather_code,

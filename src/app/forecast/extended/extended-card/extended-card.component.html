@@ -1,6 +1,6 @@
 <div class="extended-card-wrapper">
     <span class="forecast-day">
-            {{ dayData().isToday === true ? 'Now' : ((dayData().date | date: 'EE')) }}:
+            {{ dayData().isToday ? 'Now' : ((dayData().date | date: 'EE')) }}:
           </span>
 
   <div class="forecast">
@@ -14,8 +14,8 @@
       <span class="graph-num">{{ dayData().minTemperature }}°</span>
       <div class="bar-container">
         <div class="bar-fill"
-             [style.width.%]="temperatureGraphWidth()"
-             [style.left.%]="temperatureGraphOffset()"></div>
+             [style.width.%]="graphFillWidth()"
+             [style.left.%]="graphFillOffset()"></div>
       </div>
       <span class="graph-num">{{ dayData().maxTemperature }}</span>
     </div>
