@@ -7,7 +7,7 @@
     <span class="forecast-icon">
       <img [src]="imagePath(dayData().weatherCode)"
            alt="Current conditions">
-      <div class="background"></div>
+<!--      <div class="background"></div>-->
     </span>
 
     <div class="loHi">
@@ -17,10 +17,45 @@
              [style.width.%]="graphFillWidth()"
              [style.left.%]="graphFillOffset()"></div>
       </div>
-      <span class="graph-num">{{ dayData().maxTemperature }}</span>
+      <span class="graph-num">{{ dayData().maxTemperature }}°</span>
     </div>
 
-    <div class="uvRain">
+<!--    <button (click)="onToggleDetails()"-->
+<!--            class="expander">-->
+<!--      @if (detailVisible()) {-->
+<!--        <svg class="arrow"-->
+<!--             xmlns="http://www.w3.org/2000/svg"-->
+<!--             viewBox="0 0 24 24"-->
+<!--             width="24"-->
+<!--             height="24"-->
+<!--             color="#171740"-->
+<!--             fill="none">-->
+<!--          <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"-->
+<!--                stroke="currentColor"-->
+<!--                stroke-width="1.5"-->
+<!--                stroke-linecap="round"-->
+<!--                stroke-linejoin="round" />-->
+<!--        </svg>-->
+<!--      } @else {-->
+<!--        <svg class="arrow"-->
+<!--             xmlns="http://www.w3.org/2000/svg"-->
+<!--             viewBox="0 0 24 24"-->
+<!--             width="24"-->
+<!--             height="24"-->
+<!--             color="#171740"-->
+<!--             fill="none">-->
+<!--          <path d="M17.9998 15C17.9998 15 13.5809 9.00001 11.9998 9C10.4187 8.99999 5.99985 15 5.99985 15"-->
+<!--                stroke="currentColor"-->
+<!--                stroke-width="1.5"-->
+<!--                stroke-linecap="round"-->
+<!--                stroke-linejoin="round" />-->
+<!--        </svg>-->
+<!--      }-->
+<!--    </button>  -->
+  </div>
+
+  @if (detailVisible()) {
+    <div class="expanded-data">
       <div>
         <span class="emphasized">Precipitation: </span><span>{{ dayData().precipitation }}%
               </span>
@@ -29,5 +64,5 @@
         <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
       </div>
     </div>
-  </div>
+  }
 </div>

@@ -1,9 +1,8 @@
 import {
   Component,
   computed,
-  Input,
   input,
-  OnChanges,
+  OnChanges, signal,
   Signal,
   SimpleChanges,
 } from '@angular/core';
@@ -28,6 +27,12 @@ export class ExtendedCardComponent implements OnChanges {
 
   graphFillWidth!: Signal<number>;
   graphFillOffset!: Signal<number>;
+
+  detailVisible = signal(false);
+
+  onToggleDetails() {
+    this.detailVisible.update((currentValue) => !currentValue)
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     this.graphFillWidth = computed(() => {

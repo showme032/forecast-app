@@ -2,7 +2,7 @@ import {
   Component,
   computed,
   inject,
-  input, OnChanges, OnInit,
+  input, OnChanges, OnInit, signal,
   Signal,
   SimpleChanges,
 } from '@angular/core';

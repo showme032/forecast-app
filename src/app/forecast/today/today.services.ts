@@ -26,9 +26,9 @@ export class TodayService {
   // UV
   getUvMessage(index: number): string[] {
     if (index <= 2) {
-      return ['Low', 'No risk'];
+      return ['Low', ' no risk'];
     } else if (index <= 6) {
-      return ['Medium', 'Wear protection'];
+      return ['Medium', ' wear protection'];
     } else if (index <= 10) {
       return ['High', 'Protection required'];
     } else return ['Very high', 'Avoid exposure!'];

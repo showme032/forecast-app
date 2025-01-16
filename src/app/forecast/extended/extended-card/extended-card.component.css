@@ -38,19 +38,21 @@
 }
 
 .forecast-icon {
+    height: 95%;
+    aspect-ratio: 1 / 1;
     position: relative;
     overflow: visible;
     justify-self: center;
     grid-area: ficon;
-    border: var(--border-light);
+    /*border: var(--border-light);*/
     border-radius: var(--radius-small);
-    background-color: var(--color-background-muted);
+    background-color: var(--color-foreground);
     display: flex;
     align-items: center;
     justify-content: center;
     
     & img {
-        height: 2.2rem;
+        height: 82%;
         margin: 3px;
         aspect-ratio: 1 / 1;
         /*width: 85%;*/
@@ -59,7 +61,7 @@
 }
 
 
-.loHi, .uvRain {
+.loHi, .expanded-data {
     position: relative;
     display: flex;
     align-items: start;
@@ -84,11 +86,11 @@
     &:last-of-type {
         justify-content: end;
         
-        &::after {
-            content: '°';
-            position: absolute;
-            right: -0.5rem;
-        }
+        /*&::after {*/
+        /*    content: '°';*/
+        /*    position: absolute;*/
+        /*    right: -0.5rem;*/
+        /*}*/
     }
 }
 
@@ -97,10 +99,12 @@
     width: 100%;
     height: 0.35rem;
     border-radius: var(--radius-small);
+    /*border: var(--border-emphasize);*/
     background-color: var(--color-background-muted);
     overflow: hidden;
     align-self: center;
     position: relative;
+    box-sizing: border-box;
 }
 
 .bar-fill {
@@ -110,8 +114,18 @@
     position: relative;
 }
 
-.uvRain {
+.expanded-data {
     justify-self: stretch;
     align-content: space-between;
     grid-area: uvr;
+}
+
+button {
+    width: 2rem;
+    height: 2rem;
+}
+
+.arrow {
+    height: 1.8rem;
+    width: 1.8rem;
 }
