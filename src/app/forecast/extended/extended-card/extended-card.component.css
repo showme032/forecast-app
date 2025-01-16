@@ -42,13 +42,19 @@
     overflow: visible;
     justify-self: center;
     grid-area: ficon;
-    height: 2.5rem;
     border: var(--border-light);
     border-radius: var(--radius-small);
-    background-color: var(--color-background-muted);;
+    background-color: var(--color-background-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     & img {
-        max-height: 105%;
+        height: 2.2rem;
+        margin: 3px;
+        aspect-ratio: 1 / 1;
+        /*width: 85%;*/
+        /*height: 85%;*/
     }
 }
 

@@ -30,12 +30,16 @@
 }
 
 .current-icon {
-    grid-area: 1 / 1 / 2 / 3;
+    width: 100%;
+    grid-area: 1 / 2 / 2 / 3;
     justify-self: end;
     max-width: 100px;
     overflow: visible;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-background {
@@ -47,5 +51,7 @@
 }
 
 .icon {
+    margin: var(--spacing-small);
+    width: 80%;
     position: relative;
 }
