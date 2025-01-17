@@ -5,9 +5,14 @@ import { Extended } from '../../app.model';
 export class ExtendedService {
   // Return weather data for 7 days
   getExtended(data: any): Extended[] {
+    console.log(data);
     let extended: Extended[] = [];
 
     for (let i = 0; i < 7; i += 1) {
+      let daylightMinutes = Math.round(data.daily.daylight_duration[i] / 60);
+      let hours = Math.floor(daylightMinutes / 60)
+      let minutes = daylightMinutes % 60;
+
       let day: Extended = {
         isToday: i === 0,
         date: data.daily.time[i],
@@ -17,6 +22,8 @@ export class ExtendedService {
         maxTemperature: Math.round(data.daily.temperature_2m_max[i]),
         uvMax: data.daily.uv_index_max[i],
         precipitation: data.daily.precipitation_probability_max[i],
+        daylight_duration: `${hours}h ${minutes}min`,
+        wind_gusts_10m_max: data.daily.wind_gusts_10m_max[i],
       };
 
       extended.push(day);

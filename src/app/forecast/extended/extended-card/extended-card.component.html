@@ -29,29 +29,31 @@
     </div>
   </div>
 
-  <span (click)="onToggleDetails()"
-        class="expander">
+  <span (click)="onToggleView()" class="expander">
     <svg xmlns="http://www.w3.org/2000/svg"
          width="24"
          height="24"
          viewBox="0 0 24 24"
          fill="none"
-         stroke="#34477f"
+         stroke="#434370"
          stroke-width="2"
          stroke-linecap="round"
          stroke-linejoin="round"
-         class="arrow" [class.arrow-expanded]="onExpandView()"><path d="m6 9 6 6 6-6" /></svg>
+         class="arrow"
+         [class.arrow-expanded]="expandedView()"><path d="m6 9 6 6 6-6" /></svg>
   </span>
 </div>
 
-@if (onExpandView()) {
+@if (expandedView()) {
+  <div class="separator"></div>
   <div class="expanded-view">
-    <div>
-      <span class="emphasized">Precipitation: </span><span>{{ dayData().precipitation }}%
-              </span>
+    <div class="expanded-column">
+      <span class="emphasized">Precipitation: {{ dayData().precipitation }}%</span>
+      <span class="emphasized">Wind Gusts: {{dayData().wind_gusts_10m_max | number: '1.1-1'}}km/h</span>
     </div>
-    <div>
-      <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
+    <div class="expanded-column">
+      <span class="emphasized">UV Index: {{ dayData().uvMax | number: '1.0-0' }}</span>
+      <span class="emphasized">Daylight: {{dayData().daylight_duration}}</span>
     </div>
   </div>
 }

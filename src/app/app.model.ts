@@ -58,4 +58,6 @@ export interface Extended {
   maxTemperature: number,
   uvMax: number,
   precipitation: number,
+  daylight_duration: string,
+  wind_gusts_10m_max: number,
 }

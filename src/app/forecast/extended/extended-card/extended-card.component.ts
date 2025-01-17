@@ -31,10 +31,10 @@ export class ExtendedCardComponent implements OnChanges {
   graphFillWidth!: Signal<number>;
   graphFillOffset!: Signal<number>;
 
-  onExpandView = signal(false);
+  expandedView = signal(false);
 
-  onToggleDetails() {
-    this.onExpandView.update((currentValue) => !currentValue)
+  onToggleView() {
+    this.expandedView.update((currentValue) => !currentValue)
   }
 
   // Component specific graph parameters, update on input change
