@@ -1,13 +1,13 @@
 import {
   Component,
   input,
-  OnChanges,
+  OnChanges, OnInit,
   signal,
   SimpleChanges,
 } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
+import * as weatherData from '../../assets/exampleWeateherData.json'
 
-import { Location } from '../app.model';
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
 import { HourlyComponent } from './hourly/hourly.component';
@@ -39,30 +39,38 @@ import { ForecastService } from './forecast.service';
     ]),
   ],
 })
-export class ForecastComponent implements OnChanges {
+export class ForecastComponent {
   constructor(private forecastService: ForecastService) {}
-  location = input.required<Location>();
+  // location = input.required<Location>();
+  // weatherData = signal<{} | undefined>(undefined);
+  // airQualityIndex = signal<number>(0);
 
-  weatherData = signal<{} | undefined>(undefined);
-  airQualityIndex = signal<number>(0);
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes['location']) {
+  //     this.forecastService
+  //       .getWeatherData(this.location().lat, this.location().lng)
+  //       .subscribe(
+  //         res => {
+  //           this.weatherData.set(res);
+  //         },
+  //       );
+  //
+  //     this.forecastService
+  //       .getAirQuality(this.location().lat, this.location().lng)
+  //       .subscribe(
+  //         res => {
+  //           this.airQualityIndex.set(res.current.european_aqi);
+  //         },
+  //       );
+  //   }
+  // }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['location']) {
-      this.forecastService
-        .getWeatherData(this.location().lat, this.location().lng)
-        .subscribe(
-          res => {
-            this.weatherData.set(res);
-          },
-        );
-
-      this.forecastService
-        .getAirQuality(this.location().lat, this.location().lng)
-        .subscribe(
-          res => {
-            this.airQualityIndex.set(res.current.european_aqi);
-          },
-        );
-    }
-  }
+  location = signal<any>({
+    lat: 44,
+    lng: 66,
+    name: 'Cacak',
+    country: 'Serbia',
+  })
+  weatherData: any = signal<any>(weatherData)
+  airQualityIndex = signal<number>(66);
 }

@@ -53,6 +53,7 @@ export interface Extended {
   isToday: boolean,
   date: string,
   weatherCode: number,
+  conditions: string,
   minTemperature: number,
   maxTemperature: number,
   uvMax: number,

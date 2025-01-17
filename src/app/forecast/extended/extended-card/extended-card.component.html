@@ -1,68 +1,57 @@
-<div class="extended-card-wrapper">
-    <span class="forecast-day">
-            {{ dayData().isToday ? 'Now' : ((dayData().date | date: 'EE')) }}:
-          </span>
+<div class="main-view">
+  <span class="forecast-day">
+    {{ dayData().isToday ? 'Now' : ((dayData().date | date: 'EE')) }}
+  </span>
 
   <div class="forecast">
     <span class="forecast-icon">
       <img [src]="imagePath(dayData().weatherCode)"
            alt="Current conditions">
-<!--      <div class="background"></div>-->
+      <!--      <div class="background"></div>    -->
     </span>
 
-    <div class="loHi">
-      <span class="graph-num">{{ dayData().minTemperature }}°</span>
-      <div class="bar-container">
-        <div class="bar-fill"
-             [style.width.%]="graphFillWidth()"
-             [style.left.%]="graphFillOffset()"></div>
+    <div class="main-info-wrapper">
+      <div class="conditions">
+        {{ dayData().conditions }}
       </div>
-      <span class="graph-num">{{ dayData().maxTemperature }}°</span>
-    </div>
 
-<!--    <button (click)="onToggleDetails()"-->
-<!--            class="expander">-->
-<!--      @if (detailVisible()) {-->
-<!--        <svg class="arrow"-->
-<!--             xmlns="http://www.w3.org/2000/svg"-->
-<!--             viewBox="0 0 24 24"-->
-<!--             width="24"-->
-<!--             height="24"-->
-<!--             color="#171740"-->
-<!--             fill="none">-->
-<!--          <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"-->
-<!--                stroke="currentColor"-->
-<!--                stroke-width="1.5"-->
-<!--                stroke-linecap="round"-->
-<!--                stroke-linejoin="round" />-->
-<!--        </svg>-->
-<!--      } @else {-->
-<!--        <svg class="arrow"-->
-<!--             xmlns="http://www.w3.org/2000/svg"-->
-<!--             viewBox="0 0 24 24"-->
-<!--             width="24"-->
-<!--             height="24"-->
-<!--             color="#171740"-->
-<!--             fill="none">-->
-<!--          <path d="M17.9998 15C17.9998 15 13.5809 9.00001 11.9998 9C10.4187 8.99999 5.99985 15 5.99985 15"-->
-<!--                stroke="currentColor"-->
-<!--                stroke-width="1.5"-->
-<!--                stroke-linecap="round"-->
-<!--                stroke-linejoin="round" />-->
-<!--        </svg>-->
-<!--      }-->
-<!--    </button>  -->
+      <div class="loHi">
+          <span class="graph-num"
+                [class.negative]="dayData().minTemperature <= -1">{{ dayData().minTemperature }}°</span>
+        <div class="bar-container">
+          <div class="bar-fill"
+               [style.width.%]="graphFillWidth()"
+               [style.left.%]="graphFillOffset()"></div>
+        </div>
+        <span class="graph-num"
+              [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>
+      </div>
+    </div>
   </div>
 
-  @if (detailVisible()) {
-    <div class="expanded-data">
-      <div>
-        <span class="emphasized">Precipitation: </span><span>{{ dayData().precipitation }}%
-              </span>
-      </div>
-      <div>
-        <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
-      </div>
-    </div>
-  }
+  <span (click)="onToggleDetails()"
+        class="expander">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="24"
+         height="24"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="#34477f"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         class="arrow" [class.arrow-expanded]="onExpandView()"><path d="m6 9 6 6 6-6" /></svg>
+  </span>
 </div>
+
+@if (onExpandView()) {
+  <div class="expanded-view">
+    <div>
+      <span class="emphasized">Precipitation: </span><span>{{ dayData().precipitation }}%
+              </span>
+    </div>
+    <div>
+      <span class="emphasized">UV Index: </span>{{ dayData().uvMax | number: '1.0-0' }}
+    </div>
+  </div>
+}

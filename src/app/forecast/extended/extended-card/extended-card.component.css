@@ -1,16 +1,20 @@
-.extended-card-wrapper {
+:host {
+    background: var(--color-background-emphasize);
     border: var(--border-medium);
     border-radius: var(--radius-small);
-    padding: var(--spacing-x-small) var(--spacing-large) var(--spacing-x-small) var(--spacing-small);
-    background: var(--color-background-emphasize);
+    padding: var(--spacing-x-small);
+    padding-right: var(--spacing-large);
+    transition: var(--transition-long);
     
-    display: grid;
-    grid-template-columns: auto 1fr;
+}
+.main-view {
+    height: 2.25rem;
+    
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--spacing-small);
+    white-space: nowrap;
+    
     overflow: hidden;
-    height: 3.125rem;
 }
 
 .extended-title {
@@ -20,33 +24,27 @@
 .forecast-day {
     font-weight: var(--font-emphasized);
     font-size: 1rem;
-    margin: var(--spacing-small) 0;
-    line-height: 0;
+    margin: 0 var(--spacing-medium) 0 var(--spacing-x-small);
+    /*line-height: 0;*/
 }
 
 .forecast {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-content: space-between;
+    display: flex;
     align-items: center;
-    column-gap: var(--spacing-medium);
-    
-    grid-template-areas:
-    "ficon lohi lohi"
-    "ficon uvr uvr"
+    height: 100%;
 }
 
 .forecast-icon {
-    height: 95%;
+    height: 2rem;
     aspect-ratio: 1 / 1;
     position: relative;
     overflow: visible;
-    justify-self: center;
+    /*justify-self: center;*/
     grid-area: ficon;
-    /*border: var(--border-light);*/
     border-radius: var(--radius-small);
     background-color: var(--color-foreground);
+    margin-right: var(--spacing-medium);
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,11 +58,21 @@
     }
 }
 
+.main-info-wrapper {
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.conditions {
+    font-weight: bold;
+}
+
 
 .loHi, .expanded-data {
     position: relative;
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     
     & > div {
@@ -73,7 +81,7 @@
 }
 
 .loHi {
-    grid-area: lohi;
+    width: 100%;
     font-weight: var(--font-emphasized);
 }
 
@@ -81,28 +89,25 @@
 .graph-num {
     width: 2rem;
     display: flex;
-    justify-content: start;
+    justify-content: end;
     
     &:last-of-type {
-        justify-content: end;
-        
-        /*&::after {*/
-        /*    content: '°';*/
-        /*    position: absolute;*/
-        /*    right: -0.5rem;*/
-        /*}*/
+        &::after {
+            content: '°';
+            position: absolute;
+            right: -0.5rem;
+        }
     }
 }
 
 .bar-container {
-    margin: 0 0;
+    /*margin: 0 var(--spacing-small);*/
     width: 100%;
     height: 0.35rem;
     border-radius: var(--radius-small);
     /*border: var(--border-emphasize);*/
     background-color: var(--color-background-muted);
     overflow: hidden;
-    align-self: center;
     position: relative;
     box-sizing: border-box;
 }
@@ -114,18 +119,25 @@
     position: relative;
 }
 
-.expanded-data {
+.expanded-view {
     justify-self: stretch;
     align-content: space-between;
     grid-area: uvr;
 }
 
-button {
-    width: 2rem;
-    height: 2rem;
+span.expander {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: auto;
 }
 
 .arrow {
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 100%;
+    width: 100%;
+    transition: var(--transition-short)
+}
+
+.arrow-expanded {
+    transform: rotate(180deg);
+    transition: var(--transition-short)
 }

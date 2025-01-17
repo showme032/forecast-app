@@ -3,9 +3,6 @@ import type { Current } from '../../app.model';
 
 @Injectable()
 export class CurrentService {
-
-  constructor() { }
-
   // Return current weather data
   getCurrent(data: any): Current {
     return {

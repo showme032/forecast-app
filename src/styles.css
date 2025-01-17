@@ -31,7 +31,7 @@
 
     --transition-short: 0.15s;
     --transition-medium: 0.25s;
-    --transition-long: 0.35s;
+    --transition-long: 0.15s;
 
     --font-normal: 400;
     --font-emphasized: 500;
@@ -43,7 +43,6 @@
     -webkit-font-smoothing: antialiased;
 
     --bezier: cubic-bezier(0.2, 0, 0.4, 1);
-
 }
 
 body {
