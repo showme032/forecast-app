@@ -29,7 +29,7 @@
     box-shadow: inset 0 -0.75rem 0 0 var(--color-primary);
 }
 
-.current-icon {
+.current-icon-wrapper {
     width: 100%;
     grid-area: 1 / 2 / 2 / 3;
     justify-self: end;
@@ -40,17 +40,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.icon-background {
+    background-image: url("/assets/weather-icons/background.svg");
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
-.icon {
+.current-icon {
     margin: var(--spacing-small);
     width: 80%;
     position: relative;

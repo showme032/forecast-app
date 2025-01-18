@@ -25,13 +25,13 @@ export class TodayService {
 
   // UV
   getUvMessage(index: number): string[] {
-    if (index <= 2) {
+    if (index <= 3) {
       return ['Low', ' no risk'];
     } else if (index <= 6) {
       return ['Medium', ' wear protection'];
     } else if (index <= 10) {
-      return ['High', 'Protection required'];
-    } else return ['Very high', 'Avoid exposure!'];
+      return ['High', ' protection required'];
+    } else return ['Very high', ' avoid exposure!'];
   }
 
   // Atmospheric Pressure
@@ -69,7 +69,7 @@ export class TodayService {
   }
 
   // Humidity
-  getHumidityMessage(index: number): string {
+  getHumidityMessage(index: number, temp: number): string {
     if (index > 24) {
       return 'Feels oppressive';
     } else if (index > 21) {

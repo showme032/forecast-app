@@ -28,7 +28,7 @@ import { ForecastComponent } from './forecast/forecast.component';
     trigger('load', [
       transition(':leave', [
         style({ opacity: 0 }),
-        animate('0.25s cubic-bezier(0.2, 0, 0.4, 1)', style({ opacity: 0 })),
+        animate('0.075s cubic-bezier(0.2, 0, 0.4, 1)', style({ opacity: 0 })),
       ]),
     ]),
   ],

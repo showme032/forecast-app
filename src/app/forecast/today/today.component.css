@@ -13,7 +13,7 @@
     border-radius: var(--radius-medium);
     border: var(--border);
     box-shadow: var(--shadow-small);
-    padding: var(--spacing-small) 0.5rem;
+    padding: var(--spacing-small);
     font-size: 0.7rem;
     position: relative;
     overflow: hidden;

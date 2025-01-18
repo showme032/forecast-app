@@ -1,35 +1,24 @@
 <div class="main-view">
-  <span class="forecast-day">
-    {{ dayData().isToday ? 'Now' : ((dayData().date | date: 'EE')) }}
+  <span class="extended-day">
+    {{ dayData().isToday ? 'Today' : ((dayData().date | date: 'EE')) }}
   </span>
-
-  <div class="forecast">
-    <span class="forecast-icon">
+  <span class="extended-icon">
       <img [src]="imagePath(dayData().weatherCode)"
            alt="Current conditions">
-      <!--      <div class="background"></div>    -->
     </span>
-
-    <div class="main-info-wrapper">
-      <div class="conditions">
-        {{ dayData().conditions }}
+  <div class="extended-temp">
+      <span class="graph-num"
+            [class.negative]="dayData().minTemperature <= -1">{{ dayData().minTemperature }}°</span>
+      <div class="bar-container">
+        <div class="bar-fill"
+             [style.width.%]="graphFillWidth()"
+             [style.left.%]="graphFillOffset()"></div>
       </div>
-
-      <div class="loHi">
-          <span class="graph-num"
-                [class.negative]="dayData().minTemperature <= -1">{{ dayData().minTemperature }}°</span>
-        <div class="bar-container">
-          <div class="bar-fill"
-               [style.width.%]="graphFillWidth()"
-               [style.left.%]="graphFillOffset()"></div>
-        </div>
-        <span class="graph-num"
-              [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>
-      </div>
-    </div>
+      <span class="graph-num"
+            [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>
   </div>
-
-  <span (click)="onToggleView()" class="expander">
+  <span (click)="onToggleView()"
+        class="expander">
     <svg xmlns="http://www.w3.org/2000/svg"
          width="24"
          height="24"
@@ -45,15 +34,28 @@
 </div>
 
 @if (expandedView()) {
-  <div class="separator"></div>
-  <div class="expanded-view">
-    <div class="expanded-column">
-      <span class="emphasized">Precipitation: {{ dayData().precipitation }}%</span>
-      <span class="emphasized">Wind Gusts: {{dayData().wind_gusts_10m_max | number: '1.1-1'}}km/h</span>
+  <!--  <div class="separator" @load></div>-->
+  <div class="expanded-view"
+       @expandShrinkElement>
+    <div class="separator"></div>
+    <div class="expanded-data">
+      <div class="expanded-column">
+        <div>
+          <span class="emphasized left-column">Precipitation: </span> {{ dayData().precipitation }}%
+        </div>
+        <div>
+          <span class="emphasized left-column">Wind Gusts: </span> {{ dayData().wind_gusts_10m_max | number: '1.1-1' }}km/h
+        </div>
+      </div>
+      <div class="expanded-column">
+        <div>
+          <span class="emphasized">UV Index: </span> {{ dayData().uvMax | number: '1.0-0' }}
+        </div>
+        <div>
+          <span class="emphasized">Daylight: </span> {{ dayData().daylight_duration }}
+        </div>
+      </div>
     </div>
-    <div class="expanded-column">
-      <span class="emphasized">UV Index: {{ dayData().uvMax | number: '1.0-0' }}</span>
-      <span class="emphasized">Daylight: {{dayData().daylight_duration}}</span>
-    </div>
+
   </div>
 }

@@ -2,49 +2,39 @@
     background: var(--color-background-emphasize);
     border: var(--border-medium);
     border-radius: var(--radius-small);
-    padding: var(--spacing-x-small);
-    /*padding-right: var(--spacing-large);*/
-    transition: var(--transition-long);
+    padding: var(--spacing-x-small) var(--spacing-medium);
     display: flex;
     flex-direction: column;
-    
+    overflow: hidden;
+    white-space: nowrap;
 }
 .main-view {
     height: 2.25rem;
-    
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
     overflow: hidden;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 3rem  2rem auto 1.25rem;
+    gap: var(--spacing-small);
 }
 
 .extended-title {
     margin-left: calc(var(--spacing-small) + 1px);
 }
 
-.forecast-day {
+.extended-day {
     font-weight: var(--font-emphasized);
     font-size: 1rem;
-    margin: 0 var(--spacing-medium) 0 var(--spacing-x-small);
-    /*line-height: 0;*/
+    margin: 0 var(--spacing-medium) 0 0;
 }
 
-.forecast {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-.forecast-icon {
+.extended-icon {
     height: 2rem;
     aspect-ratio: 1 / 1;
     position: relative;
     overflow: visible;
-    /*justify-self: center;*/
-    grid-area: ficon;
     border-radius: var(--radius-small);
-    background-color: var(--color-foreground);
     margin-right: var(--spacing-medium);
+    background-image: url("/assets/weather-icons/background.svg");
     
     display: flex;
     align-items: center;
@@ -54,48 +44,22 @@
         height: 82%;
         margin: 3px;
         aspect-ratio: 1 / 1;
-        /*width: 85%;*/
-        /*height: 85%;*/
     }
 }
 
-.main-info-wrapper {
-    width: 14rem;
+.extended-temp {
     display: flex;
     justify-content: space-between;
-    /*flex-direction: column;*/
-}
-
-.conditions {
-    font-weight: bold;
-}
-
-.emphasized {
-    font-weight: bold;
-}
-
-
-.loHi, .expanded-data {
-    position: relative;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    
-    & > div {
-        white-space: nowrap;
-    }
 }
 
-.loHi {
-    width: 100%;
-    font-weight: var(--font-emphasized);
-}
-
-/* Hi-lo graph */
 .graph-num {
     width: 2rem;
     display: flex;
     justify-content: end;
+    margin-right: var(--spacing-small);
+    font-weight: 500;
+    position: relative;
     
     &:last-of-type {
         &::after {
@@ -107,11 +71,9 @@
 }
 
 .bar-container {
-    /*margin: 0 var(--spacing-small);*/
     width: 100%;
     height: 0.35rem;
     border-radius: var(--radius-small);
-    /*border: var(--border-emphasize);*/
     background-color: var(--color-background-muted);
     overflow: hidden;
     position: relative;
@@ -125,33 +87,11 @@
     position: relative;
 }
 
-.separator {
-    margin-top: var(--spacing-small);
-    /*margin-bottom: var(--spacing-small);  */
-    height: 1px;
-    width: 95%;
-    background-color: var(--color-foreground);
-    opacity: 0.4;
-    align-self: center;
-}
-
-.expanded-view {
-    justify-self: stretch;
-    align-content: space-between;
-    display: flex;
-    justify-content: space-between;
-    padding: var(--spacing-small);
-}
-
-.expanded-column {
-    display: flex;
-    flex-direction: column;
-}
-
-span.expander {
-    width: 1.5rem;
-    height: 1.5rem;
+.expander {
+    width: 1.25rem;
+    height: 1.25rem;
     margin-left: auto;
+    cursor: pointer;
 }
 
 .arrow {
@@ -163,4 +103,36 @@ span.expander {
 .arrow-expanded {
     transform: rotate(180deg);
     transition: var(--transition-short)
+}
+
+.expanded-view {
+    justify-self: stretch;
+}
+
+.separator {
+    margin: var(--spacing-small) 0;
+    height: 1px;
+    width: 97.5%;
+    background-color: var(--color-foreground);
+    opacity: 0.4;
+    align-self: center;
+}
+
+.expanded-data {
+    display: flex;
+    justify-content: space-between;
+}
+.expanded-column {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.left-column {
+    display: inline-block;
+    width: 6.75rem;
+}
+
+.emphasized {
+    font-weight: 700;
 }

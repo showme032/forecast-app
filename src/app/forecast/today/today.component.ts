@@ -38,7 +38,7 @@ export class TodayComponent implements OnChanges {
     if (changes['weatherData']) {
       this.uvMessage = this.todayService.getUvMessage(this.todayData().uv);
       this.pressureMessage = this.todayService.getPressureMessage(this.todayData().pressure);
-      this.humidityMessage = this.todayService.getHumidityMessage(this.todayData().dewPoint);
+      this.humidityMessage = `Dew point: ${this.todayData().dewPoint}°`;
       this.subjectiveMessage = this.todayService.getSubjectiveMessage(this.todayData().current, this.todayData().subjectiveTemp);
       this.visibilityMessage = this.todayService.getVisibilityMessage(this.todayData().visibility);
     }
@@ -52,7 +52,6 @@ export class TodayComponent implements OnChanges {
       card.classList.add('clicked');
     }
   }
-
 
   linearGraphic(val: number, min: number, max: number): number {
     return (val - min) / (max - min) * 100;

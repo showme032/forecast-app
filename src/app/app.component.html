@@ -2,9 +2,8 @@
   <!--  Location search-->
   <app-search (locationEmitter)="onLocationFound($event)" (loading)="onLoading()"/>
 
-  <!-- Weather data  -->
+  <!-- Forecast display  -->
   @if (location) {
     <app-forecast />
-<!--  [location]="location"  -->
   }
 </main>
