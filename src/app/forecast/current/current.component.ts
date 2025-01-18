@@ -1,6 +1,6 @@
 import { Component, computed, inject, input} from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { Location } from '../../app.model';
+import { LocationData } from '../../app.model';
 import { CurrentService } from './current.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class CurrentComponent {
   weatherData = input.required<{} | undefined>();
 
   current = computed(() => this.forecastService.getCurrent(this.weatherData()));
-  location = input.required<Location>();
+  location = input.required<LocationData>();
 
   get conditions() {
     return this.forecastService.getConditions(this.current().weatherCode);

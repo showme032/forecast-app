@@ -118,7 +118,7 @@
     align-self: center;
 }
 
-.expanded-data {
+.expanded-data-wrapper {
     display: flex;
     justify-content: space-between;
 }
@@ -126,6 +126,17 @@
     display: flex;
     flex-direction: column;
     font-weight: 500;
+}
+.expanded-data {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-x-small);
+}
+
+.expanded-data-value {
+    text-align: left;
+    justify-self: start;
 }
 
 .left-column {

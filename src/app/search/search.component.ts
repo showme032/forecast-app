@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchServices } from './search.services';
-import { Location } from '../app.model';
+import { LocationData } from '../app.model';
 
 @Component({
   selector: 'app-search',
@@ -20,13 +20,14 @@ import { Location } from '../app.model';
 export class SearchComponent {
   private searchService = inject(SearchServices);
 
-  locationEmitter = output<Location | null>();
+  locationEmitter = output<LocationData | null>();
   errorMessage = signal<string | undefined>(undefined);
   searchQuery = '';
-  @Output() loading = new EventEmitter<unknown>();
+  @Output() loading = new EventEmitter<any>();
 
   // Get coordinates based on search query
   onSubmit() {
+    this.loading.emit();
     if (this.searchQuery.length > 0) {
       this.searchService.getLocationCoordinates(this.searchQuery).subscribe(res => {
         if (res.response.features.length != 0) {
@@ -40,7 +41,7 @@ export class SearchComponent {
 
         } else {
           this.locationEmitter.emit(null);
-          this.errorMessage.set('No Location Found');
+          this.errorMessage.set('No LocationData Found');
         }
 
         this.searchQuery = '';
@@ -50,6 +51,7 @@ export class SearchComponent {
 
   // Get location data based on HTML geoLocation API
   onGeoLocate() {
+    this.loading.emit();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => onGeoSuccess(position),

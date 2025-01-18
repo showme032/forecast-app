@@ -5,7 +5,6 @@ import { Extended } from '../../app.model';
 export class ExtendedService {
   // Return weather data for 7 days
   getExtended(data: any): Extended[] {
-    console.log(data);
     let extended: Extended[] = [];
 
     for (let i = 0; i < 7; i += 1) {

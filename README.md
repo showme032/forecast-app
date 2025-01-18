@@ -10,7 +10,7 @@ and Open-Meteo's
 The app was made using Angular v18.
 
 # Live demo
-Live demo of current version can be viewed **[here](https://forecast-app-brutalism.netlify.app/)**.
+Live demo of current version can be viewed **[here](https://forecast-demo.netlify.app/)**.
 
 # Usage
 Type the desired location into the search field and press enter 🤷‍♂️
@@ -27,6 +27,6 @@ Note: For local deployment, free [Geocodify](https://geocodify.com/register) API
 'geoApiKey: [API key]'.
 
 # Credits
-Base weather icons come from
-[Neelesh Chaudhary](https://www.figma.com/community/file/971051749541378755/weather-icons-community), and icons used in
+Weather icons edited from
+[Roman Davydko](https://www.figma.com/community/file/1103283843506060922/icons-for-weather-api), and icons used in
 other elements from [Huge Icons](https://hugeicons.com/icons?style=Stroke&type=Rounded).

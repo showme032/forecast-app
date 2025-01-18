@@ -1,9 +1,15 @@
 <main>
-  <!--  Location search-->
-  <app-search (locationEmitter)="onLocationFound($event)" (loading)="onLoading()"/>
+  <!--  LocationData search-->
+  <app-search (locationEmitter)="onLocationFound($event)"
+              (loading)="onLoading()" />
+
+  <!--  Spinner -->
+<!--  @if (spinner() && !location) {-->
+<!--    <span class="spinner"></span>-->
+<!--  }-->
 
   <!-- Forecast display  -->
   @if (location) {
-    <app-forecast />
+    <app-forecast [location]="location" @animateElement/>
   }
 </main>

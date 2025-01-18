@@ -9,13 +9,13 @@
   <div class="extended-temp">
       <span class="graph-num"
             [class.negative]="dayData().minTemperature <= -1">{{ dayData().minTemperature }}°</span>
-      <div class="bar-container">
-        <div class="bar-fill"
-             [style.width.%]="graphFillWidth()"
-             [style.left.%]="graphFillOffset()"></div>
-      </div>
-      <span class="graph-num"
-            [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>
+    <div class="bar-container">
+      <div class="bar-fill"
+           [style.width.%]="graphFillWidth()"
+           [style.left.%]="graphFillOffset()"></div>
+    </div>
+    <span class="graph-num"
+          [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>
   </div>
   <span (click)="onToggleView()"
         class="expander">
@@ -38,21 +38,25 @@
   <div class="expanded-view"
        @expandShrinkElement>
     <div class="separator"></div>
-    <div class="expanded-data">
+    <div class="expanded-data-wrapper">
       <div class="expanded-column">
-        <div>
-          <span class="emphasized left-column">Precipitation: </span> {{ dayData().precipitation }}%
+        <div class="expanded-data">
+          <span class="emphasized left-column">Precipitation: </span>
+          <div class="expanded-data-value">{{ dayData().precipitation }}%</div>
         </div>
-        <div>
-          <span class="emphasized left-column">Wind Gusts: </span> {{ dayData().wind_gusts_10m_max | number: '1.1-1' }}km/h
+        <div class="expanded-data">
+          <span class="emphasized left-column">Wind Gusts: </span>
+          <div class="expanded-data-value">{{ dayData().wind_gusts_10m_max | number: '1.1-1' }}km/h</div>
         </div>
       </div>
       <div class="expanded-column">
-        <div>
-          <span class="emphasized">UV Index: </span> {{ dayData().uvMax | number: '1.0-0' }}
+        <div class="expanded-data">
+          <span class="emphasized">UV Index: </span>
+          <div class="expanded-data-value">{{ dayData().uvMax | number: '1.0-0' }}</div>
         </div>
-        <div>
-          <span class="emphasized">Daylight: </span> {{ dayData().daylight_duration }}
+        <div class="expanded-data">
+          <span class="emphasized">Daylight: </span>
+          <div class="expanded-data-value"> {{ dayData().daylight_duration }}</div>
         </div>
       </div>
     </div>

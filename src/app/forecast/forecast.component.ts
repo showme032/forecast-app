@@ -6,7 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import * as weatherData from '../../assets/exampleWeateherData.json'
+import {LocationData} from '../app.model';
 
 import { CurrentComponent } from './current/current.component';
 import { ExtendedComponent } from './extended/extended.component';
@@ -34,43 +34,35 @@ import { ForecastService } from './forecast.service';
       ]),
       transition(':leave', [
         style({ opacity: 1 }),
-        animate('125ms ease-in-out', style({ opacity: 0 })),
+        animate('0s ease-in-out', style({ opacity: 0 })),
       ]),
     ]),
   ],
 })
-export class ForecastComponent {
+export class ForecastComponent implements OnChanges {
   constructor(private forecastService: ForecastService) {}
-  // location = input.required<Location>();
-  // weatherData = signal<{} | undefined>(undefined);
-  // airQualityIndex = signal<number>(0);
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes['location']) {
-  //     this.forecastService
-  //       .getWeatherData(this.location().lat, this.location().lng)
-  //       .subscribe(
-  //         res => {
-  //           this.weatherData.set(res);
-  //         },
-  //       );
-  //
-  //     this.forecastService
-  //       .getAirQuality(this.location().lat, this.location().lng)
-  //       .subscribe(
-  //         res => {
-  //           this.airQualityIndex.set(res.current.european_aqi);
-  //         },
-  //       );
-  //   }
-  // }
+  location = input.required<LocationData>();
+  weatherData = signal<{} | undefined>(undefined);
+  airQualityIndex = signal<number>(0);
 
-  location = signal<any>({
-    lat: 44,
-    lng: 66,
-    name: 'Cacak',
-    country: 'Serbia',
-  })
-  weatherData: any = signal<any>(weatherData)
-  airQualityIndex = signal<number>(66);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['location']) {
+      this.forecastService
+        .getWeatherData(this.location().lat, this.location().lng)
+        .subscribe(
+          res => {
+            this.weatherData.set(res);
+          },
+        );
+
+      this.forecastService
+        .getAirQuality(this.location().lat, this.location().lng)
+        .subscribe(
+          res => {
+            this.airQualityIndex.set(res.current.european_aqi);
+          },
+        );
+    }
+  }
 }
