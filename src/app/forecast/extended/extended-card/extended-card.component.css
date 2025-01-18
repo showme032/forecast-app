@@ -28,7 +28,9 @@
 }
 
 .extended-icon {
+    border: var(--border-medium);
     height: 2rem;
+    width: 2rem;
     aspect-ratio: 1 / 1;
     position: relative;
     overflow: visible;
@@ -42,6 +44,7 @@
     
     & img {
         height: 82%;
+        /*width: 82%;*/
         margin: 3px;
         aspect-ratio: 1 / 1;
     }
@@ -88,8 +91,8 @@
 }
 
 .expander {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
     margin-left: auto;
     cursor: pointer;
 }
@@ -107,6 +110,9 @@
 
 .expanded-view {
     justify-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .separator {

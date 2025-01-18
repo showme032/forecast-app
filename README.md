@@ -12,6 +12,10 @@ The app was made using Angular v18.
 # Live demo
 Live demo of current version can be viewed **[here](https://forecast-demo.netlify.app/)**.
 
+# Screenshots
+<img src="/public/screenshot.png" width="252" style="float:left; margin-right: 20px">
+<img src="/public/screenshot-wide.png" height="770" style="display: inline-block">
+
 # Usage
 Type the desired location into the search field and press enter 🤷‍♂️
 
@@ -22,7 +26,7 @@ installed, app can be run in developement mode via executing: <br/>
 npm i
 ng serve
 ```
-Note: For local deployment, free [Geocodify](https://geocodify.com/register) API key must be placed in 
+Note: For personal deployment, free [Geocodify](https://geocodify.com/register) API key must be placed in 
 *environment.ts* as 
 'geoApiKey: [API key]'.
 

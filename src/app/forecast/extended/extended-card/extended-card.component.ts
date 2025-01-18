@@ -6,7 +6,7 @@ import {
   Signal,
   SimpleChanges,
 } from '@angular/core';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe, NgOptimizedImage } from '@angular/common';
 import { Extended } from '../../../app.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -16,6 +16,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
   imports: [
     DatePipe,
     DecimalPipe,
+    NgOptimizedImage,
   ],
   templateUrl: './extended-card.component.html',
   styleUrl: './extended-card.component.css',
@@ -53,6 +54,7 @@ export class ExtendedCardComponent implements OnChanges {
 
   // Update component specific graph parameters on input change
   ngOnChanges(changes: SimpleChanges) {
+    console.log(this.dayData())
     this.graphFillWidth = computed(() => {
       return ((this.dayData().maxTemperature - this.dayData().minTemperature) / this.extendedRange()) * 100;
     });
