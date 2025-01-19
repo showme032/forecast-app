@@ -13,6 +13,7 @@
       <div class="bar-fill"
            [style.width.%]="graphFillWidth()"
            [style.left.%]="graphFillOffset()"></div>
+      <div class="bar-current"></div>
     </div>
     <span class="graph-num"
           [class.negative]="dayData().maxTemperature <= -1">{{ dayData().maxTemperature }}</span>

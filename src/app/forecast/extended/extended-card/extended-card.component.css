@@ -7,7 +7,16 @@
     flex-direction: column;
     overflow: hidden;
     white-space: nowrap;
+    transition: transform var(--transition-medium);
+    
+    /*&:hover {*/
+    /*    cursor: pointer;*/
+    /*    transform: scale(101%);*/
+    /*    box-shadow: var(--shadow-x-small);*/
+    /*    transition: transform var(--transition-medium), box-shadow var(--transition-short);*/
+    /*}*/
 }
+
 .main-view {
     height: 2.25rem;
     overflow: hidden;
@@ -107,6 +116,7 @@
     transform: rotate(180deg);
     transition: var(--transition-short)
 }
+
 
 .expanded-view {
     justify-self: stretch;
