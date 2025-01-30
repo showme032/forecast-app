@@ -9,7 +9,7 @@
 .search-wrapper {
     margin: 3rem 0 2rem;
     width: 100%;
-    transition: var(--transition-long);
+    transition: var(--transition-medium);
     
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ form {
     margin: auto;
     width: 100%;
     position: relative;
-    transition: var(--transition-medium);
+    transition: var(--transition-long);
     z-index: 1000;
     
     &:has(> #search-query:focus) {
@@ -42,19 +42,19 @@ form {
     padding: 5px 43px;
     font-size: 1.3rem;
     font-weight: var(--font-normal);
-    transition: var(--transition-medium);
+    transition: var(--transition-long);
     
     &::placeholder {
         color: hsl(222, 47%, 0%);
         opacity: 0.5;
         font-weight: var(--font-normal);
-        transition: var(--transition-medium);
+        transition: var(--transition-long);
     }
     
     &:focus {
         outline: none;
         box-shadow: 6px 6px 0 var(--color-foreground);
-        transition: var(--transition-medium);
+        transition: var(--transition-long);
         
         &::placeholder {
             transition: var(--transition-short);
@@ -106,7 +106,7 @@ form {
 @media (max-width: 1100px) {
     .search-wrapper {
         width: 75%;
-        transition: var(--transition-long);
+        transition: var(--transition-medium);
     }
 
 }

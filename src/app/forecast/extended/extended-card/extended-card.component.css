@@ -3,25 +3,15 @@
     border: var(--border-medium);
     border-radius: var(--radius-small);
     padding: var(--spacing-x-small) var(--spacing-medium);
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
     white-space: nowrap;
-    transition: transform var(--transition-medium);
-    
-    /*&:hover {*/
-    /*    cursor: pointer;*/
-    /*    transform: scale(101%);*/
-    /*    box-shadow: var(--shadow-x-small);*/
-    /*    transition: transform var(--transition-medium), box-shadow var(--transition-short);*/
-    /*}*/
 }
 
 .main-view {
-    height: 2.25rem;
+    height: 2.26rem;
     overflow: hidden;
-    align-items: center;
     display: grid;
+    align-items: center;
     grid-template-columns: 3rem  2rem auto 1.25rem;
     gap: var(--spacing-small);
 }
@@ -37,26 +27,19 @@
 }
 
 .extended-icon {
-    /*border: var(--border-medium);*/
     height: 2rem;
-    width: 2rem;
     aspect-ratio: 1 / 1;
     position: relative;
     overflow: visible;
     border-radius: var(--radius-small);
     margin-right: var(--spacing-medium);
-    /*background-image: url("/assets/weather-icons/background.svg");*/
     background-color: var(--color-background-muted);
-    /*border: var(--border-emphasize);`*/
     
     display: flex;
     align-items: center;
     justify-content: center;
     
     & img {
-        height: 82%;
-        /*width: 82%;*/
-        margin: 3px;
         aspect-ratio: 1 / 1;
     }
 }
@@ -140,11 +123,13 @@
     display: flex;
     justify-content: space-between;
 }
+
 .expanded-column {
     display: flex;
     flex-direction: column;
     font-weight: 500;
 }
+
 .expanded-data {
     display: grid;
     grid-template-columns: 1fr auto;

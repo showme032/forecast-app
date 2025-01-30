@@ -27,12 +27,12 @@
 .clicked {
     & > .card-content {
         transform: translateX(-105%);
-        transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
+        transition: var(--bezier) var(--transition-long);
     }
     
     & > .card-info {
         transform: translateX(0);
-        transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
+        transition: var(--bezier) var(--transition-long);
     }
 }
 
@@ -44,7 +44,7 @@
     justify-content: space-between;
     position: relative;
     
-    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
+    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-long);
 }
 
 .card-info {
@@ -54,7 +54,7 @@
     top: 0;
     left: 0;
     transform: translateX(100%);
-    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-medium);
+    transition: cubic-bezier(0.2, 0, 0.4, 1) var(--transition-long);
     padding: var(--spacing-small) 8px;
     line-height: 0;
     

@@ -34,32 +34,30 @@
   </span>
 </div>
 
-@if (expandedView()) {
-  <!--  <div class="separator" @load></div>-->
-  <div class="expanded-view"
-       @expandShrinkElement>
-    <div class="separator"></div>
-    <div class="expanded-data-wrapper">
-      <div class="expanded-column">
-        <div class="expanded-data">
-          <span class="emphasized left-column">Precipitation: </span>
-          <div class="expanded-data-value">{{ dayData().precipitation }}%</div>
-        </div>
-        <div class="expanded-data">
-          <span class="emphasized left-column">Wind Gusts: </span>
-          <div class="expanded-data-value">{{ dayData().wind_gusts_10m_max | number: '1.1-1' }}km/h</div>
-        </div>
+<!--  <div class="separator" @load></div>-->
+<div class="expanded-view">
+  <div class="separator"></div>
+  <div class="expanded-data-wrapper">
+    <div class="expanded-column">
+      <div class="expanded-data">
+        <span class="emphasized left-column">Precipitation: </span>
+        <div class="expanded-data-value">{{ dayData().precipitation }}%</div>
       </div>
-      <div class="expanded-column">
-        <div class="expanded-data">
-          <span class="emphasized">UV Index: </span>
-          <div class="expanded-data-value">{{ dayData().uvMax | number: '1.0-0' }}</div>
-        </div>
-        <div class="expanded-data">
-          <span class="emphasized">Daylight: </span>
-          <div class="expanded-data-value"> {{ dayData().daylight_duration }}</div>
-        </div>
+      <div class="expanded-data">
+        <span class="emphasized left-column">Wind Gusts: </span>
+        <div class="expanded-data-value">{{ dayData().wind_gusts_10m_max | number: '1.1-1' }}km/h</div>
+      </div>
+    </div>
+    <div class="expanded-column">
+      <div class="expanded-data">
+        <span class="emphasized">UV Index: </span>
+        <div class="expanded-data-value">{{ dayData().uvMax | number: '1.0-0' }}</div>
+      </div>
+      <div class="expanded-data">
+        <span class="emphasized">Daylight: </span>
+        <div class="expanded-data-value"> {{ dayData().daylight_duration }}</div>
       </div>
     </div>
   </div>
-}
+</div>
+

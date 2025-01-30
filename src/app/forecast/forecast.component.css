@@ -18,7 +18,7 @@
     "hourly hourly hourly hourly"
     "extended extended today today";
     justify-items: center;
-    transition: var(--transition-long);
+    transition: var(--transition-medium);
 }
 
 .current-wrapper {
@@ -56,7 +56,7 @@
             "today today today"
             "today today today"
             "extended extended extended";
-        transition: var(--transition-long);
+        transition: var(--transition-medium);
     }
     
     .no-location {
@@ -74,7 +74,7 @@
             "today today today"
             "today today today"
             "extended extended extended";
-        transition: var(--transition-long);
+        transition: var(--transition-medium);
     }
     
     .current-wrapper {

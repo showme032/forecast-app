@@ -30,9 +30,11 @@
     --spacing-x-large: 1.25rem;
 
     --transition-short: 0.15s;
-    --transition-medium: 0.25s;
-    --transition-long: 0.15s;
+    --transition-medium: 0.2s;
+    --transition-long: 0.235s;
 
+    --bezier: cubic-bezier(0.2, 0, 0.4, 1);
+    
     --font-normal: 400;
     --font-emphasized: 500;
     --font-bold: 700;
@@ -42,7 +44,6 @@
 
     -webkit-font-smoothing: antialiased;
 
-    --bezier: cubic-bezier(0.2, 0, 0.4, 1);
 }
 
 body {

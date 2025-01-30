@@ -1,6 +1,6 @@
 import {
   Component,
-  computed,
+  computed, HostBinding,
   input,
   OnChanges, signal,
   Signal,
@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Extended } from '../../../app.model';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-extended-card',
@@ -20,17 +20,20 @@ import { animate, style, transition, trigger } from '@angular/animations';
   templateUrl: './extended-card.component.html',
   styleUrl: './extended-card.component.css',
   animations: [
-    trigger('expandShrinkElement', [
-      transition(':enter', [
-        style({ height: 0, opacity: 0 }),
-        animate('175ms cubic-bezier(0.2, 0, 0.33, 1)', style({ height: '*', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        style({ height: '*', opacity: 1 }),
-        animate('125ms cubic-bezier(1, 0.33, 0, 0.2)', style({ height: 0, opacity: 0 })),
-      ]),
-    ]),
-  ]
+    trigger('expandCollapse', [
+      state('collapsed', style({
+        height: '2.75rem',
+      })),
+      state('expanded', style({
+        height: '*',
+        transition: ''
+      })),
+      transition('collapsed <=> expanded', [
+        animate('0.2s cubic-bezier(0.2, 0, 0.4, 1)')
+      ])
+    ])
+  ],
+  // host: {'[class]':'expandedView() ? "expanded" : "collapsed"'},
 })
 export class ExtendedCardComponent implements OnChanges {
   dayData = input.required<Extended>()
@@ -46,6 +49,18 @@ export class ExtendedCardComponent implements OnChanges {
   graphCurrent?: Signal<number | undefined>;
 
   expandedView = signal(false);
+
+  // @HostBinding('class.expanded') get expandedClass() {
+  //   return this.expandedView();
+  // }
+  //
+  // @HostBinding('class.collapsed') get collapsedClass() {
+  //   return !this.expandedView();
+  // }
+
+  @HostBinding('@expandCollapse') get expandCollapseState() {
+    return this.expandedView() ? 'expanded' : 'collapsed';
+  }
 
   // Expand card to show more forecast information
   onToggleView() {
