@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, inject,
   input,
   OnChanges, OnInit,
   signal,
@@ -13,6 +13,7 @@ import { ExtendedComponent } from './extended/extended.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { TodayComponent } from './today/today.component';
 import { ForecastService } from './forecast.service';
+import { HourlyService } from './hourly/hourly.service';
 
 @Component({
   selector: 'app-forecast',
@@ -40,7 +41,7 @@ import { ForecastService } from './forecast.service';
   ],
 })
 export class ForecastComponent implements OnChanges {
-  constructor(private forecastService: ForecastService) {}
+  private forecastService = inject(ForecastService);
 
   location = input.required<LocationData>();
   weatherData = signal<{} | undefined>(undefined);

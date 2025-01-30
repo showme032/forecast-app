@@ -37,7 +37,7 @@
 }
 
 .extended-icon {
-    border: var(--border-medium);
+    /*border: var(--border-medium);*/
     height: 2rem;
     width: 2rem;
     aspect-ratio: 1 / 1;
@@ -45,7 +45,9 @@
     overflow: visible;
     border-radius: var(--radius-small);
     margin-right: var(--spacing-medium);
-    background-image: url("/assets/weather-icons/background.svg");
+    /*background-image: url("/assets/weather-icons/background.svg");*/
+    background-color: var(--color-background-muted);
+    /*border: var(--border-emphasize);`*/
     
     display: flex;
     align-items: center;

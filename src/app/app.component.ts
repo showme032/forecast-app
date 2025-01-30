@@ -4,6 +4,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { LocationData } from './app.model';
 import { SearchComponent } from './search/search.component';
 import { ForecastComponent } from './forecast/forecast.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { ForecastComponent } from './forecast/forecast.component';
   imports: [
     SearchComponent,
     ForecastComponent,
+    // BrowserAnimationsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -6,7 +6,7 @@ import {
   Signal,
   SimpleChanges,
 } from '@angular/core';
-import { DatePipe, DecimalPipe, NgOptimizedImage } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Extended } from '../../../app.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -16,18 +16,17 @@ import { animate, style, transition, trigger } from '@angular/animations';
   imports: [
     DatePipe,
     DecimalPipe,
-    NgOptimizedImage,
   ],
   templateUrl: './extended-card.component.html',
   styleUrl: './extended-card.component.css',
   animations: [
     trigger('expandShrinkElement', [
       transition(':enter', [
-        style({ height: 0, opacity: 0}),
+        style({ height: 0, opacity: 0 }),
         animate('175ms cubic-bezier(0.2, 0, 0.33, 1)', style({ height: '*', opacity: 1 })),
       ]),
       transition(':leave', [
-        style({ height: '*', opacity: 0.9 }),
+        style({ height: '*', opacity: 1 }),
         animate('125ms cubic-bezier(1, 0.33, 0, 0.2)', style({ height: 0, opacity: 0 })),
       ]),
     ]),
@@ -44,6 +43,7 @@ export class ExtendedCardComponent implements OnChanges {
   // Component specific graph parameters,
   graphFillWidth!: Signal<number>;
   graphFillOffset!: Signal<number>;
+  graphCurrent?: Signal<number | undefined>;
 
   expandedView = signal(false);
 
@@ -61,6 +61,11 @@ export class ExtendedCardComponent implements OnChanges {
     this.graphFillOffset = computed(() => {
       return ((this.dayData().minTemperature - this.extendedMinTemp()) / this.extendedRange() * 100);
     });
+    // if (this.dayData().current != undefined) {
+    //   this.graphCurrent = computed(() => {
+    //     return this.extendedRange() / this.dayData().current;
+    //   });
+    // }
   }
 
   // Get weather icon path

@@ -1,8 +1,8 @@
 div {
   border-radius: var(--radius-medium);
   border: var(--border);
-  color: var(--color-foreground);
   box-shadow: var(--shadow-small);
-  
+  background-color: var(--color-background);
   overflow: hidden;
+  
 }

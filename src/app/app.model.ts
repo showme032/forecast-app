@@ -60,4 +60,5 @@ export interface Extended {
   precipitation: number,
   daylight_duration: string,
   wind_gusts_10m_max: number,
+  current?: number,
 }

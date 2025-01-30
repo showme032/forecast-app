@@ -1,5 +1,5 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { CardComponent } from '../today/card/card.component';
+import { CardComponent } from '../../shared/card/card.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { HourlyService } from './hourly.service';
 
